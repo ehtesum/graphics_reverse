@@ -1,0 +1,18 @@
+{
+  "cpu": "AMD Ryzen 7 4800HS (Zen 2 Renoir)",
+  "benchmark": "Hardware Data Prefetcher Dissection",
+  "random_dram_latency_cycles": 241,
+  "results": [
+    {"label": "+64 B (Next-Line Forward)", "stride_bytes": 64, "cycles_per_access": 9, "prefetcher_speedup": 26.7778},
+    {"label": "+128 B (Forward Stride 2)", "stride_bytes": 128, "cycles_per_access": 13, "prefetcher_speedup": 18.5385},
+    {"label": "+256 B (Forward Stride 4)", "stride_bytes": 256, "cycles_per_access": 10, "prefetcher_speedup": 24.1},
+    {"label": "+512 B (Forward Stride 8)", "stride_bytes": 512, "cycles_per_access": 16, "prefetcher_speedup": 15.0625},
+    {"label": "+1024 B (Forward Stride 16)", "stride_bytes": 1024, "cycles_per_access": 14, "prefetcher_speedup": 17.2143},
+    {"label": "+2048 B (Forward Stride 32)", "stride_bytes": 2048, "cycles_per_access": 14, "prefetcher_speedup": 17.2143},
+    {"label": "+4096 B (Page Stride)", "stride_bytes": 4096, "cycles_per_access": 19, "prefetcher_speedup": 12.6842},
+    {"label": "-64 B (Backward Next-Line)", "stride_bytes": -64, "cycles_per_access": 9, "prefetcher_speedup": 26.7778},
+    {"label": "-128 B (Backward Stride 2)", "stride_bytes": -128, "cycles_per_access": 20, "prefetcher_speedup": 12.05},
+    {"label": "-256 B (Backward Stride 4)", "stride_bytes": -256, "cycles_per_access": 13, "prefetcher_speedup": 18.5385},
+    {"label": "-512 B (Backward Stride 8)", "stride_bytes": -512, "cycles_per_access": 18, "prefetcher_speedup": 13.3889}
+  ]
+}

@@ -1,0 +1,30 @@
+
+.version 7.5
+.target sm_75
+.address_size 64
+
+.visible .entry SpinKernel(
+    .param .u64 spin_cycles,
+    .param .u64 d_out
+) {
+    .reg .u64 %cycles, %out_ptr, %t0, %t1, %dt;
+    .reg .pred %p0;
+
+    ld.param.u64 %cycles, [spin_cycles];
+    ld.param.u64 %out_ptr, [d_out];
+
+    mov.u64 %t0, %clock64;
+
+    $spin_loop:
+    mov.u64 %t1, %clock64;
+    sub.u64 %dt, %t1, %t0;
+    setp.lt.u64 %p0, %dt, %cycles;
+    @%p0 bra $spin_loop;
+
+    .reg .pred %p_first;
+    .reg .u32 %tidx;
+    mov.u32 %tidx, %tid.x;
+    setp.eq.u32 %p_first, %tidx, 0;
+    @%p_first st.global.u64 [%out_ptr], %dt;
+    ret;
+}

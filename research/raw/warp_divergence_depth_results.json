@@ -1,0 +1,44 @@
+[
+  {
+    "num_paths": 1,
+    "threads_per_path": 32,
+    "kernel_time_ms": 3.258,
+    "slowdown": 1.0,
+    "simt_efficiency_pct": 100.0
+  },
+  {
+    "num_paths": 2,
+    "threads_per_path": 16,
+    "kernel_time_ms": 13.94,
+    "slowdown": 4.279,
+    "simt_efficiency_pct": 23.4
+  },
+  {
+    "num_paths": 4,
+    "threads_per_path": 8,
+    "kernel_time_ms": 21.576,
+    "slowdown": 6.622,
+    "simt_efficiency_pct": 15.1
+  },
+  {
+    "num_paths": 8,
+    "threads_per_path": 4,
+    "kernel_time_ms": 43.129,
+    "slowdown": 13.238,
+    "simt_efficiency_pct": 7.6
+  },
+  {
+    "num_paths": 16,
+    "threads_per_path": 2,
+    "kernel_time_ms": 86.249,
+    "slowdown": 26.473,
+    "simt_efficiency_pct": 3.8
+  },
+  {
+    "num_paths": 32,
+    "threads_per_path": 1,
+    "kernel_time_ms": 172.523,
+    "slowdown": 52.953,
+    "simt_efficiency_pct": 1.9
+  }
+]

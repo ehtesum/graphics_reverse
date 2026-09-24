@@ -1,0 +1,82 @@
+[
+  {
+    "batch_size": 1,
+    "description": "Decode Phase (Token Gen B=1)",
+    "arithmetic_intensity": 0.5,
+    "time_ms": 0.113,
+    "throughput_gflops": 18.6,
+    "regime": "Memory Bandwidth Saturated (GEMV)"
+  },
+  {
+    "batch_size": 2,
+    "description": "Decode Speculative (B=2)",
+    "arithmetic_intensity": 1.0,
+    "time_ms": 0.11,
+    "throughput_gflops": 38.0,
+    "regime": "Memory Bandwidth Saturated (GEMV)"
+  },
+  {
+    "batch_size": 4,
+    "description": "Decode Batched (B=4)",
+    "arithmetic_intensity": 1.98,
+    "time_ms": 0.11,
+    "throughput_gflops": 75.9,
+    "regime": "Memory Bandwidth Saturated (GEMV)"
+  },
+  {
+    "batch_size": 8,
+    "description": "Small Prompt (B=8)",
+    "arithmetic_intensity": 3.94,
+    "time_ms": 0.121,
+    "throughput_gflops": 138.4,
+    "regime": "Bandwidth / Compute Crossover"
+  },
+  {
+    "batch_size": 16,
+    "description": "Prompt Ingest (B=16)",
+    "arithmetic_intensity": 7.76,
+    "time_ms": 0.263,
+    "throughput_gflops": 127.4,
+    "regime": "Bandwidth / Compute Crossover"
+  },
+  {
+    "batch_size": 32,
+    "description": "Prompt Prefill (B=32)",
+    "arithmetic_intensity": 15.06,
+    "time_ms": 0.468,
+    "throughput_gflops": 143.4,
+    "regime": "Bandwidth / Compute Crossover"
+  },
+  {
+    "batch_size": 48,
+    "description": "Roofline Transition Knee (B=48)",
+    "arithmetic_intensity": 21.94,
+    "time_ms": 0.641,
+    "throughput_gflops": 156.9,
+    "regime": "Compute-Bound Saturation (GEMM)"
+  },
+  {
+    "batch_size": 64,
+    "description": "Compute-Bound Prefill (B=64)",
+    "arithmetic_intensity": 28.44,
+    "time_ms": 0.877,
+    "throughput_gflops": 153.1,
+    "regime": "Compute-Bound Saturation (GEMM)"
+  },
+  {
+    "batch_size": 128,
+    "description": "Heavy Prefill (B=128)",
+    "arithmetic_intensity": 51.2,
+    "time_ms": 1.99,
+    "throughput_gflops": 134.9,
+    "regime": "Compute-Bound Saturation (GEMM)"
+  },
+  {
+    "batch_size": 256,
+    "description": "Full Batch Prefill (B=256)",
+    "arithmetic_intensity": 85.33,
+    "time_ms": 4.342,
+    "throughput_gflops": 123.7,
+    "regime": "Compute-Bound Saturation (GEMM)"
+  }
+]

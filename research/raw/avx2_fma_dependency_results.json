@@ -1,0 +1,63 @@
+{
+  "cpu": "AMD Ryzen 7 4800HS",
+  "microarchitecture": "Zen 2 (Renoir)",
+  "tsc_ghz": 2.895,
+  "results": [
+    {
+      "accumulators": 1,
+      "cycles_per_fma": 3.4939,
+      "instructions_per_cycle": 0.2862,
+      "gflops": 13.26,
+      "elapsed_ms": 60.35
+    },
+    {
+      "accumulators": 2,
+      "cycles_per_fma": 1.7490,
+      "instructions_per_cycle": 0.5718,
+      "gflops": 26.48,
+      "elapsed_ms": 30.21
+    },
+    {
+      "accumulators": 3,
+      "cycles_per_fma": 1.1556,
+      "instructions_per_cycle": 0.8654,
+      "gflops": 40.08,
+      "elapsed_ms": 19.96
+    },
+    {
+      "accumulators": 4,
+      "cycles_per_fma": 1.0011,
+      "instructions_per_cycle": 0.9989,
+      "gflops": 46.26,
+      "elapsed_ms": 17.29
+    },
+    {
+      "accumulators": 5,
+      "cycles_per_fma": 0.7137,
+      "instructions_per_cycle": 1.4012,
+      "gflops": 64.89,
+      "elapsed_ms": 12.33
+    },
+    {
+      "accumulators": 8,
+      "cycles_per_fma": 0.4343,
+      "instructions_per_cycle": 2.3027,
+      "gflops": 106.65,
+      "elapsed_ms": 7.50
+    },
+    {
+      "accumulators": 10,
+      "cycles_per_fma": 0.3448,
+      "instructions_per_cycle": 2.9006,
+      "gflops": 134.34,
+      "elapsed_ms": 5.96
+    },
+    {
+      "accumulators": 12,
+      "cycles_per_fma": 0.2878,
+      "instructions_per_cycle": 3.4752,
+      "gflops": 160.95,
+      "elapsed_ms": 4.97
+    }
+  ]
+}

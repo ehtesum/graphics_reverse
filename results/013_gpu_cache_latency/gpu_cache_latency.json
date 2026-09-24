@@ -1,0 +1,74 @@
+[
+  {
+    "size_kb": 4,
+    "tier": "L1 Cache",
+    "cycles_ca_l1_l2": 44.22,
+    "cycles_cg_l2_only": 216.06
+  },
+  {
+    "size_kb": 8,
+    "tier": "L1 Cache",
+    "cycles_ca_l1_l2": 44.43,
+    "cycles_cg_l2_only": 210.83
+  },
+  {
+    "size_kb": 16,
+    "tier": "L1 Cache",
+    "cycles_ca_l1_l2": 44.86,
+    "cycles_cg_l2_only": 216.04
+  },
+  {
+    "size_kb": 32,
+    "tier": "L1 Cache",
+    "cycles_ca_l1_l2": 45.72,
+    "cycles_cg_l2_only": 209.93
+  },
+  {
+    "size_kb": 64,
+    "tier": "L2 Cache",
+    "cycles_ca_l1_l2": 108.38,
+    "cycles_cg_l2_only": 210.65
+  },
+  {
+    "size_kb": 128,
+    "tier": "L2 Cache",
+    "cycles_ca_l1_l2": 183.85,
+    "cycles_cg_l2_only": 209.57
+  },
+  {
+    "size_kb": 256,
+    "tier": "L2 Cache",
+    "cycles_ca_l1_l2": 198.87,
+    "cycles_cg_l2_only": 206.48
+  },
+  {
+    "size_kb": 512,
+    "tier": "L2 Cache",
+    "cycles_ca_l1_l2": 205.08,
+    "cycles_cg_l2_only": 210.66
+  },
+  {
+    "size_kb": 1024,
+    "tier": "L2 Cache",
+    "cycles_ca_l1_l2": 226.26,
+    "cycles_cg_l2_only": 213.26
+  },
+  {
+    "size_kb": 2048,
+    "tier": "GDDR6 VRAM",
+    "cycles_ca_l1_l2": 363.58,
+    "cycles_cg_l2_only": 368.21
+  },
+  {
+    "size_kb": 8192,
+    "tier": "GDDR6 VRAM",
+    "cycles_ca_l1_l2": 420.62,
+    "cycles_cg_l2_only": 421.55
+  },
+  {
+    "size_kb": 32768,
+    "tier": "GDDR6 VRAM",
+    "cycles_ca_l1_l2": 416.2,
+    "cycles_cg_l2_only": 416.45
+  }
+]

@@ -1,0 +1,116 @@
+
+.version 7.5
+.target sm_75
+.address_size 64
+
+.visible .entry unfused_rope_kernel(
+    .param .u64 d_q,
+    .param .u64 d_cos_sin,
+    .param .u32 num_tokens,
+    .param .u32 head_dim
+)
+{
+    .reg .u64 %q_ptr, %cs_ptr, %q_addr, %cs_addr;
+    .reg .u32 %n_tok, %h_dim, %tidx, %bidx, %idx, %pair_idx;
+    .reg .f32 %x0, %x1, %c, %s, %negs, %out0, %out1;
+    .reg .pred %p_valid;
+
+    ld.param.u64 %q_ptr, [d_q];
+    ld.param.u64 %cs_ptr, [d_cos_sin];
+    ld.param.u32 %n_tok, [num_tokens];
+    ld.param.u32 %h_dim, [head_dim];
+
+    mov.u32 %tidx, %tid.x;
+    mov.u32 %bidx, %ctaid.x;
+
+    // Each thread processes one pair of dimensions (e.g. 64 dim = 32 pairs)
+    // idx = bidx * 32 + tidx;
+    mad.lo.u32 %idx, %bidx, 32, %tidx;
+    shl.b32 %pair_idx, %idx, 1; // 2 * idx
+
+    mul.lo.u32 %n_tok, %n_tok, %h_dim;
+    setp.ge.u32 %p_valid, %pair_idx, %n_tok;
+    @%p_valid bra DONE_UNFUSED;
+
+    // Load x0, x1
+    mul.wide.u32 %q_addr, %pair_idx, 4;
+    add.u64 %q_addr, %q_ptr, %q_addr;
+    ld.global.f32 %x0, [%q_addr];
+    ld.global.f32 %x1, [%q_addr + 4];
+
+    // Load cos, sin
+    mul.wide.u32 %cs_addr, %pair_idx, 4;
+    add.u64 %cs_addr, %cs_ptr, %cs_addr;
+    ld.global.f32 %c, [%cs_addr];
+    ld.global.f32 %s, [%cs_addr + 4];
+
+    // out0 = x0 * cos - x1 * sin
+    // out1 = x0 * sin + x1 * cos
+    neg.f32 %negs, %s;
+    mul.f32 %out0, %x0, %c;
+    fma.rn.f32 %out0, %x1, %negs, %out0;
+
+    mul.f32 %out1, %x0, %s;
+    fma.rn.f32 %out1, %x1, %c, %out1;
+
+    // Store back to DRAM
+    st.global.f32 [%q_addr], %out0;
+    st.global.f32 [%q_addr + 4], %out1;
+
+DONE_UNFUSED:
+    ret;
+}
+
+.visible .entry fused_register_rope_kernel(
+    .param .u64 d_q,
+    .param .u64 d_cos_sin,
+    .param .u32 num_tokens,
+    .param .u32 head_dim
+)
+{
+    .reg .u64 %q_ptr, %cs_ptr, %q_addr, %cs_addr;
+    .reg .u32 %n_tok, %h_dim, %tidx, %bidx, %idx, %pair_idx;
+    .reg .f32 %x0, %x1, %c, %s, %negs, %out0, %out1;
+    .reg .pred %p_valid;
+
+    ld.param.u64 %q_ptr, [d_q];
+    ld.param.u64 %cs_ptr, [d_cos_sin];
+    ld.param.u32 %n_tok, [num_tokens];
+    ld.param.u32 %h_dim, [head_dim];
+
+    mov.u32 %tidx, %tid.x;
+    mov.u32 %bidx, %ctaid.x;
+
+    mad.lo.u32 %idx, %bidx, 32, %tidx;
+    shl.b32 %pair_idx, %idx, 1;
+
+    mul.lo.u32 %n_tok, %n_tok, %h_dim;
+    setp.ge.u32 %p_valid, %pair_idx, %n_tok;
+    @%p_valid bra DONE_FUSED;
+
+    // Simulate in-register data (already present in registers from GEMV)
+    cvt.rn.f32.u32 %x0, %tidx;
+    cvt.rn.f32.u32 %x1, %bidx;
+
+    // Cos and Sin can be held in shared memory or registers
+    mov.f32 %c, 0.9998;
+    mov.f32 %s, 0.0174;
+
+    // RoPE rotation directly in registers
+    neg.f32 %negs, %s;
+    mul.f32 %out0, %x0, %c;
+    fma.rn.f32 %out0, %x1, %negs, %out0;
+
+    mul.f32 %out1, %x0, %s;
+    fma.rn.f32 %out1, %x1, %c, %out1;
+
+    // Only final attention consumer touches it (no extra DRAM roundtrip)
+    // We store to prevent dead code removal
+    mul.wide.u32 %q_addr, %pair_idx, 4;
+    add.u64 %q_addr, %q_ptr, %q_addr;
+    st.global.f32 [%q_addr], %out0;
+    st.global.f32 [%q_addr + 4], %out1;
+
+DONE_FUSED:
+    ret;
+}

@@ -1,0 +1,17 @@
+{
+  "hardware": "NVIDIA GeForce GTX 1650 (TU117)",
+  "elements_N": 8388608,
+  "fp32_results": {
+    "time_ms": 0.37,
+    "footprint_mb": 67.11,
+    "effective_bw_gbps": 181.24,
+    "effective_gflops": 45.3
+  },
+  "q4_0_results": {
+    "time_ms": 0.231,
+    "footprint_mb": 41.94,
+    "effective_bw_gbps": 181.64,
+    "effective_gflops": 72.7
+  },
+  "q4_vs_fp32_speedup": 1.604
+}

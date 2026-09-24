@@ -1,0 +1,111 @@
+
+.version 7.5
+.target sm_75
+.address_size 64
+
+.visible .entry strided_load_kernel(
+    .param .u64 d_in,
+    .param .u64 d_out,
+    .param .u32 stride,
+    .param .u32 num_elements
+)
+{
+    .reg .u64 %in_ptr, %out_ptr, %addr;
+    .reg .u32 %s, %n, %idx, %tidx, %bidx, %bdim;
+    .reg .f32 %val, %accum;
+    .reg .pred %p_in;
+
+    ld.param.u64 %in_ptr, [d_in];
+    ld.param.u64 %out_ptr, [d_out];
+    ld.param.u32 %s, [stride];
+    ld.param.u32 %n, [num_elements];
+
+    mov.u32 %tidx, %tid.x;
+    mov.u32 %bidx, %ctaid.x;
+    mov.u32 %bdim, %ntid.x;
+
+    // idx = bidx * bdim + tidx
+    mad.lo.u32 %idx, %bidx, %bdim, %tidx;
+
+    setp.ge.u32 %p_in, %idx, %n;
+    @%p_in bra DONE;
+
+    // Strided memory address: addr = in_ptr + (idx * stride * 4) % (total_bytes)
+    mul.lo.u32 %idx, %idx, %s;
+    and.b32 %idx, %idx, 0x00FFFFFF; // Wrap within 64 MB
+    mul.wide.u32 %addr, %idx, 4;
+    add.u64 %addr, %in_ptr, %addr;
+
+    ld.global.f32 %val, [%addr];
+
+    // Store to out to prevent dead code
+    mad.lo.u32 %idx, %bidx, %bdim, %tidx;
+    mul.wide.u32 %addr, %idx, 4;
+    add.u64 %addr, %out_ptr, %addr;
+    st.global.f32 [%addr], %val;
+
+DONE:
+    ret;
+}
+
+// 2D 32x32 Tiled Shared Memory Transposition Kernel
+// Reads 32x32 block coalesced, stores to shared memory, reads back transposed coalesced
+.visible .entry tiled_2d_transpose_kernel(
+    .param .u64 d_in,
+    .param .u64 d_out,
+    .param .u32 width,
+    .param .u32 height
+)
+{
+    .shared .align 4 .f32 smem_tile[1056]; // 33 floats per row to avoid bank conflicts
+
+    .reg .u64 %in_ptr, %out_ptr, %addr;
+    .reg .u32 %w, %h, %tx, %ty, %bx, %by;
+    .reg .u32 %x_in, %y_in, %in_idx, %smem_idx;
+    .reg .u32 %x_out, %y_out, %out_idx;
+    .reg .f32 %val;
+
+    ld.param.u64 %in_ptr, [d_in];
+    ld.param.u64 %out_ptr, [d_out];
+    ld.param.u32 %w, [width];
+    ld.param.u32 %h, [height];
+
+    mov.u32 %tx, %tid.x;
+    mov.u32 %ty, %tid.y;
+    mov.u32 %bx, %ctaid.x;
+    mov.u32 %by, %ctaid.y;
+
+    // x_in = bx * 32 + tx; y_in = by * 32 + ty;
+    mad.lo.u32 %x_in, %bx, 32, %tx;
+    mad.lo.u32 %y_in, %by, 32, %ty;
+
+    // in_idx = y_in * w + x_in; (Coalesced read!)
+    mad.lo.u32 %in_idx, %y_in, %w, %x_in;
+    mul.wide.u32 %addr, %in_idx, 4;
+    add.u64 %addr, %in_ptr, %addr;
+    ld.global.f32 %val, [%addr];
+
+    // Store into shared memory: smem_tile[ty][tx]
+    mad.lo.u32 %smem_idx, %ty, 33, %tx;
+    mul.wide.u32 %addr, %smem_idx, 4;
+    st.shared.f32 [%addr], %val;
+
+    bar.sync 0;
+
+    // Transposed block coordinates
+    mad.lo.u32 %x_out, %by, 32, %tx;
+    mad.lo.u32 %y_out, %bx, 32, %ty;
+
+    // Read from shared memory transposed: smem_tile[tx][ty]
+    mad.lo.u32 %smem_idx, %tx, 33, %ty;
+    mul.wide.u32 %addr, %smem_idx, 4;
+    ld.shared.f32 %val, [%addr];
+
+    // out_idx = y_out * h + x_out; (Coalesced write!)
+    mad.lo.u32 %out_idx, %y_out, %h, %x_out;
+    mul.wide.u32 %addr, %out_idx, 4;
+    add.u64 %addr, %out_ptr, %addr;
+    st.global.f32 [%addr], %val;
+
+    ret;
+}

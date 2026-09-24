@@ -1,0 +1,63 @@
+{
+  "cpu": "AMD Ryzen 7 4800HS (Zen 2 Renoir)",
+  "benchmark": "Store-to-Load 4K Aliasing Disambiguation Penalty",
+  "iterations": 10000000,
+  "results": [
+    {
+      "label": "Independent Line (Offset +64 B)",
+      "load_offset_bytes": 64,
+      "cycles_per_pair": 1.40221,
+      "penalty_cycles": 0,
+      "state": "Clean Independent L1 (No STLF, No Alias)"
+    },
+    {
+      "label": "Exact Store-Load Match (Offset 0)",
+      "load_offset_bytes": 0,
+      "cycles_per_pair": 1.48622,
+      "penalty_cycles": 0.0840072,
+      "state": "Clean Store-to-Load Forwarding (STLF)"
+    },
+    {
+      "label": "Non-Aliased (Offset +4160 B [4K+64])",
+      "load_offset_bytes": 4160,
+      "cycles_per_pair": 1.41781,
+      "penalty_cycles": 0.0155991,
+      "state": "Clean Independent L1 (Different Page Offset)"
+    },
+    {
+      "label": "4K Aliasing Collision (Offset +4096 B)",
+      "load_offset_bytes": 4096,
+      "cycles_per_pair": 1.41733,
+      "penalty_cycles": 0.0151264,
+      "state": "False Match on Bits [11:0] -> Pipeline Replay"
+    },
+    {
+      "label": "8K Aliasing Collision (Offset +8192 B)",
+      "load_offset_bytes": 8192,
+      "cycles_per_pair": 1.49893,
+      "penalty_cycles": 0.0967237,
+      "state": "False Match on Bits [11:0] -> Pipeline Replay"
+    },
+    {
+      "label": "16K Aliasing Collision (Offset +16384 B)",
+      "load_offset_bytes": 16384,
+      "cycles_per_pair": 1.52106,
+      "penalty_cycles": 0.118857,
+      "state": "False Match on Bits [11:0] -> Pipeline Replay"
+    },
+    {
+      "label": "32K Aliasing Collision (Offset +32768 B)",
+      "load_offset_bytes": 32768,
+      "cycles_per_pair": 1.42475,
+      "penalty_cycles": 0.0225388,
+      "state": "False Match on Bits [11:0] -> Pipeline Replay"
+    },
+    {
+      "label": "64K Aliasing Collision (Offset +65536 B)",
+      "load_offset_bytes": 65536,
+      "cycles_per_pair": 1.45566,
+      "penalty_cycles": 0.0534499,
+      "state": "False Match on Bits [11:0] -> Pipeline Replay"
+    }
+  ]
+}

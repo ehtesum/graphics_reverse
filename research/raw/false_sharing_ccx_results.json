@@ -1,0 +1,70 @@
+{
+  "cpu": "AMD Ryzen 7 4800HS",
+  "tsc_ghz": 2.895,
+  "results": [
+    {
+      "config": "Independent Lines (Intra-CCX)",
+      "cores": [0, 1],
+      "topology": "Same CCX (CCX0)",
+      "cycles_per_store_a": 1.46,
+      "cycles_per_store_b": 1.41,
+      "elapsed_ms": 10.21
+    },
+    {
+      "config": "Independent Lines (Inter-CCX)",
+      "cores": [0, 4],
+      "topology": "Cross-CCX (CCX0 <-> CCX1)",
+      "cycles_per_store_a": 0.76,
+      "cycles_per_store_b": 0.73,
+      "elapsed_ms": 5.35
+    },
+    {
+      "config": "False Sharing Store (Intra-CCX)",
+      "cores": [0, 1],
+      "topology": "Same CCX (CCX0)",
+      "cycles_per_store_a": 1.98,
+      "cycles_per_store_b": 1.93,
+      "elapsed_ms": 14.08
+    },
+    {
+      "config": "False Sharing Store (Inter-CCX)",
+      "cores": [0, 4],
+      "topology": "Cross-CCX (CCX0 <-> CCX1)",
+      "cycles_per_store_a": 2.54,
+      "cycles_per_store_b": 2.44,
+      "elapsed_ms": 17.74
+    },
+    {
+      "config": "False Sharing RMW (Intra-CCX)",
+      "cores": [0, 1],
+      "topology": "Same CCX (CCX0)",
+      "cycles_per_store_a": 11.02,
+      "cycles_per_store_b": 10.42,
+      "elapsed_ms": 19.20
+    },
+    {
+      "config": "False Sharing RMW (Inter-CCX)",
+      "cores": [0, 4],
+      "topology": "Cross-CCX (CCX0 <-> CCX1)",
+      "cycles_per_store_a": 12.69,
+      "cycles_per_store_b": 10.90,
+      "elapsed_ms": 22.11
+    },
+    {
+      "config": "Atomic Lock Add (Intra-CCX)",
+      "cores": [0, 1],
+      "topology": "Same CCX (CCX0)",
+      "cycles_per_store_a": 29.13,
+      "cycles_per_store_b": 22.69,
+      "elapsed_ms": 50.81
+    },
+    {
+      "config": "Atomic Lock Add (Inter-CCX)",
+      "cores": [0, 4],
+      "topology": "Cross-CCX (CCX0 <-> CCX1)",
+      "cycles_per_store_a": 41.55,
+      "cycles_per_store_b": 35.88,
+      "elapsed_ms": 71.94
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+.version 7.5
+.target sm_75
+.address_size 64
+.visible .entry CoissueKernel(.param .u64 param_arr, .param .u32 param_iters) {
+  .reg .b32 %r<30>;
+  .reg .f32 %f<30>;
+  .reg .b64 %rd<5>;
+  .reg .pred %p<2>;
+  ld.param.u64 %rd1, [param_arr];
+  ld.param.u32 %r1, [param_iters];
+  mov.u32 %r2, %tid.x;
+  mul.wide.u32 %rd2, %r2, 4;
+  add.s64 %rd3, %rd1, %rd2;
+  ld.global.f32 %f0, [%rd3];
+  cvt.rzi.s32.f32 %r3, %f0;
+  mov.u32 %r10, 0;
+LOOP:
+  fma.rn.f32 %f0, %f0, %f0, 0.0001;
+  add.s32 %r3, %r3, 1;
+  fma.rn.f32 %f0, %f0, %f0, 0.0001;
+  add.s32 %r3, %r3, 1;
+  fma.rn.f32 %f0, %f0, %f0, 0.0001;
+  add.s32 %r3, %r3, 1;
+  fma.rn.f32 %f0, %f0, %f0, 0.0001;
+  add.s32 %r3, %r3, 1;
+  fma.rn.f32 %f0, %f0, %f0, 0.0001;
+  add.s32 %r3, %r3, 1;
+  fma.rn.f32 %f0, %f0, %f0, 0.0001;
+  add.s32 %r3, %r3, 1;
+  fma.rn.f32 %f0, %f0, %f0, 0.0001;
+  add.s32 %r3, %r3, 1;
+  fma.rn.f32 %f0, %f0, %f0, 0.0001;
+  add.s32 %r3, %r3, 1;
+  fma.rn.f32 %f0, %f0, %f0, 0.0001;
+  add.s32 %r3, %r3, 1;
+  fma.rn.f32 %f0, %f0, %f0, 0.0001;
+  add.s32 %r3, %r3, 1;
+  add.u32 %r10, %r10, 1;
+  setp.lt.u32 %p1, %r10, %r1;
+  @%p1 bra LOOP;
+  cvt.rn.f32.s32 %f1, %r3;
+  add.f32 %f0, %f0, %f1;
+  st.global.f32 [%rd3], %f0;
+  ret;
+}

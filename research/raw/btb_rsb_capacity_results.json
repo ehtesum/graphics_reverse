@@ -1,0 +1,115 @@
+{
+  "cpu": "AMD Ryzen 7 4800HS (Zen 2 Renoir)",
+  "benchmark": "Return Stack Buffer (RSB) Capacity & Underflow Cliff",
+  "iterations_per_depth": 200000,
+  "results": [
+    {
+      "call_depth": 1,
+      "cycles_per_iteration": 4.16948,
+      "cycles_per_call_ret_pair": 4.16948,
+      "rsb_status": "RSB Hit (<= 32)"
+    },
+    {
+      "call_depth": 2,
+      "cycles_per_iteration": 7.00016,
+      "cycles_per_call_ret_pair": 3.50008,
+      "rsb_status": "RSB Hit (<= 32)"
+    },
+    {
+      "call_depth": 4,
+      "cycles_per_iteration": 13.3509,
+      "cycles_per_call_ret_pair": 3.33772,
+      "rsb_status": "RSB Hit (<= 32)"
+    },
+    {
+      "call_depth": 8,
+      "cycles_per_iteration": 25.2977,
+      "cycles_per_call_ret_pair": 3.16221,
+      "rsb_status": "RSB Hit (<= 32)"
+    },
+    {
+      "call_depth": 12,
+      "cycles_per_iteration": 38.6735,
+      "cycles_per_call_ret_pair": 3.22279,
+      "rsb_status": "RSB Hit (<= 32)"
+    },
+    {
+      "call_depth": 16,
+      "cycles_per_iteration": 51.9434,
+      "cycles_per_call_ret_pair": 3.24646,
+      "rsb_status": "RSB Hit (<= 32)"
+    },
+    {
+      "call_depth": 20,
+      "cycles_per_iteration": 61.3247,
+      "cycles_per_call_ret_pair": 3.06624,
+      "rsb_status": "RSB Hit (<= 32)"
+    },
+    {
+      "call_depth": 24,
+      "cycles_per_iteration": 76.0364,
+      "cycles_per_call_ret_pair": 3.16818,
+      "rsb_status": "RSB Hit (<= 32)"
+    },
+    {
+      "call_depth": 28,
+      "cycles_per_iteration": 85.1659,
+      "cycles_per_call_ret_pair": 3.04164,
+      "rsb_status": "RSB Hit (<= 32)"
+    },
+    {
+      "call_depth": 30,
+      "cycles_per_iteration": 109.998,
+      "cycles_per_call_ret_pair": 3.6666,
+      "rsb_status": "RSB Hit (<= 32)"
+    },
+    {
+      "call_depth": 31,
+      "cycles_per_iteration": 124.363,
+      "cycles_per_call_ret_pair": 4.01172,
+      "rsb_status": "RSB Hit (<= 32)"
+    },
+    {
+      "call_depth": 32,
+      "cycles_per_iteration": 143.957,
+      "cycles_per_call_ret_pair": 4.49865,
+      "rsb_status": "RSB Hit (<= 32)"
+    },
+    {
+      "call_depth": 33,
+      "cycles_per_iteration": 163.277,
+      "cycles_per_call_ret_pair": 4.94778,
+      "rsb_status": "RSB Underflow Cliff (> 32)"
+    },
+    {
+      "call_depth": 34,
+      "cycles_per_iteration": 166.038,
+      "cycles_per_call_ret_pair": 4.88347,
+      "rsb_status": "RSB Underflow Cliff (> 32)"
+    },
+    {
+      "call_depth": 36,
+      "cycles_per_iteration": 169.276,
+      "cycles_per_call_ret_pair": 4.70212,
+      "rsb_status": "RSB Underflow Cliff (> 32)"
+    },
+    {
+      "call_depth": 40,
+      "cycles_per_iteration": 179.696,
+      "cycles_per_call_ret_pair": 4.4924,
+      "rsb_status": "RSB Underflow Cliff (> 32)"
+    },
+    {
+      "call_depth": 48,
+      "cycles_per_iteration": 204.301,
+      "cycles_per_call_ret_pair": 4.25628,
+      "rsb_status": "RSB Underflow Cliff (> 32)"
+    },
+    {
+      "call_depth": 64,
+      "cycles_per_iteration": 251.098,
+      "cycles_per_call_ret_pair": 3.92341,
+      "rsb_status": "RSB Underflow Cliff (> 32)"
+    }
+  ]
+}

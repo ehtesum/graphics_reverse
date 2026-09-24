@@ -1,0 +1,32 @@
+<svg width="720" height="340" xmlns="http://www.w3.org/2000/svg" style="background:#1e1e2e; font-family:sans-serif; border-radius:8px;">
+<text x="360" y="28" fill="#cdd6f4" font-size="16" font-weight="bold" text-anchor="middle">PCIe 3.0 Transfer Bandwidth: Pinned vs Pageable RAM</text>
+<line x1="80" y1="50" x2="80" y2="280" stroke="#45475a" stroke-width="2"/>
+<line x1="80" y1="280" x2="680" y2="280" stroke="#45475a" stroke-width="2"/>
+<line x1="80" y1="222.5" x2="680" y2="222.5" stroke="#313244" stroke-dasharray="4"/>
+<text x="70" y="226.5" fill="#a6adc8" font-size="11" text-anchor="end">2 GB/s</text>
+<line x1="80" y1="165.0" x2="680" y2="165.0" stroke="#313244" stroke-dasharray="4"/>
+<text x="70" y="169.0" fill="#a6adc8" font-size="11" text-anchor="end">4 GB/s</text>
+<line x1="80" y1="107.5" x2="680" y2="107.5" stroke="#313244" stroke-dasharray="4"/>
+<text x="70" y="111.5" fill="#a6adc8" font-size="11" text-anchor="end">6 GB/s</text>
+<line x1="80" y1="50.0" x2="680" y2="50.0" stroke="#313244" stroke-dasharray="4"/>
+<text x="70" y="54.0" fill="#a6adc8" font-size="11" text-anchor="end">8 GB/s</text>
+<polyline points="80.0,119.0 230.0,111.0 380.0,122.7 530.0,104.3 680.0,110.7" fill="none" stroke="#a6e3a1" stroke-width="3"/>
+<polyline points="80.0,143.2 230.0,223.7 380.0,144.3 530.0,151.8 680.0,144.0" fill="none" stroke="#f38ba8" stroke-width="3"/>
+<circle cx="80.0" cy="119.0" r="4" fill="#a6e3a1"/>
+<text x="80.0" y="300" fill="#a6adc8" font-size="11" text-anchor="middle">1MB</text>
+<circle cx="230.0" cy="111.0" r="4" fill="#a6e3a1"/>
+<text x="230.0" y="300" fill="#a6adc8" font-size="11" text-anchor="middle">4MB</text>
+<circle cx="380.0" cy="122.7" r="4" fill="#a6e3a1"/>
+<text x="380.0" y="300" fill="#a6adc8" font-size="11" text-anchor="middle">16MB</text>
+<circle cx="530.0" cy="104.3" r="4" fill="#a6e3a1"/>
+<text x="530.0" y="300" fill="#a6adc8" font-size="11" text-anchor="middle">64MB</text>
+<circle cx="680.0" cy="110.7" r="4" fill="#a6e3a1"/>
+<text x="680.0" y="300" fill="#a6adc8" font-size="11" text-anchor="middle">128MB</text>
+<circle cx="80.0" cy="143.2" r="4" fill="#f38ba8"/>
+<circle cx="230.0" cy="223.7" r="4" fill="#f38ba8"/>
+<circle cx="380.0" cy="144.3" r="4" fill="#f38ba8"/>
+<circle cx="530.0" cy="151.8" r="4" fill="#f38ba8"/>
+<circle cx="680.0" cy="144.0" r="4" fill="#f38ba8"/>
+<text x="670" y="70" fill="#a6e3a1" font-size="12" font-weight="bold" text-anchor="end">● Pinned (DMA Direct ~6.0 GB/s)</text>
+<text x="670" y="90" fill="#f38ba8" font-size="12" font-weight="bold" text-anchor="end">● Pageable (OS Staged ~1.9-4.7 GB/s)</text>
+</svg>

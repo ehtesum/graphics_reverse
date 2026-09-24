@@ -1,0 +1,139 @@
+{
+  "hardware": "NVIDIA GeForce GTX 1650 (TU117)",
+  "driver": "555.97",
+  "wddm_version": "2.7",
+  "burst_4096_profile": {
+    "burst_size": 4096,
+    "total_burst_ms": 39.408,
+    "stream_sync_drain_ms": 0.037,
+    "min_us": 4.6,
+    "median_us": 6.7,
+    "mean_us": 9.62,
+    "p95_us": 30.925,
+    "p99_us": 47.11,
+    "max_us": 131.5,
+    "num_flush_spikes": 506,
+    "flush_intervals": [
+      7,
+      11,
+      5,
+      7,
+      6,
+      6,
+      7,
+      6,
+      7,
+      4,
+      6,
+      6,
+      7,
+      4,
+      4,
+      7,
+      7,
+      7,
+      9,
+      7
+    ]
+  },
+  "burst_scaling_sweep": [
+    {
+      "burst_size": 1,
+      "enqueue_ms": 0.0676,
+      "mean_launch_us": 67.6,
+      "sync_drain_ms": 0.0538,
+      "total_wall_ms": 0.1214
+    },
+    {
+      "burst_size": 2,
+      "enqueue_ms": 0.0264,
+      "mean_launch_us": 13.2,
+      "sync_drain_ms": 0.0176,
+      "total_wall_ms": 0.044
+    },
+    {
+      "burst_size": 4,
+      "enqueue_ms": 0.0614,
+      "mean_launch_us": 15.35,
+      "sync_drain_ms": 0.0036,
+      "total_wall_ms": 0.065
+    },
+    {
+      "burst_size": 8,
+      "enqueue_ms": 0.0805,
+      "mean_launch_us": 10.0625,
+      "sync_drain_ms": 0.0037,
+      "total_wall_ms": 0.0842
+    },
+    {
+      "burst_size": 16,
+      "enqueue_ms": 0.1103,
+      "mean_launch_us": 6.8937,
+      "sync_drain_ms": 0.0631,
+      "total_wall_ms": 0.1734
+    },
+    {
+      "burst_size": 32,
+      "enqueue_ms": 0.3558,
+      "mean_launch_us": 11.1188,
+      "sync_drain_ms": 0.0036,
+      "total_wall_ms": 0.3594
+    },
+    {
+      "burst_size": 64,
+      "enqueue_ms": 0.851,
+      "mean_launch_us": 13.2969,
+      "sync_drain_ms": 0.0034,
+      "total_wall_ms": 0.8544
+    },
+    {
+      "burst_size": 128,
+      "enqueue_ms": 1.1632,
+      "mean_launch_us": 9.0875,
+      "sync_drain_ms": 0.0036,
+      "total_wall_ms": 1.1668
+    },
+    {
+      "burst_size": 256,
+      "enqueue_ms": 2.3296,
+      "mean_launch_us": 9.1,
+      "sync_drain_ms": 0.0033,
+      "total_wall_ms": 2.3329
+    },
+    {
+      "burst_size": 512,
+      "enqueue_ms": 4.8925,
+      "mean_launch_us": 9.5557,
+      "sync_drain_ms": 0.0468,
+      "total_wall_ms": 4.9393
+    },
+    {
+      "burst_size": 1024,
+      "enqueue_ms": 9.5406,
+      "mean_launch_us": 9.317,
+      "sync_drain_ms": 0.003,
+      "total_wall_ms": 9.5436
+    },
+    {
+      "burst_size": 2048,
+      "enqueue_ms": 19.1258,
+      "mean_launch_us": 9.3388,
+      "sync_drain_ms": 0.0046,
+      "total_wall_ms": 19.1304
+    },
+    {
+      "burst_size": 4096,
+      "enqueue_ms": 39.0215,
+      "mean_launch_us": 9.5267,
+      "sync_drain_ms": 0.1422,
+      "total_wall_ms": 39.1637
+    },
+    {
+      "burst_size": 8192,
+      "enqueue_ms": 78.1619,
+      "mean_launch_us": 9.5412,
+      "sync_drain_ms": 0.0073,
+      "total_wall_ms": 78.1692
+    }
+  ]
+}

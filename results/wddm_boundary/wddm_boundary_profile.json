@@ -1,0 +1,61 @@
+{
+  "dxgi_adapters": [
+    {
+      "index": 0,
+      "description": "AMD Radeon(TM) Graphics",
+      "vendor_id": "0x1002",
+      "device_id": "0x1636",
+      "subsys_id": "0x153C1043",
+      "revision": 198,
+      "dedicated_vram_mb": 495.56640625,
+      "dedicated_sys_mb": 0.0,
+      "shared_sys_mb": 11992.369140625,
+      "luid": "0x00000000:0x00010461",
+      "flags": 0
+    },
+    {
+      "index": 1,
+      "description": "NVIDIA GeForce GTX 1650",
+      "vendor_id": "0x10DE",
+      "device_id": "0x1F9D",
+      "subsys_id": "0x153C1043",
+      "revision": 161,
+      "dedicated_vram_mb": 3937.0,
+      "dedicated_sys_mb": 0.0,
+      "shared_sys_mb": 11992.369140625,
+      "luid": "0x00000000:0x0001242E",
+      "flags": 0
+    },
+    {
+      "index": 2,
+      "description": "Microsoft Basic Render Driver",
+      "vendor_id": "0x1414",
+      "device_id": "0x008C",
+      "subsys_id": "0x00000000",
+      "revision": 0,
+      "dedicated_vram_mb": 0.0,
+      "dedicated_sys_mb": 0.0,
+      "shared_sys_mb": 11992.369140625,
+      "luid": "0x00000000:0x000123E4",
+      "flags": 0
+    }
+  ],
+  "cuda_wddm_attributes": {
+    "MAX_THREADS_PER_BLOCK": 1024,
+    "MAX_BLOCK_DIM_X": 1024,
+    "CAN_MAP_HOST_MEMORY": 1,
+    "CONCURRENT_KERNELS": 1,
+    "PCI_BUS_ID": 1,
+    "PCI_DEVICE_ID": 0,
+    "TCC_DRIVER": 0,
+    "MEMORY_CLOCK_RATE_KHZ": 6001000,
+    "GLOBAL_MEMORY_BUS_WIDTH_BITS": 128,
+    "L2_CACHE_SIZE_BYTES": 1048576,
+    "MAX_THREADS_PER_MULTIPROCESSOR": 1024,
+    "ASYNC_ENGINE_COUNT": 2,
+    "UNIFIED_ADDRESSING": 1,
+    "COMPUTE_PREEMPTION_SUPPORTED": 1,
+    "DIRECT_MANAGED_MEM_ACCESS_FROM_HOST": 0,
+    "wddm_cmd_submit_latency_us": 8.804
+  }
+}

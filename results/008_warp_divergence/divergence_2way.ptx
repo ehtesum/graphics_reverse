@@ -1,0 +1,30 @@
+.version 7.5
+.target sm_75
+.address_size 64
+.visible .entry _Z4testPf(.param .u64 _Z4testPf_param_0) {
+  .reg .b32 %r<10>;
+  .reg .f32 %f<10>;
+  .reg .b64 %rd<5>;
+  .reg .pred %p<40>;
+  ld.param.u64 %rd1, [_Z4testPf_param_0];
+  mov.u32 %r1, %ctaid.x; mov.u32 %r2, %ntid.x; mov.u32 %r3, %tid.x;
+  mad.lo.s32 %r4, %r1, %r2, %r3;
+  mul.wide.s32 %rd2, %r4, 4;
+  add.s64 %rd3, %rd1, %rd2;
+  ld.global.f32 %f0, [%rd3];
+  and.b32 %r5, %r3, 1;
+  setp.eq.u32 %p0, %r5, 0;
+  @%p0 bra PATH_0;
+  setp.eq.u32 %p1, %r5, 1;
+  @%p1 bra PATH_1;
+  bra MERGE;
+PATH_0:
+  add.f32 %f1, %f0, 0f3F800000;
+  bra MERGE;
+PATH_1:
+  add.f32 %f1, %f0, 0f40000000;
+  bra MERGE;
+MERGE:
+  st.global.f32 [%rd3], %f1;
+  ret;
+}

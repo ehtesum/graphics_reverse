@@ -1,0 +1,180 @@
+.version 7.5
+.target sm_75
+.address_size 64
+.visible .entry _Z4testPf(.param .u64 _Z4testPf_param_0) {
+  .reg .b32 %r<10>;
+  .reg .f32 %f<10>;
+  .reg .b64 %rd<5>;
+  .reg .pred %p<40>;
+  ld.param.u64 %rd1, [_Z4testPf_param_0];
+  mov.u32 %r1, %ctaid.x; mov.u32 %r2, %ntid.x; mov.u32 %r3, %tid.x;
+  mad.lo.s32 %r4, %r1, %r2, %r3;
+  mul.wide.s32 %rd2, %r4, 4;
+  add.s64 %rd3, %rd1, %rd2;
+  ld.global.f32 %f0, [%rd3];
+  and.b32 %r5, %r3, 31;
+  setp.eq.u32 %p0, %r5, 0;
+  @%p0 bra PATH_0;
+  setp.eq.u32 %p1, %r5, 1;
+  @%p1 bra PATH_1;
+  setp.eq.u32 %p2, %r5, 2;
+  @%p2 bra PATH_2;
+  setp.eq.u32 %p3, %r5, 3;
+  @%p3 bra PATH_3;
+  setp.eq.u32 %p4, %r5, 4;
+  @%p4 bra PATH_4;
+  setp.eq.u32 %p5, %r5, 5;
+  @%p5 bra PATH_5;
+  setp.eq.u32 %p6, %r5, 6;
+  @%p6 bra PATH_6;
+  setp.eq.u32 %p7, %r5, 7;
+  @%p7 bra PATH_7;
+  setp.eq.u32 %p8, %r5, 8;
+  @%p8 bra PATH_8;
+  setp.eq.u32 %p9, %r5, 9;
+  @%p9 bra PATH_9;
+  setp.eq.u32 %p10, %r5, 10;
+  @%p10 bra PATH_10;
+  setp.eq.u32 %p11, %r5, 11;
+  @%p11 bra PATH_11;
+  setp.eq.u32 %p12, %r5, 12;
+  @%p12 bra PATH_12;
+  setp.eq.u32 %p13, %r5, 13;
+  @%p13 bra PATH_13;
+  setp.eq.u32 %p14, %r5, 14;
+  @%p14 bra PATH_14;
+  setp.eq.u32 %p15, %r5, 15;
+  @%p15 bra PATH_15;
+  setp.eq.u32 %p16, %r5, 16;
+  @%p16 bra PATH_16;
+  setp.eq.u32 %p17, %r5, 17;
+  @%p17 bra PATH_17;
+  setp.eq.u32 %p18, %r5, 18;
+  @%p18 bra PATH_18;
+  setp.eq.u32 %p19, %r5, 19;
+  @%p19 bra PATH_19;
+  setp.eq.u32 %p20, %r5, 20;
+  @%p20 bra PATH_20;
+  setp.eq.u32 %p21, %r5, 21;
+  @%p21 bra PATH_21;
+  setp.eq.u32 %p22, %r5, 22;
+  @%p22 bra PATH_22;
+  setp.eq.u32 %p23, %r5, 23;
+  @%p23 bra PATH_23;
+  setp.eq.u32 %p24, %r5, 24;
+  @%p24 bra PATH_24;
+  setp.eq.u32 %p25, %r5, 25;
+  @%p25 bra PATH_25;
+  setp.eq.u32 %p26, %r5, 26;
+  @%p26 bra PATH_26;
+  setp.eq.u32 %p27, %r5, 27;
+  @%p27 bra PATH_27;
+  setp.eq.u32 %p28, %r5, 28;
+  @%p28 bra PATH_28;
+  setp.eq.u32 %p29, %r5, 29;
+  @%p29 bra PATH_29;
+  setp.eq.u32 %p30, %r5, 30;
+  @%p30 bra PATH_30;
+  setp.eq.u32 %p31, %r5, 31;
+  @%p31 bra PATH_31;
+  bra MERGE;
+PATH_0:
+  add.f32 %f1, %f0, 0f3F800000;
+  bra MERGE;
+PATH_1:
+  add.f32 %f1, %f0, 0f40000000;
+  bra MERGE;
+PATH_2:
+  add.f32 %f1, %f0, 0f40400000;
+  bra MERGE;
+PATH_3:
+  add.f32 %f1, %f0, 0f40800000;
+  bra MERGE;
+PATH_4:
+  add.f32 %f1, %f0, 0f40A00000;
+  bra MERGE;
+PATH_5:
+  add.f32 %f1, %f0, 0f40C00000;
+  bra MERGE;
+PATH_6:
+  add.f32 %f1, %f0, 0f40E00000;
+  bra MERGE;
+PATH_7:
+  add.f32 %f1, %f0, 0f41000000;
+  bra MERGE;
+PATH_8:
+  add.f32 %f1, %f0, 0f41100000;
+  bra MERGE;
+PATH_9:
+  add.f32 %f1, %f0, 0f41200000;
+  bra MERGE;
+PATH_10:
+  add.f32 %f1, %f0, 0f41300000;
+  bra MERGE;
+PATH_11:
+  add.f32 %f1, %f0, 0f41400000;
+  bra MERGE;
+PATH_12:
+  add.f32 %f1, %f0, 0f41500000;
+  bra MERGE;
+PATH_13:
+  add.f32 %f1, %f0, 0f41600000;
+  bra MERGE;
+PATH_14:
+  add.f32 %f1, %f0, 0f41700000;
+  bra MERGE;
+PATH_15:
+  add.f32 %f1, %f0, 0f41800000;
+  bra MERGE;
+PATH_16:
+  add.f32 %f1, %f0, 0f41880000;
+  bra MERGE;
+PATH_17:
+  add.f32 %f1, %f0, 0f41900000;
+  bra MERGE;
+PATH_18:
+  add.f32 %f1, %f0, 0f41980000;
+  bra MERGE;
+PATH_19:
+  add.f32 %f1, %f0, 0f41A00000;
+  bra MERGE;
+PATH_20:
+  add.f32 %f1, %f0, 0f41A80000;
+  bra MERGE;
+PATH_21:
+  add.f32 %f1, %f0, 0f41B00000;
+  bra MERGE;
+PATH_22:
+  add.f32 %f1, %f0, 0f41B80000;
+  bra MERGE;
+PATH_23:
+  add.f32 %f1, %f0, 0f41C00000;
+  bra MERGE;
+PATH_24:
+  add.f32 %f1, %f0, 0f41C80000;
+  bra MERGE;
+PATH_25:
+  add.f32 %f1, %f0, 0f41D00000;
+  bra MERGE;
+PATH_26:
+  add.f32 %f1, %f0, 0f41D80000;
+  bra MERGE;
+PATH_27:
+  add.f32 %f1, %f0, 0f41E00000;
+  bra MERGE;
+PATH_28:
+  add.f32 %f1, %f0, 0f41E80000;
+  bra MERGE;
+PATH_29:
+  add.f32 %f1, %f0, 0f41F00000;
+  bra MERGE;
+PATH_30:
+  add.f32 %f1, %f0, 0f41F80000;
+  bra MERGE;
+PATH_31:
+  add.f32 %f1, %f0, 0f42000000;
+  bra MERGE;
+MERGE:
+  st.global.f32 [%rd3], %f1;
+  ret;
+}

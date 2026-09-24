@@ -1,0 +1,10 @@
+{
+  "experiment": "002_double_add",
+  "source_file": "C:\\Users\\user\\Desktop\\recent_projects\\graphics_reverse\\experiments\\002_double_add.ptx",
+  "arch": "sm_75",
+  "timestamp_utc": "2026-09-22T10:15:04.882368+00:00",
+  "ptxas_found": true,
+  "cuobjdump_found": true,
+  "compilation_success": true,
+  "execution_success": true
+}

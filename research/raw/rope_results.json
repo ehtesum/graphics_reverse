@@ -1,0 +1,56 @@
+{
+  "gpu": "NVIDIA GeForce GTX 1650 (TU117 Turing SM 7.5)",
+  "benchmark": "Rotary Position Embedding (RoPE): Unfused Memory vs Fused In-Register",
+  "results": [
+    {
+      "seq_len": 512,
+      "total_heads": 32,
+      "head_dim": 64,
+      "unfused_ms": 0.07869120240211487,
+      "unfused_bandwidth_gb_s": 159.90239843713238,
+      "fused_ms": 0.05418879985809326,
+      "fused_bandwidth_gb_s": 77.40167730202218,
+      "speedup": 1.4521672856418153
+    },
+    {
+      "seq_len": 1024,
+      "total_heads": 32,
+      "head_dim": 64,
+      "unfused_ms": 0.15437439680099488,
+      "unfused_bandwidth_gb_s": 163.01812037161474,
+      "fused_ms": 0.10547200441360474,
+      "fused_bandwidth_gb_s": 79.5339772543278,
+      "speedup": 1.463652821042645
+    },
+    {
+      "seq_len": 2048,
+      "total_heads": 32,
+      "head_dim": 64,
+      "unfused_ms": 0.30371201038360596,
+      "unfused_bandwidth_gb_s": 165.7216253530053,
+      "fused_ms": 0.20860641002655028,
+      "fused_bandwidth_gb_s": 80.42521798761932,
+      "speedup": 1.4559092903470758
+    },
+    {
+      "seq_len": 4096,
+      "total_heads": 32,
+      "head_dim": 64,
+      "unfused_ms": 0.6016992092132568,
+      "unfused_bandwidth_gb_s": 167.29836845160702,
+      "fused_ms": 0.40662240982055664,
+      "fused_bandwidth_gb_s": 82.51987885962224,
+      "speedup": 1.4797492579879894
+    },
+    {
+      "seq_len": 8192,
+      "total_heads": 32,
+      "head_dim": 64,
+      "unfused_ms": 1.201356792449951,
+      "unfused_bandwidth_gb_s": 167.58268090317333,
+      "fused_ms": 0.8182880401611328,
+      "fused_bandwidth_gb_s": 82.01129761933865,
+      "speedup": 1.468134365269944
+    }
+  ]
+}

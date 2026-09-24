@@ -1,0 +1,41 @@
+{
+  "hardware": "NVIDIA GeForce GTX 1650 (TU117) on PCIe 3.0 x8",
+  "host": "AMD Ryzen 7 4800HS",
+  "results": [
+    {
+      "size_mb": 1,
+      "simplex_h2d_gbps": 1.19,
+      "simplex_d2h_gbps": 6.38,
+      "duplex_aggregate_gbps": 10.83,
+      "duplex_efficiency_pct": 143.1
+    },
+    {
+      "size_mb": 4,
+      "simplex_h2d_gbps": 6.61,
+      "simplex_d2h_gbps": 6.56,
+      "duplex_aggregate_gbps": 11.2,
+      "duplex_efficiency_pct": 85.0
+    },
+    {
+      "size_mb": 16,
+      "simplex_h2d_gbps": 6.66,
+      "simplex_d2h_gbps": 6.57,
+      "duplex_aggregate_gbps": 11.28,
+      "duplex_efficiency_pct": 85.3
+    },
+    {
+      "size_mb": 64,
+      "simplex_h2d_gbps": 6.67,
+      "simplex_d2h_gbps": 6.58,
+      "duplex_aggregate_gbps": 11.29,
+      "duplex_efficiency_pct": 85.3
+    },
+    {
+      "size_mb": 128,
+      "simplex_h2d_gbps": 6.67,
+      "simplex_d2h_gbps": 6.59,
+      "duplex_aggregate_gbps": 11.31,
+      "duplex_efficiency_pct": 85.3
+    }
+  ]
+}

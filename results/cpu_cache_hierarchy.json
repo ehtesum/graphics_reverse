@@ -1,0 +1,24 @@
+{
+  "cpu": "AMD Ryzen 7 4800HS with Radeon Graphics",
+  "benchmarks": [
+    {"size_kb": 4, "tier": "L1 Data", "latency_ns": 1.06},
+    {"size_kb": 8, "tier": "L1 Data", "latency_ns": 1.03},
+    {"size_kb": 16, "tier": "L1 Data", "latency_ns": 0.99},
+    {"size_kb": 24, "tier": "L1 Data", "latency_ns": 1.15},
+    {"size_kb": 32, "tier": "L1 Data", "latency_ns": 1.78},
+    {"size_kb": 48, "tier": "L2 Unified", "latency_ns": 3.27},
+    {"size_kb": 64, "tier": "L2 Unified", "latency_ns": 2.95},
+    {"size_kb": 128, "tier": "L2 Unified", "latency_ns": 3.87},
+    {"size_kb": 256, "tier": "L2 Unified", "latency_ns": 3.11},
+    {"size_kb": 512, "tier": "L2 Unified", "latency_ns": 4.31},
+    {"size_kb": 768, "tier": "L3 Shared", "latency_ns": 8.99},
+    {"size_kb": 1024, "tier": "L3 Shared", "latency_ns": 11.94},
+    {"size_kb": 2048, "tier": "L3 Shared", "latency_ns": 19.66},
+    {"size_kb": 4096, "tier": "L3 Shared", "latency_ns": 91.74},
+    {"size_kb": 8192, "tier": "L3 Shared", "latency_ns": 96.39},
+    {"size_kb": 12288, "tier": "DRAM (Main RAM)", "latency_ns": 101.58},
+    {"size_kb": 16384, "tier": "DRAM (Main RAM)", "latency_ns": 127.03},
+    {"size_kb": 32768, "tier": "DRAM (Main RAM)", "latency_ns": 148.37},
+    {"size_kb": 65536, "tier": "DRAM (Main RAM)", "latency_ns": 129.94}
+  ]
+}

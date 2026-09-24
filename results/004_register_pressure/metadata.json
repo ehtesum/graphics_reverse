@@ -1,0 +1,10 @@
+{
+  "experiment": "004_register_pressure",
+  "source_file": "C:\\Users\\user\\Desktop\\recent_projects\\graphics_reverse\\experiments\\004_register_pressure.ptx",
+  "arch": "sm_75",
+  "timestamp_utc": "2026-09-22T10:29:29.726860+00:00",
+  "ptxas_found": true,
+  "cuobjdump_found": true,
+  "compilation_success": true,
+  "execution_success": true
+}

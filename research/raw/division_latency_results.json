@@ -1,0 +1,13 @@
+{
+  "cpu": "AMD Ryzen 7 4800HS (Zen 2 Renoir)",
+  "benchmark": "Non-Pipelined Radix Division Latency & Throughput",
+  "iterations": 10000000,
+  "results": {
+    "idiv32_latency_small_cycles": 10.0891,
+    "idiv32_latency_large_cycles": 9.89956,
+    "idiv64_latency_cycles": 9.86187,
+    "idiv32_reciprocal_throughput_cycles": 15.904,
+    "avx2_div_ps_latency_cycles": 6.95638,
+    "avx2_div_ps_reciprocal_throughput_cycles": 2.46049
+  }
+}

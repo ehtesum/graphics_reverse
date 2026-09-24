@@ -1,0 +1,16 @@
+[
+  {
+    "mode": "FP32 (fma.rn.f32 -> FFMA)",
+    "kernel_time_ms": 21.4822,
+    "tflops": 2.441,
+    "speedup": 1.0,
+    "ops_per_instruction": 1
+  },
+  {
+    "mode": "FP16x2 (fma.rn.f16x2 -> HFMA2)",
+    "kernel_time_ms": 19.4447,
+    "tflops": 5.393,
+    "speedup": 1.1,
+    "ops_per_instruction": 2
+  }
+]

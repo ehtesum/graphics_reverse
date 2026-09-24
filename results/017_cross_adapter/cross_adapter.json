@@ -1,0 +1,36 @@
+{
+  "adapters": [
+    {
+      "name": "AMD Radeon(TM) Graphics",
+      "vendor_id": "0x1002",
+      "device_id": "0x1636",
+      "vram_mb": 495.56640625,
+      "shared_ram_mb": 11992.369140625,
+      "luid": "0:66657",
+      "is_igpu": true,
+      "is_dgpu": false
+    },
+    {
+      "name": "NVIDIA GeForce GTX 1650",
+      "vendor_id": "0x10DE",
+      "device_id": "0x1F9D",
+      "vram_mb": 3937.0,
+      "shared_ram_mb": 11992.369140625,
+      "luid": "0:74798",
+      "is_igpu": false,
+      "is_dgpu": true
+    },
+    {
+      "name": "Microsoft Basic Render Driver",
+      "vendor_id": "0x1414",
+      "device_id": "0x008C",
+      "vram_mb": 0.0,
+      "shared_ram_mb": 11992.369140625,
+      "luid": "0:74724",
+      "is_igpu": false,
+      "is_dgpu": false
+    }
+  ],
+  "presentation_interval_ms": 1.562,
+  "topology": "Optimus / Hybrid MUXless D3D12 Cross-Adapter Shared Surface"
+}

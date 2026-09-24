@@ -1,0 +1,26 @@
+{
+  "gpu": "NVIDIA GeForce GTX 1650 (TU117 Turing SM 7.5)",
+  "benchmark": "Special Function Unit (SFU) vs FP32 Issue Port Contention",
+  "results": {
+    "fma": {
+      "total_cycles": 526439,
+      "cycles_per_instruction": 0.5141005859375,
+      "instructions_per_cycle": 1.9451446416393923
+    },
+    "rsqrt": {
+      "total_cycles": 4876209,
+      "cycles_per_instruction": 4.7619228515625,
+      "instructions_per_cycle": 0.20999920224912427
+    },
+    "exp2": {
+      "total_cycles": 1949213,
+      "cycles_per_instruction": 1.9035283203125,
+      "instructions_per_cycle": 0.5253402270557399
+    },
+    "interleaved": {
+      "total_cycles": 2448210,
+      "cycles_per_instruction": 2.390830078125,
+      "instructions_per_cycle": 0.4182647730382606
+    }
+  }
+}

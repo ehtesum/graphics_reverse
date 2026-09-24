@@ -1,0 +1,37 @@
+{
+  "gpu": "NVIDIA GeForce GTX 1650 (TU117 Turing SM 7.5)",
+  "benchmark": "Speculative Decoding Parallel Token Verification",
+  "vocabulary_size": 32000,
+  "results": [
+    {
+      "draft_tokens_K": 1,
+      "logits_size_kb": 125.0,
+      "verification_latency_us": 12.379519939422607,
+      "tokens_per_second": 80778.5766244051
+    },
+    {
+      "draft_tokens_K": 2,
+      "logits_size_kb": 250.0,
+      "verification_latency_us": 8.458560109138489,
+      "tokens_per_second": 236446.86260953953
+    },
+    {
+      "draft_tokens_K": 4,
+      "logits_size_kb": 500.0,
+      "verification_latency_us": 8.601599931716919,
+      "tokens_per_second": 465029.7655963617
+    },
+    {
+      "draft_tokens_K": 8,
+      "logits_size_kb": 1000.0,
+      "verification_latency_us": 7.88543999195099,
+      "tokens_per_second": 1014528.0425906413
+    },
+    {
+      "draft_tokens_K": 16,
+      "logits_size_kb": 2000.0,
+      "verification_latency_us": 8.56224000453949,
+      "tokens_per_second": 1868669.8797881384
+    }
+  ]
+}

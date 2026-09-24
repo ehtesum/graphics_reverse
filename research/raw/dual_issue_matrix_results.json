@@ -1,0 +1,37 @@
+[
+  {
+    "mode": "fp32_pure",
+    "description": "Pure FP32 FMA Baseline (20 FMAs/iter)",
+    "kernel_time_ms": 11.644,
+    "relative_ratio": 1.0,
+    "overlap_diagnosis": "N/A (Single Pipeline)"
+  },
+  {
+    "mode": "fp32_int32",
+    "description": "Interleaved FP32 (10) + INT32 ADD (10)",
+    "kernel_time_ms": 5.622,
+    "relative_ratio": 0.483,
+    "overlap_diagnosis": "100% Concurrency (Zero Overhead)"
+  },
+  {
+    "mode": "fp32_lds",
+    "description": "Interleaved FP32 (10) + Shared Load LDS (10)",
+    "kernel_time_ms": 8.986,
+    "relative_ratio": 0.772,
+    "overlap_diagnosis": "100% Concurrency (Zero Overhead)"
+  },
+  {
+    "mode": "fp32_sfu",
+    "description": "Interleaved FP32 (10) + Transcendental SFU (10)",
+    "kernel_time_ms": 8.997,
+    "relative_ratio": 0.773,
+    "overlap_diagnosis": "100% Concurrency (Zero Overhead)"
+  },
+  {
+    "mode": "int32_lds",
+    "description": "Interleaved INT32 (10) + Shared Load LDS (10)",
+    "kernel_time_ms": 0.015,
+    "relative_ratio": 0.001,
+    "overlap_diagnosis": "100% Concurrency (Zero Overhead)"
+  }
+]

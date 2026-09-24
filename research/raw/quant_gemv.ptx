@@ -1,0 +1,216 @@
+
+.version 7.5
+.target sm_75
+.address_size 64
+
+// 1. Unquantized FP32 GEMV Dot Product
+.visible .entry GemvFP32(
+    .param .u64 d_w,
+    .param .u64 d_x,
+    .param .u64 d_out,
+    .param .u32 N
+) {
+    .reg .u64 %w, %x, %out, %w_addr, %x_addr;
+    .reg .u32 %n, %tidx, %ntidx, %bidx, %nbidx, %gidx, %stride, %r_offset;
+    .reg .f32 %w_val, %x_val, %acc;
+    .reg .pred %p0;
+
+    ld.param.u64 %w, [d_w];
+    ld.param.u64 %x, [d_x];
+    ld.param.u64 %out, [d_out];
+    ld.param.u32 %n, [N];
+
+    mov.u32 %tidx, %tid.x;
+    mov.u32 %ntidx, %ntid.x;
+    mov.u32 %bidx, %ctaid.x;
+    mov.u32 %nbidx, %nctaid.x;
+
+    mad.lo.u32 %gidx, %bidx, %ntidx, %tidx;
+    mul.lo.u32 %stride, %nbidx, %ntidx;
+    mov.f32 %acc, 0.0;
+
+    $loop_fp32:
+    setp.ge.u32 %p0, %gidx, %n;
+    @%p0 bra $exit_fp32;
+
+    shl.b32 %r_offset, %gidx, 2;
+    cvt.u64.u32 %w_addr, %r_offset;
+    add.u64 %w_addr, %w, %w_addr;
+    cvt.u64.u32 %x_addr, %r_offset;
+    add.u64 %x_addr, %x, %x_addr;
+
+    ld.global.f32 %w_val, [%w_addr];
+    ld.global.f32 %x_val, [%x_addr];
+    fma.rn.f32 %acc, %w_val, %x_val, %acc;
+
+    add.u32 %gidx, %gidx, %stride;
+    bra $loop_fp32;
+
+    $exit_fp32:
+    shl.b32 %r_offset, %gidx, 2;
+    // Warp shuffle reduction
+    .reg .f32 %shfl_val;
+    .reg .pred %p_dummy;
+    shfl.sync.down.b32 %shfl_val|%p_dummy, %acc, 16, 31, 0xffffffff;
+    add.f32 %acc, %acc, %shfl_val;
+    shfl.sync.down.b32 %shfl_val|%p_dummy, %acc, 8, 31, 0xffffffff;
+    add.f32 %acc, %acc, %shfl_val;
+    shfl.sync.down.b32 %shfl_val|%p_dummy, %acc, 4, 31, 0xffffffff;
+    add.f32 %acc, %acc, %shfl_val;
+    shfl.sync.down.b32 %shfl_val|%p_dummy, %acc, 2, 31, 0xffffffff;
+    add.f32 %acc, %acc, %shfl_val;
+    shfl.sync.down.b32 %shfl_val|%p_dummy, %acc, 1, 31, 0xffffffff;
+    add.f32 %acc, %acc, %shfl_val;
+
+    .reg .pred %p_first;
+    setp.eq.u32 %p_first, %tidx, 0;
+    @%p_first st.global.f32 [%out], %acc;
+    ret;
+}
+
+// 2. Quantized Q4_0 GEMV Dot Product (8 INT4 weights per 32-bit word, with scale)
+.visible .entry GemvQ4_0(
+    .param .u64 d_w_packed,
+    .param .u64 d_scale,
+    .param .u64 d_x,
+    .param .u64 d_out,
+    .param .u32 N_blocks // each block = 32 weights = 4 packed uint32 + 1 float scale
+) {
+    .reg .u64 %w_ptr, %scale_ptr, %x_ptr, %out_ptr;
+    .reg .u32 %n_blocks, %tidx, %ntidx, %bidx, %nbidx, %gidx, %stride;
+    .reg .f32 %acc, %scale, %x_val, %w_f32;
+    .reg .u32 %packed, %nibble, %k, %block_idx;
+    .reg .pred %p0;
+
+    ld.param.u64 %w_ptr, [d_w_packed];
+    ld.param.u64 %scale_ptr, [d_scale];
+    ld.param.u64 %x_ptr, [d_x];
+    ld.param.u64 %out_ptr, [d_out];
+    ld.param.u32 %n_blocks, [N_blocks];
+
+    mov.u32 %tidx, %tid.x;
+    mov.u32 %ntidx, %ntid.x;
+    mov.u32 %bidx, %ctaid.x;
+    mov.u32 %nbidx, %nctaid.x;
+
+    mad.lo.u32 %gidx, %bidx, %ntidx, %tidx;
+    mul.lo.u32 %stride, %nbidx, %ntidx;
+    mov.f32 %acc, 0.0;
+
+    $loop_q4:
+    setp.ge.u32 %p0, %gidx, %n_blocks;
+    @%p0 bra $exit_q4;
+
+    // Each block has 1 uint32 packed word (8 weights) and 1 float scale
+    .reg .u64 %sc_addr, %w_base, %x_base, %offset64;
+    .reg .u32 %offset32;
+
+    shl.b32 %offset32, %gidx, 2; // gidx * 4 bytes
+    cvt.u64.u32 %offset64, %offset32;
+    add.u64 %sc_addr, %scale_ptr, %offset64;
+    ld.global.f32 %scale, [%sc_addr];
+
+    add.u64 %w_base, %w_ptr, %offset64;
+
+    shl.b32 %offset32, %gidx, 5; // gidx * 8 elements * 4 bytes = 32 bytes of X
+    cvt.u64.u32 %offset64, %offset32;
+    add.u64 %x_base, %x_ptr, %offset64;
+
+    // Load packed word (8 weights)
+    ld.global.u32 %packed, [%w_base];
+    .reg .s32 %signed_nibble;
+
+    // Unpack 8 nibbles from %packed
+    // Nibble 0
+    and.b32 %nibble, %packed, 0x0F;
+    sub.s32 %signed_nibble, %nibble, 8;
+    cvt.rn.f32.s32 %w_f32, %signed_nibble;
+    mul.f32 %w_f32, %w_f32, %scale;
+    ld.global.f32 %x_val, [%x_base];
+    fma.rn.f32 %acc, %w_f32, %x_val, %acc;
+
+    // Nibble 1
+    shr.u32 %nibble, %packed, 4;
+    and.b32 %nibble, %nibble, 0x0F;
+    sub.s32 %signed_nibble, %nibble, 8;
+    cvt.rn.f32.s32 %w_f32, %signed_nibble;
+    mul.f32 %w_f32, %w_f32, %scale;
+    ld.global.f32 %x_val, [%x_base + 4];
+    fma.rn.f32 %acc, %w_f32, %x_val, %acc;
+
+    // Nibble 2
+    shr.u32 %nibble, %packed, 8;
+    and.b32 %nibble, %nibble, 0x0F;
+    sub.s32 %signed_nibble, %nibble, 8;
+    cvt.rn.f32.s32 %w_f32, %signed_nibble;
+    mul.f32 %w_f32, %w_f32, %scale;
+    ld.global.f32 %x_val, [%x_base + 8];
+    fma.rn.f32 %acc, %w_f32, %x_val, %acc;
+
+    // Nibble 3
+    shr.u32 %nibble, %packed, 12;
+    and.b32 %nibble, %nibble, 0x0F;
+    sub.s32 %signed_nibble, %nibble, 8;
+    cvt.rn.f32.s32 %w_f32, %signed_nibble;
+    mul.f32 %w_f32, %w_f32, %scale;
+    ld.global.f32 %x_val, [%x_base + 12];
+    fma.rn.f32 %acc, %w_f32, %x_val, %acc;
+
+    // Nibble 4
+    shr.u32 %nibble, %packed, 16;
+    and.b32 %nibble, %nibble, 0x0F;
+    sub.s32 %signed_nibble, %nibble, 8;
+    cvt.rn.f32.s32 %w_f32, %signed_nibble;
+    mul.f32 %w_f32, %w_f32, %scale;
+    ld.global.f32 %x_val, [%x_base + 16];
+    fma.rn.f32 %acc, %w_f32, %x_val, %acc;
+
+    // Nibble 5
+    shr.u32 %nibble, %packed, 20;
+    and.b32 %nibble, %nibble, 0x0F;
+    sub.s32 %signed_nibble, %nibble, 8;
+    cvt.rn.f32.s32 %w_f32, %signed_nibble;
+    mul.f32 %w_f32, %w_f32, %scale;
+    ld.global.f32 %x_val, [%x_base + 20];
+    fma.rn.f32 %acc, %w_f32, %x_val, %acc;
+
+    // Nibble 6
+    shr.u32 %nibble, %packed, 24;
+    and.b32 %nibble, %nibble, 0x0F;
+    sub.s32 %signed_nibble, %nibble, 8;
+    cvt.rn.f32.s32 %w_f32, %signed_nibble;
+    mul.f32 %w_f32, %w_f32, %scale;
+    ld.global.f32 %x_val, [%x_base + 24];
+    fma.rn.f32 %acc, %w_f32, %x_val, %acc;
+
+    // Nibble 7
+    shr.u32 %nibble, %packed, 28;
+    and.b32 %nibble, %nibble, 0x0F;
+    sub.s32 %signed_nibble, %nibble, 8;
+    cvt.rn.f32.s32 %w_f32, %signed_nibble;
+    mul.f32 %w_f32, %w_f32, %scale;
+    ld.global.f32 %x_val, [%x_base + 28];
+    fma.rn.f32 %acc, %w_f32, %x_val, %acc;
+
+    add.u32 %gidx, %gidx, %stride;
+    bra $loop_q4;
+
+    $exit_q4:
+    .reg .f32 %q_shfl;
+    .reg .pred %q_dummy;
+    shfl.sync.down.b32 %q_shfl|%q_dummy, %acc, 16, 31, 0xffffffff;
+    add.f32 %acc, %acc, %q_shfl;
+    shfl.sync.down.b32 %q_shfl|%q_dummy, %acc, 8, 31, 0xffffffff;
+    add.f32 %acc, %acc, %q_shfl;
+    shfl.sync.down.b32 %q_shfl|%q_dummy, %acc, 4, 31, 0xffffffff;
+    add.f32 %acc, %acc, %q_shfl;
+    shfl.sync.down.b32 %q_shfl|%q_dummy, %acc, 2, 31, 0xffffffff;
+    add.f32 %acc, %acc, %q_shfl;
+    shfl.sync.down.b32 %q_shfl|%q_dummy, %acc, 1, 31, 0xffffffff;
+    add.f32 %acc, %acc, %q_shfl;
+
+    .reg .pred %q_first;
+    setp.eq.u32 %q_first, %tidx, 0;
+    @%q_first st.global.f32 [%out_ptr], %acc;
+    ret;
+}

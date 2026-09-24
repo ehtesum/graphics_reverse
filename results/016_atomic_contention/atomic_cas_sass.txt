@@ -1,0 +1,135 @@
+
+	code for sm_75
+		Function : AtomicContention_cas
+	.headerflags	@"EF_CUDA_TEXMODE_UNIFIED EF_CUDA_64BIT_ADDRESS EF_CUDA_SM75 EF_CUDA_VIRTUAL_SM(EF_CUDA_SM75)"
+        /*0000*/                   IMAD.MOV.U32 R1, RZ, RZ, c[0x0][0x28] ;                  /* 0x00000a00ff017624 */
+                                                                                            /* 0x000fe400078e00ff */
+        /*0010*/                   ISETP.LT.U32.AND P0, PT, RZ, c[0x0][0x168], PT ;         /* 0x00005a00ff007a0c */
+                                                                                            /* 0x000fd80003f01070 */
+        /*0020*/              @!P0 EXIT ;                                                   /* 0x000000000000894d */
+                                                                                            /* 0x000fea0003800000 */
+        /*0030*/                   IMAD.MOV.U32 R11, RZ, RZ, RZ ;                           /* 0x000000ffff0b7224 */
+                                                                                            /* 0x000fe200078e00ff */
+        /*0040*/                   ULDC.64 UR6, c[0x0][0x160] ;                             /* 0x0000580000067ab9 */
+                                                                                            /* 0x000fe20000000a00 */
+        /*0050*/                   PLOP3.LUT P0, PT, PT, PT, PT, 0x80, 0x0 ;                /* 0x000000000000781c */
+                                                                                            /* 0x000fc60003f0f070 */
+        /*0060*/                   ISETP.GE.U32.AND P1, PT, R11, c[0x0][0x168], PT ;        /* 0x00005a000b007a0c */
+                                                                                            /* 0x000fd80003f26070 */
+        /*0070*/              @!P1 BRA 0xe0 ;                                               /* 0x0000006000009947 */
+                                                                                            /* 0x000fea0003800000 */
+        /*0080*/                   IMAD.MOV.U32 R5, RZ, RZ, R11 ;                           /* 0x000000ffff057224 */
+                                                                                            /* 0x000fe400078e000b */
+        /*0090*/                   IMAD.U32 R2, RZ, RZ, UR6 ;                               /* 0x00000006ff027e24 */
+                                                                                            /* 0x000fe4000f8e00ff */
+        /*00a0*/                   IMAD.U32 R3, RZ, RZ, UR7 ;                               /* 0x00000007ff037e24 */
+                                                                                            /* 0x000fd0000f8e00ff */
+        /*00b0*/                   ATOMG.E.CAS.STRONG.GPU PT, R10, [R2], R4, R5 ;           /* 0x00000004020a73a9 */
+                                                                                            /* 0x00016200001f4105 */
+        /*00c0*/                   PLOP3.LUT P0, PT, PT, PT, PT, 0x8, 0x0 ;                 /* 0x000000000000781c */
+                                                                                            /* 0x000fe20003f0e170 */
+        /*00d0*/                   IMAD.MOV.U32 R11, RZ, RZ, 0x1 ;                          /* 0x00000001ff0b7424 */
+                                                                                            /* 0x000fca00078e00ff */
+        /*00e0*/                   ISETP.GE.U32.AND P1, PT, R11.reuse, c[0x0][0x168], PT ;  /* 0x00005a000b007a0c */
+                                                                                            /* 0x040fe40003f26070 */
+        /*00f0*/                   IADD3 R0, -R11, c[0x0][0x168], RZ ;                      /* 0x00005a000b007a10 */
+                                                                                            /* 0x000fc80007ffe1ff */
+        /*0100*/                   ISETP.LE.U32.OR P1, PT, R0, 0x3, P1 ;                    /* 0x000000030000780c */
+                                                                                            /* 0x000fd80000f23470 */
+        /*0110*/               @P1 BRA 0x270 ;                                              /* 0x0000015000001947 */
+                                                                                            /* 0x000fea0003800000 */
+        /*0120*/                   PLOP3.LUT P0, PT, PT, PT, PT, 0x8, 0x0 ;                 /* 0x000000000000781c */
+                                                                                            /* 0x000fe20003f0e170 */
+        /*0130*/                   ULDC UR4, c[0x0][0x168] ;                                /* 0x00005a0000047ab9 */
+                                                                                            /* 0x000fe40000000800 */
+        /*0140*/                   UIADD3 UR4, UR4, -0x3, URZ ;                             /* 0xfffffffd04047890 */
+                                                                                            /* 0x000fe4000fffe03f */
+        /*0150*/                   IMAD.U32 R2, RZ, RZ, UR6 ;                               /* 0x00000006ff027e24 */
+                                                                                            /* 0x001fe4000f8e00ff */
+        /*0160*/                   IMAD.U32 R3, RZ, RZ, UR7 ;                               /* 0x00000007ff037e24 */
+                                                                                            /* 0x000fd0000f8e00ff */
+        /*0170*/                   ATOMG.E.CAS.STRONG.GPU PT, R12, [R2], R10, R11 ;         /* 0x0000000a020c73a9 */
+                                                                                            /* 0x020ea200001f410b */
+        /*0180*/                   IMAD.U32 R4, RZ, RZ, UR6 ;                               /* 0x00000006ff047e24 */
+                                                                                            /* 0x000fe2000f8e00ff */
+        /*0190*/                   IADD3 R13, R11.reuse, 0x1, RZ ;                          /* 0x000000010b0d7810 */
+                                                                                            /* 0x040fe20007ffe0ff */
+        /*01a0*/                   IMAD.U32 R5, RZ, RZ, UR7 ;                               /* 0x00000007ff057e24 */
+                                                                                            /* 0x000fe2000f8e00ff */
+        /*01b0*/                   IADD3 R15, R11, 0x2, RZ ;                                /* 0x000000020b0f7810 */
+                                                                                            /* 0x000fe20007ffe0ff */
+        /*01c0*/                   IMAD.U32 R6, RZ, RZ, UR6 ;                               /* 0x00000006ff067e24 */
+                                                                                            /* 0x000fe4000f8e00ff */
+        /*01d0*/                   IMAD.U32 R7, RZ, RZ, UR7 ;                               /* 0x00000007ff077e24 */
+                                                                                            /* 0x000fc8000f8e00ff */
+        /*01e0*/                   ATOMG.E.CAS.STRONG.GPU PT, R14, [R4], R12, R13 ;         /* 0x0000000c040e73a9 */
+                                                                                            /* 0x004ea200001f410d */
+        /*01f0*/                   IADD3 R17, R11.reuse, 0x3, RZ ;                          /* 0x000000030b117810 */
+                                                                                            /* 0x040fe40007ffe0ff */
+        /*0200*/                   IADD3 R11, R11, 0x4, RZ ;                                /* 0x000000040b0b7810 */
+                                                                                            /* 0x000fe20007ffe0ff */
+        /*0210*/                   IMAD.U32 R8, RZ, RZ, UR6 ;                               /* 0x00000006ff087e24 */
+                                                                                            /* 0x000fc6000f8e00ff */
+        /*0220*/                   ISETP.GE.U32.AND P1, PT, R11, UR4, PT ;                  /* 0x000000040b007c0c */
+                                                                                            /* 0x000fe2000bf26070 */
+        /*0230*/                   IMAD.U32 R9, RZ, RZ, UR7 ;                               /* 0x00000007ff097e24 */
+                                                                                            /* 0x000fe2000f8e00ff */
+        /*0240*/                   ATOMG.E.CAS.STRONG.GPU PT, R16, [R6], R14, R15 ;         /* 0x0000000e061073a9 */
+                                                                                            /* 0x004eae00001f410f */
+        /*0250*/                   ATOMG.E.CAS.STRONG.GPU PT, R10, [R8], R16, R17 ;         /* 0x00000010080a73a9 */
+                                                                                            /* 0x00416600001f4111 */
+        /*0260*/              @!P1 BRA 0x150 ;                                              /* 0xfffffee000009947 */
+                                                                                            /* 0x000fea000383ffff */
+        /*0270*/                   ISETP.GE.U32.AND P1, PT, R11.reuse, c[0x0][0x168], PT ;  /* 0x00005a000b007a0c */
+                                                                                            /* 0x040fe40003f26070 */
+        /*0280*/                   IADD3 R0, -R11, c[0x0][0x168], RZ ;                      /* 0x00005a000b007a10 */
+                                                                                            /* 0x000fc80007ffe1ff */
+        /*0290*/                   ISETP.LE.U32.OR P1, PT, R0, 0x1, P1 ;                    /* 0x000000010000780c */
+                                                                                            /* 0x000fd80000f23470 */
+        /*02a0*/               @P1 BRA 0x340 ;                                              /* 0x0000009000001947 */
+                                                                                            /* 0x000fea0003800000 */
+        /*02b0*/                   IMAD.U32 R2, RZ, RZ, UR6 ;                               /* 0x00000006ff027e24 */
+                                                                                            /* 0x001fe4000f8e00ff */
+        /*02c0*/                   IMAD.U32 R3, RZ, RZ, UR7 ;                               /* 0x00000007ff037e24 */
+                                                                                            /* 0x000fd0000f8e00ff */
+        /*02d0*/                   ATOMG.E.CAS.STRONG.GPU PT, R6, [R2], R10, R11 ;          /* 0x0000000a020673a9 */
+                                                                                            /* 0x020ea200001f410b */
+        /*02e0*/                   IMAD.U32 R4, RZ, RZ, UR6 ;                               /* 0x00000006ff047e24 */
+                                                                                            /* 0x000fe2000f8e00ff */
+        /*02f0*/                   IADD3 R7, R11, 0x1, RZ ;                                 /* 0x000000010b077810 */
+                                                                                            /* 0x000fe20007ffe0ff */
+        /*0300*/                   IMAD.U32 R5, RZ, RZ, UR7 ;                               /* 0x00000007ff057e24 */
+                                                                                            /* 0x000fe2000f8e00ff */
+        /*0310*/                   PLOP3.LUT P0, PT, PT, PT, PT, 0x8, 0x0 ;                 /* 0x000000000000781c */
+                                                                                            /* 0x000fce0003f0e170 */
+        /*0320*/                   ATOMG.E.CAS.STRONG.GPU PT, R10, [R4], R6, R7 ;           /* 0x00000006040a73a9 */
+                                                                                            /* 0x00416200001f4107 */
+        /*0330*/                   IADD3 R11, R11, 0x2, RZ ;                                /* 0x000000020b0b7810 */
+                                                                                            /* 0x000fc80007ffe0ff */
+        /*0340*/                   ISETP.GE.U32.AND P1, PT, R11, c[0x0][0x168], PT ;        /* 0x00005a000b007a0c */
+                                                                                            /* 0x000fd80003f26070 */
+        /*0350*/              @!P0 EXIT P1 ;                                                /* 0x000000000000894d */
+                                                                                            /* 0x000fea0000800000 */
+        /*0360*/                   IMAD.U32 R2, RZ, RZ, UR6 ;                               /* 0x00000006ff027e24 */
+                                                                                            /* 0x001fe4000f8e00ff */
+        /*0370*/                   IMAD.U32 R3, RZ, RZ, UR7 ;                               /* 0x00000007ff037e24 */
+                                                                                            /* 0x000fd0000f8e00ff */
+        /*0380*/                   ATOMG.E.CAS.STRONG.GPU PT, RZ, [R2], R10, R11 ;          /* 0x0000000a02ff73a9 */
+                                                                                            /* 0x020fe200001f410b */
+        /*0390*/                   EXIT ;                                                   /* 0x000000000000794d */
+                                                                                            /* 0x000fea0003800000 */
+        /*03a0*/                   BRA 0x3a0;                                               /* 0xfffffff000007947 */
+                                                                                            /* 0x000fc0000383ffff */
+        /*03b0*/                   NOP;                                                     /* 0x0000000000007918 */
+                                                                                            /* 0x000fc00000000000 */
+        /*03c0*/                   NOP;                                                     /* 0x0000000000007918 */
+                                                                                            /* 0x000fc00000000000 */
+        /*03d0*/                   NOP;                                                     /* 0x0000000000007918 */
+                                                                                            /* 0x000fc00000000000 */
+        /*03e0*/                   NOP;                                                     /* 0x0000000000007918 */
+                                                                                            /* 0x000fc00000000000 */
+        /*03f0*/                   NOP;                                                     /* 0x0000000000007918 */
+                                                                                            /* 0x000fc00000000000 */
+		..........
+
+

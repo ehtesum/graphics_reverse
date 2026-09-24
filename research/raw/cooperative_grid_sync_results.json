@@ -1,0 +1,43 @@
+{
+  "gpu": "NVIDIA GeForce GTX 1650 (TU117 Turing SM 7.5)",
+  "wddm_version": "WDDM 2.7",
+  "cooperative_launch_supported": 0,
+  "sm_count": 14,
+  "results": [
+    {
+      "num_blocks": 1,
+      "threads_per_block": 128,
+      "barrier_iterations": 1000,
+      "avg_cycles_per_barrier": 944.614,
+      "latency_ns_at_1785mhz": 529.1955182072829
+    },
+    {
+      "num_blocks": 2,
+      "threads_per_block": 128,
+      "barrier_iterations": 1000,
+      "avg_cycles_per_barrier": 1313.5265,
+      "latency_ns_at_1785mhz": 735.8691876750701
+    },
+    {
+      "num_blocks": 4,
+      "threads_per_block": 128,
+      "barrier_iterations": 1000,
+      "avg_cycles_per_barrier": 1416.27425,
+      "latency_ns_at_1785mhz": 793.4309523809524
+    },
+    {
+      "num_blocks": 7,
+      "threads_per_block": 128,
+      "barrier_iterations": 1000,
+      "avg_cycles_per_barrier": 1429.9512857142856,
+      "latency_ns_at_1785mhz": 801.0931572629052
+    },
+    {
+      "num_blocks": 14,
+      "threads_per_block": 128,
+      "barrier_iterations": 1000,
+      "avg_cycles_per_barrier": 1449.1205714285713,
+      "latency_ns_at_1785mhz": 811.8322529011605
+    }
+  ]
+}

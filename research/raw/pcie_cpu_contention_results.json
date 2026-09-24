@@ -1,0 +1,10 @@
+{
+  "cpu_alone_gb_s": 32.135,
+  "cpu_concurrent_gb_s": 26.355,
+  "cpu_degradation_pct": 17.99,
+  "gpu_pcie_alone_gb_s": 6.637,
+  "gpu_pcie_concurrent_gb_s": 6.523,
+  "gpu_pcie_degradation_pct": 1.7,
+  "combined_system_bw_gb_s": 32.878,
+  "diagnosis": "Measurable Memory Controller Arbitration Bottleneck"
+}

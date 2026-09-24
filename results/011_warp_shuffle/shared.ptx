@@ -1,0 +1,119 @@
+
+.version 7.5
+.target sm_75
+.address_size 64
+
+.visible .entry ReductionShared(
+    .param .u64 param_arr,
+    .param .u64 param_out,
+    .param .u32 param_n
+)
+{
+    .shared .f32 smem[256];
+    .reg .b32 %r<15>;
+    .reg .f32 %f<15>;
+    .reg .b64 %rd<15>;
+    .reg .pred %p<10>;
+
+    ld.param.u64 %rd1, [param_arr];
+    ld.param.u64 %rd2, [param_out];
+
+    mov.u32 %r2, %ctaid.x;
+    mov.u32 %r3, %ntid.x;
+    mov.u32 %r4, %tid.x;
+    mad.lo.s32 %r5, %r2, %r3, %r4;
+
+    mul.wide.s32 %rd3, %r5, 4;
+    add.s64 %rd4, %rd1, %rd3;
+    ld.global.f32 %f1, [%rd4];
+
+    mul.wide.u32 %rd5, %r4, 4;
+    mov.u64 %rd6, smem;
+    add.s64 %rd7, %rd6, %rd5;
+    st.shared.f32 [%rd7], %f1;
+    bar.sync 0;
+
+    // Step 128
+    setp.lt.u32 %p1, %r4, 128;
+    @%p1 add.u32 %r6, %r4, 128;
+    @%p1 mul.wide.u32 %rd8, %r6, 4;
+    @%p1 add.s64 %rd9, %rd6, %rd8;
+    @%p1 ld.shared.f32 %f2, [%rd9];
+    @%p1 add.f32 %f1, %f1, %f2;
+    @%p1 st.shared.f32 [%rd7], %f1;
+    bar.sync 0;
+
+    // Step 64
+    setp.lt.u32 %p2, %r4, 64;
+    @%p2 add.u32 %r6, %r4, 64;
+    @%p2 mul.wide.u32 %rd8, %r6, 4;
+    @%p2 add.s64 %rd9, %rd6, %rd8;
+    @%p2 ld.shared.f32 %f2, [%rd9];
+    @%p2 add.f32 %f1, %f1, %f2;
+    @%p2 st.shared.f32 [%rd7], %f1;
+    bar.sync 0;
+
+    // Step 32
+    setp.lt.u32 %p3, %r4, 32;
+    @%p3 add.u32 %r6, %r4, 32;
+    @%p3 mul.wide.u32 %rd8, %r6, 4;
+    @%p3 add.s64 %rd9, %rd6, %rd8;
+    @%p3 ld.shared.f32 %f2, [%rd9];
+    @%p3 add.f32 %f1, %f1, %f2;
+    @%p3 st.shared.f32 [%rd7], %f1;
+    bar.sync 0;
+
+    // Step 16
+    setp.lt.u32 %p4, %r4, 16;
+    @%p4 add.u32 %r6, %r4, 16;
+    @%p4 mul.wide.u32 %rd8, %r6, 4;
+    @%p4 add.s64 %rd9, %rd6, %rd8;
+    @%p4 ld.shared.f32 %f2, [%rd9];
+    @%p4 add.f32 %f1, %f1, %f2;
+    @%p4 st.shared.f32 [%rd7], %f1;
+    bar.sync 0;
+
+    // Step 8
+    setp.lt.u32 %p5, %r4, 8;
+    @%p5 add.u32 %r6, %r4, 8;
+    @%p5 mul.wide.u32 %rd8, %r6, 4;
+    @%p5 add.s64 %rd9, %rd6, %rd8;
+    @%p5 ld.shared.f32 %f2, [%rd9];
+    @%p5 add.f32 %f1, %f1, %f2;
+    @%p5 st.shared.f32 [%rd7], %f1;
+    bar.sync 0;
+
+    // Step 4
+    setp.lt.u32 %p6, %r4, 4;
+    @%p6 add.u32 %r6, %r4, 4;
+    @%p6 mul.wide.u32 %rd8, %r6, 4;
+    @%p6 add.s64 %rd9, %rd6, %rd8;
+    @%p6 ld.shared.f32 %f2, [%rd9];
+    @%p6 add.f32 %f1, %f1, %f2;
+    @%p6 st.shared.f32 [%rd7], %f1;
+    bar.sync 0;
+
+    // Step 2
+    setp.lt.u32 %p7, %r4, 2;
+    @%p7 add.u32 %r6, %r4, 2;
+    @%p7 mul.wide.u32 %rd8, %r6, 4;
+    @%p7 add.s64 %rd9, %rd6, %rd8;
+    @%p7 ld.shared.f32 %f2, [%rd9];
+    @%p7 add.f32 %f1, %f1, %f2;
+    @%p7 st.shared.f32 [%rd7], %f1;
+    bar.sync 0;
+
+    // Step 1
+    setp.lt.u32 %p8, %r4, 1;
+    @%p8 add.u32 %r6, %r4, 1;
+    @%p8 mul.wide.u32 %rd8, %r6, 4;
+    @%p8 add.s64 %rd9, %rd6, %rd8;
+    @%p8 ld.shared.f32 %f2, [%rd9];
+    @%p8 add.f32 %f1, %f1, %f2;
+    @%p8 st.shared.f32 [%rd7], %f1;
+    bar.sync 0;
+
+    setp.eq.u32 %p9, %r4, 0;
+    @%p9 atom.global.add.f32 %f3, [%rd2], %f1;
+    ret;
+}

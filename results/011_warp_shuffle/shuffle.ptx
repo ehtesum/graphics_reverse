@@ -1,0 +1,80 @@
+
+.version 7.5
+.target sm_75
+.address_size 64
+
+.visible .entry ReductionShuffle(
+    .param .u64 param_arr,
+    .param .u64 param_out,
+    .param .u32 param_n
+)
+{
+    .shared .f32 warp_sums[8];
+    .reg .b32 %r<15>;
+    .reg .f32 %f<15>;
+    .reg .b64 %rd<15>;
+    .reg .pred %p<5>;
+
+    ld.param.u64 %rd1, [param_arr];
+    ld.param.u64 %rd2, [param_out];
+
+    mov.u32 %r2, %ctaid.x;
+    mov.u32 %r3, %ntid.x;
+    mov.u32 %r4, %tid.x;
+    mad.lo.s32 %r5, %r2, %r3, %r4;
+
+    mul.wide.s32 %rd3, %r5, 4;
+    add.s64 %rd4, %rd1, %rd3;
+    ld.global.f32 %f1, [%rd4];
+
+    // Full mask 0xFFFFFFFF for 32 threads
+    mov.u32 %r6, 0xFFFFFFFF;
+
+    // Butterfly Warp Shuffles: offset 16, 8, 4, 2, 1
+    shfl.sync.bfly.b32 %f2, %f1, 16, 0x1F, %r6;
+    add.f32 %f1, %f1, %f2;
+
+    shfl.sync.bfly.b32 %f2, %f1, 8, 0x1F, %r6;
+    add.f32 %f1, %f1, %f2;
+
+    shfl.sync.bfly.b32 %f2, %f1, 4, 0x1F, %r6;
+    add.f32 %f1, %f1, %f2;
+
+    shfl.sync.bfly.b32 %f2, %f1, 2, 0x1F, %r6;
+    add.f32 %f1, %f1, %f2;
+
+    shfl.sync.bfly.b32 %f2, %f1, 1, 0x1F, %r6;
+    add.f32 %f1, %f1, %f2;
+
+    // Lane 0 of each warp (8 warps total) writes warp sum to shared memory
+    and.b32 %r7, %r4, 31;
+    shr.u32 %r8, %r4, 5;
+    setp.eq.u32 %p1, %r7, 0;
+    @%p1 mul.wide.u32 %rd5, %r8, 4;
+    @%p1 mov.u64 %rd6, warp_sums;
+    @%p1 add.s64 %rd7, %rd6, %rd5;
+    @%p1 st.shared.f32 [%rd7], %f1;
+    bar.sync 0;
+
+    // First 8 threads load the 8 warp sums and reduce them via shuffle
+    setp.lt.u32 %p2, %r4, 8;
+    @%p2 mul.wide.u32 %rd8, %r4, 4;
+    @%p2 mov.u64 %rd9, warp_sums;
+    @%p2 add.s64 %rd10, %rd9, %rd8;
+    @%p2 ld.shared.f32 %f4, [%rd10];
+    @!%p2 mov.f32 %f4, 0f00000000;
+
+    shfl.sync.bfly.b32 %f5, %f4, 4, 0x1F, %r6;
+    add.f32 %f4, %f4, %f5;
+
+    shfl.sync.bfly.b32 %f5, %f4, 2, 0x1F, %r6;
+    add.f32 %f4, %f4, %f5;
+
+    shfl.sync.bfly.b32 %f5, %f4, 1, 0x1F, %r6;
+    add.f32 %f4, %f4, %f5;
+
+    // Lane 0 of warp 0 adds block sum to global accumulator (1 atomic per block!)
+    setp.eq.u32 %p3, %r4, 0;
+    @%p3 atom.global.add.f32 %f6, [%rd2], %f4;
+    ret;
+}

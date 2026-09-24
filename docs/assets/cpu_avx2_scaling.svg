@@ -1,0 +1,29 @@
+<svg width="720" height="340" xmlns="http://www.w3.org/2000/svg" style="background:#1e1e2e; font-family:sans-serif; border-radius:8px;">
+<text x="360" y="28" fill="#cdd6f4" font-size="16" font-weight="bold" text-anchor="middle">Ryzen 7 4800HS AVX2 Multi-Core Throughput (GFLOPS)</text>
+<line x1="80" y1="50" x2="80" y2="280" stroke="#45475a" stroke-width="2"/>
+<line x1="80" y1="280" x2="680" y2="280" stroke="#45475a" stroke-width="2"/>
+<line x1="80" y1="230.71428571428572" x2="680" y2="230.71428571428572" stroke="#313244" stroke-dasharray="4"/>
+<text x="70" y="234.71428571428572" fill="#a6adc8" font-size="11" text-anchor="end">150 GF</text>
+<line x1="80" y1="181.42857142857144" x2="680" y2="181.42857142857144" stroke="#313244" stroke-dasharray="4"/>
+<text x="70" y="185.42857142857144" fill="#a6adc8" font-size="11" text-anchor="end">300 GF</text>
+<line x1="80" y1="132.14285714285714" x2="680" y2="132.14285714285714" stroke="#313244" stroke-dasharray="4"/>
+<text x="70" y="136.14285714285714" fill="#a6adc8" font-size="11" text-anchor="end">450 GF</text>
+<line x1="80" y1="82.85714285714286" x2="680" y2="82.85714285714286" stroke="#313244" stroke-dasharray="4"/>
+<text x="70" y="86.85714285714286" fill="#a6adc8" font-size="11" text-anchor="end">600 GF</text>
+<rect x="117.5" y="246.0" width="75.0" height="34.0" fill="#89b4fa" rx="3"/>
+<text x="155.0" y="239.95080000000002" fill="#89b4fa" font-size="11" font-weight="bold" text-anchor="middle">103.6 GF</text>
+<text x="155.0" y="298" fill="#cdd6f4" font-size="11" text-anchor="middle">1 Cores</text>
+<text x="155.0" y="312" fill="#a6adc8" font-size="9" text-anchor="middle">1.00x (100%)</text>
+<rect x="267.5" y="213.1" width="75.0" height="66.9" fill="#b4befe" rx="3"/>
+<text x="305.0" y="207.10712857142858" fill="#b4befe" font-size="11" font-weight="bold" text-anchor="middle">203.6 GF</text>
+<text x="305.0" y="298" fill="#cdd6f4" font-size="11" text-anchor="middle">2 Cores</text>
+<text x="305.0" y="312" fill="#a6adc8" font-size="9" text-anchor="middle">1.96x (98%)</text>
+<rect x="417.5" y="145.2" width="75.0" height="134.8" fill="#cba6f7" rx="3"/>
+<text x="455.0" y="139.23905714285715" fill="#cba6f7" font-size="11" font-weight="bold" text-anchor="middle">410.1 GF</text>
+<text x="455.0" y="298" fill="#cdd6f4" font-size="11" text-anchor="middle">4 Cores</text>
+<text x="455.0" y="312" fill="#a6adc8" font-size="9" text-anchor="middle">3.96x (99%)</text>
+<rect x="567.5" y="83.3" width="75.0" height="196.7" fill="#a6e3a1" rx="3"/>
+<text x="605.0" y="77.29184285714285" fill="#a6e3a1" font-size="11" font-weight="bold" text-anchor="middle">598.7 GF</text>
+<text x="605.0" y="298" fill="#cdd6f4" font-size="11" text-anchor="middle">8 Cores</text>
+<text x="605.0" y="312" fill="#a6adc8" font-size="9" text-anchor="middle">5.78x (72%)</text>
+</svg>

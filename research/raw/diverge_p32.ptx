@@ -1,0 +1,449 @@
+.version 7.5
+.target sm_75
+.address_size 64
+.visible .entry DivergenceKernel_P32(
+    .param .u64 param_out,
+    .param .u32 param_iters
+)
+{
+    .reg .b32 %r<35>;
+    .reg .b64 %rd<5>;
+    .reg .pred %p<35>;
+
+    ld.param.u64 %rd1, [param_out];
+    ld.param.u32 %r1, [param_iters];
+    mov.u32 %r2, %tid.x;
+
+    // Determine path ID (0 to 31)
+    rem.u32 %r3, %r2, 32;
+    mov.u32 %r10, 1;
+    mov.u32 %r20, 0;
+
+LOOP:
+    setp.eq.u32 %p0, %r3, 0;
+    @%p0 bra PATH_0;
+    setp.eq.u32 %p1, %r3, 1;
+    @%p1 bra PATH_1;
+    setp.eq.u32 %p2, %r3, 2;
+    @%p2 bra PATH_2;
+    setp.eq.u32 %p3, %r3, 3;
+    @%p3 bra PATH_3;
+    setp.eq.u32 %p4, %r3, 4;
+    @%p4 bra PATH_4;
+    setp.eq.u32 %p5, %r3, 5;
+    @%p5 bra PATH_5;
+    setp.eq.u32 %p6, %r3, 6;
+    @%p6 bra PATH_6;
+    setp.eq.u32 %p7, %r3, 7;
+    @%p7 bra PATH_7;
+    setp.eq.u32 %p8, %r3, 8;
+    @%p8 bra PATH_8;
+    setp.eq.u32 %p9, %r3, 9;
+    @%p9 bra PATH_9;
+    setp.eq.u32 %p10, %r3, 10;
+    @%p10 bra PATH_10;
+    setp.eq.u32 %p11, %r3, 11;
+    @%p11 bra PATH_11;
+    setp.eq.u32 %p12, %r3, 12;
+    @%p12 bra PATH_12;
+    setp.eq.u32 %p13, %r3, 13;
+    @%p13 bra PATH_13;
+    setp.eq.u32 %p14, %r3, 14;
+    @%p14 bra PATH_14;
+    setp.eq.u32 %p15, %r3, 15;
+    @%p15 bra PATH_15;
+    setp.eq.u32 %p16, %r3, 16;
+    @%p16 bra PATH_16;
+    setp.eq.u32 %p17, %r3, 17;
+    @%p17 bra PATH_17;
+    setp.eq.u32 %p18, %r3, 18;
+    @%p18 bra PATH_18;
+    setp.eq.u32 %p19, %r3, 19;
+    @%p19 bra PATH_19;
+    setp.eq.u32 %p20, %r3, 20;
+    @%p20 bra PATH_20;
+    setp.eq.u32 %p21, %r3, 21;
+    @%p21 bra PATH_21;
+    setp.eq.u32 %p22, %r3, 22;
+    @%p22 bra PATH_22;
+    setp.eq.u32 %p23, %r3, 23;
+    @%p23 bra PATH_23;
+    setp.eq.u32 %p24, %r3, 24;
+    @%p24 bra PATH_24;
+    setp.eq.u32 %p25, %r3, 25;
+    @%p25 bra PATH_25;
+    setp.eq.u32 %p26, %r3, 26;
+    @%p26 bra PATH_26;
+    setp.eq.u32 %p27, %r3, 27;
+    @%p27 bra PATH_27;
+    setp.eq.u32 %p28, %r3, 28;
+    @%p28 bra PATH_28;
+    setp.eq.u32 %p29, %r3, 29;
+    @%p29 bra PATH_29;
+    setp.eq.u32 %p30, %r3, 30;
+    @%p30 bra PATH_30;
+    setp.eq.u32 %p31, %r3, 31;
+    @%p31 bra PATH_31;
+    bra END_PATHS;
+PATH_0:
+    // Workload for Path 0 (16 unrolled ALU math ops)
+    add.u32 %r10, %r10, 1;
+    mul.lo.u32 %r10, %r10, 3;
+    add.u32 %r10, %r10, 2;
+    mul.lo.u32 %r10, %r10, 5;
+    add.u32 %r10, %r10, 3;
+    mul.lo.u32 %r10, %r10, 7;
+    add.u32 %r10, %r10, 4;
+    mul.lo.u32 %r10, %r10, 11;
+    bra END_PATHS;
+PATH_1:
+    // Workload for Path 1 (16 unrolled ALU math ops)
+    add.u32 %r10, %r10, 2;
+    mul.lo.u32 %r10, %r10, 3;
+    add.u32 %r10, %r10, 3;
+    mul.lo.u32 %r10, %r10, 5;
+    add.u32 %r10, %r10, 4;
+    mul.lo.u32 %r10, %r10, 7;
+    add.u32 %r10, %r10, 5;
+    mul.lo.u32 %r10, %r10, 11;
+    bra END_PATHS;
+PATH_2:
+    // Workload for Path 2 (16 unrolled ALU math ops)
+    add.u32 %r10, %r10, 3;
+    mul.lo.u32 %r10, %r10, 3;
+    add.u32 %r10, %r10, 4;
+    mul.lo.u32 %r10, %r10, 5;
+    add.u32 %r10, %r10, 5;
+    mul.lo.u32 %r10, %r10, 7;
+    add.u32 %r10, %r10, 6;
+    mul.lo.u32 %r10, %r10, 11;
+    bra END_PATHS;
+PATH_3:
+    // Workload for Path 3 (16 unrolled ALU math ops)
+    add.u32 %r10, %r10, 4;
+    mul.lo.u32 %r10, %r10, 3;
+    add.u32 %r10, %r10, 5;
+    mul.lo.u32 %r10, %r10, 5;
+    add.u32 %r10, %r10, 6;
+    mul.lo.u32 %r10, %r10, 7;
+    add.u32 %r10, %r10, 7;
+    mul.lo.u32 %r10, %r10, 11;
+    bra END_PATHS;
+PATH_4:
+    // Workload for Path 4 (16 unrolled ALU math ops)
+    add.u32 %r10, %r10, 5;
+    mul.lo.u32 %r10, %r10, 3;
+    add.u32 %r10, %r10, 6;
+    mul.lo.u32 %r10, %r10, 5;
+    add.u32 %r10, %r10, 7;
+    mul.lo.u32 %r10, %r10, 7;
+    add.u32 %r10, %r10, 8;
+    mul.lo.u32 %r10, %r10, 11;
+    bra END_PATHS;
+PATH_5:
+    // Workload for Path 5 (16 unrolled ALU math ops)
+    add.u32 %r10, %r10, 6;
+    mul.lo.u32 %r10, %r10, 3;
+    add.u32 %r10, %r10, 7;
+    mul.lo.u32 %r10, %r10, 5;
+    add.u32 %r10, %r10, 8;
+    mul.lo.u32 %r10, %r10, 7;
+    add.u32 %r10, %r10, 9;
+    mul.lo.u32 %r10, %r10, 11;
+    bra END_PATHS;
+PATH_6:
+    // Workload for Path 6 (16 unrolled ALU math ops)
+    add.u32 %r10, %r10, 7;
+    mul.lo.u32 %r10, %r10, 3;
+    add.u32 %r10, %r10, 8;
+    mul.lo.u32 %r10, %r10, 5;
+    add.u32 %r10, %r10, 9;
+    mul.lo.u32 %r10, %r10, 7;
+    add.u32 %r10, %r10, 10;
+    mul.lo.u32 %r10, %r10, 11;
+    bra END_PATHS;
+PATH_7:
+    // Workload for Path 7 (16 unrolled ALU math ops)
+    add.u32 %r10, %r10, 8;
+    mul.lo.u32 %r10, %r10, 3;
+    add.u32 %r10, %r10, 9;
+    mul.lo.u32 %r10, %r10, 5;
+    add.u32 %r10, %r10, 10;
+    mul.lo.u32 %r10, %r10, 7;
+    add.u32 %r10, %r10, 11;
+    mul.lo.u32 %r10, %r10, 11;
+    bra END_PATHS;
+PATH_8:
+    // Workload for Path 8 (16 unrolled ALU math ops)
+    add.u32 %r10, %r10, 9;
+    mul.lo.u32 %r10, %r10, 3;
+    add.u32 %r10, %r10, 10;
+    mul.lo.u32 %r10, %r10, 5;
+    add.u32 %r10, %r10, 11;
+    mul.lo.u32 %r10, %r10, 7;
+    add.u32 %r10, %r10, 12;
+    mul.lo.u32 %r10, %r10, 11;
+    bra END_PATHS;
+PATH_9:
+    // Workload for Path 9 (16 unrolled ALU math ops)
+    add.u32 %r10, %r10, 10;
+    mul.lo.u32 %r10, %r10, 3;
+    add.u32 %r10, %r10, 11;
+    mul.lo.u32 %r10, %r10, 5;
+    add.u32 %r10, %r10, 12;
+    mul.lo.u32 %r10, %r10, 7;
+    add.u32 %r10, %r10, 13;
+    mul.lo.u32 %r10, %r10, 11;
+    bra END_PATHS;
+PATH_10:
+    // Workload for Path 10 (16 unrolled ALU math ops)
+    add.u32 %r10, %r10, 11;
+    mul.lo.u32 %r10, %r10, 3;
+    add.u32 %r10, %r10, 12;
+    mul.lo.u32 %r10, %r10, 5;
+    add.u32 %r10, %r10, 13;
+    mul.lo.u32 %r10, %r10, 7;
+    add.u32 %r10, %r10, 14;
+    mul.lo.u32 %r10, %r10, 11;
+    bra END_PATHS;
+PATH_11:
+    // Workload for Path 11 (16 unrolled ALU math ops)
+    add.u32 %r10, %r10, 12;
+    mul.lo.u32 %r10, %r10, 3;
+    add.u32 %r10, %r10, 13;
+    mul.lo.u32 %r10, %r10, 5;
+    add.u32 %r10, %r10, 14;
+    mul.lo.u32 %r10, %r10, 7;
+    add.u32 %r10, %r10, 15;
+    mul.lo.u32 %r10, %r10, 11;
+    bra END_PATHS;
+PATH_12:
+    // Workload for Path 12 (16 unrolled ALU math ops)
+    add.u32 %r10, %r10, 13;
+    mul.lo.u32 %r10, %r10, 3;
+    add.u32 %r10, %r10, 14;
+    mul.lo.u32 %r10, %r10, 5;
+    add.u32 %r10, %r10, 15;
+    mul.lo.u32 %r10, %r10, 7;
+    add.u32 %r10, %r10, 16;
+    mul.lo.u32 %r10, %r10, 11;
+    bra END_PATHS;
+PATH_13:
+    // Workload for Path 13 (16 unrolled ALU math ops)
+    add.u32 %r10, %r10, 14;
+    mul.lo.u32 %r10, %r10, 3;
+    add.u32 %r10, %r10, 15;
+    mul.lo.u32 %r10, %r10, 5;
+    add.u32 %r10, %r10, 16;
+    mul.lo.u32 %r10, %r10, 7;
+    add.u32 %r10, %r10, 17;
+    mul.lo.u32 %r10, %r10, 11;
+    bra END_PATHS;
+PATH_14:
+    // Workload for Path 14 (16 unrolled ALU math ops)
+    add.u32 %r10, %r10, 15;
+    mul.lo.u32 %r10, %r10, 3;
+    add.u32 %r10, %r10, 16;
+    mul.lo.u32 %r10, %r10, 5;
+    add.u32 %r10, %r10, 17;
+    mul.lo.u32 %r10, %r10, 7;
+    add.u32 %r10, %r10, 18;
+    mul.lo.u32 %r10, %r10, 11;
+    bra END_PATHS;
+PATH_15:
+    // Workload for Path 15 (16 unrolled ALU math ops)
+    add.u32 %r10, %r10, 16;
+    mul.lo.u32 %r10, %r10, 3;
+    add.u32 %r10, %r10, 17;
+    mul.lo.u32 %r10, %r10, 5;
+    add.u32 %r10, %r10, 18;
+    mul.lo.u32 %r10, %r10, 7;
+    add.u32 %r10, %r10, 19;
+    mul.lo.u32 %r10, %r10, 11;
+    bra END_PATHS;
+PATH_16:
+    // Workload for Path 16 (16 unrolled ALU math ops)
+    add.u32 %r10, %r10, 17;
+    mul.lo.u32 %r10, %r10, 3;
+    add.u32 %r10, %r10, 18;
+    mul.lo.u32 %r10, %r10, 5;
+    add.u32 %r10, %r10, 19;
+    mul.lo.u32 %r10, %r10, 7;
+    add.u32 %r10, %r10, 20;
+    mul.lo.u32 %r10, %r10, 11;
+    bra END_PATHS;
+PATH_17:
+    // Workload for Path 17 (16 unrolled ALU math ops)
+    add.u32 %r10, %r10, 18;
+    mul.lo.u32 %r10, %r10, 3;
+    add.u32 %r10, %r10, 19;
+    mul.lo.u32 %r10, %r10, 5;
+    add.u32 %r10, %r10, 20;
+    mul.lo.u32 %r10, %r10, 7;
+    add.u32 %r10, %r10, 21;
+    mul.lo.u32 %r10, %r10, 11;
+    bra END_PATHS;
+PATH_18:
+    // Workload for Path 18 (16 unrolled ALU math ops)
+    add.u32 %r10, %r10, 19;
+    mul.lo.u32 %r10, %r10, 3;
+    add.u32 %r10, %r10, 20;
+    mul.lo.u32 %r10, %r10, 5;
+    add.u32 %r10, %r10, 21;
+    mul.lo.u32 %r10, %r10, 7;
+    add.u32 %r10, %r10, 22;
+    mul.lo.u32 %r10, %r10, 11;
+    bra END_PATHS;
+PATH_19:
+    // Workload for Path 19 (16 unrolled ALU math ops)
+    add.u32 %r10, %r10, 20;
+    mul.lo.u32 %r10, %r10, 3;
+    add.u32 %r10, %r10, 21;
+    mul.lo.u32 %r10, %r10, 5;
+    add.u32 %r10, %r10, 22;
+    mul.lo.u32 %r10, %r10, 7;
+    add.u32 %r10, %r10, 23;
+    mul.lo.u32 %r10, %r10, 11;
+    bra END_PATHS;
+PATH_20:
+    // Workload for Path 20 (16 unrolled ALU math ops)
+    add.u32 %r10, %r10, 21;
+    mul.lo.u32 %r10, %r10, 3;
+    add.u32 %r10, %r10, 22;
+    mul.lo.u32 %r10, %r10, 5;
+    add.u32 %r10, %r10, 23;
+    mul.lo.u32 %r10, %r10, 7;
+    add.u32 %r10, %r10, 24;
+    mul.lo.u32 %r10, %r10, 11;
+    bra END_PATHS;
+PATH_21:
+    // Workload for Path 21 (16 unrolled ALU math ops)
+    add.u32 %r10, %r10, 22;
+    mul.lo.u32 %r10, %r10, 3;
+    add.u32 %r10, %r10, 23;
+    mul.lo.u32 %r10, %r10, 5;
+    add.u32 %r10, %r10, 24;
+    mul.lo.u32 %r10, %r10, 7;
+    add.u32 %r10, %r10, 25;
+    mul.lo.u32 %r10, %r10, 11;
+    bra END_PATHS;
+PATH_22:
+    // Workload for Path 22 (16 unrolled ALU math ops)
+    add.u32 %r10, %r10, 23;
+    mul.lo.u32 %r10, %r10, 3;
+    add.u32 %r10, %r10, 24;
+    mul.lo.u32 %r10, %r10, 5;
+    add.u32 %r10, %r10, 25;
+    mul.lo.u32 %r10, %r10, 7;
+    add.u32 %r10, %r10, 26;
+    mul.lo.u32 %r10, %r10, 11;
+    bra END_PATHS;
+PATH_23:
+    // Workload for Path 23 (16 unrolled ALU math ops)
+    add.u32 %r10, %r10, 24;
+    mul.lo.u32 %r10, %r10, 3;
+    add.u32 %r10, %r10, 25;
+    mul.lo.u32 %r10, %r10, 5;
+    add.u32 %r10, %r10, 26;
+    mul.lo.u32 %r10, %r10, 7;
+    add.u32 %r10, %r10, 27;
+    mul.lo.u32 %r10, %r10, 11;
+    bra END_PATHS;
+PATH_24:
+    // Workload for Path 24 (16 unrolled ALU math ops)
+    add.u32 %r10, %r10, 25;
+    mul.lo.u32 %r10, %r10, 3;
+    add.u32 %r10, %r10, 26;
+    mul.lo.u32 %r10, %r10, 5;
+    add.u32 %r10, %r10, 27;
+    mul.lo.u32 %r10, %r10, 7;
+    add.u32 %r10, %r10, 28;
+    mul.lo.u32 %r10, %r10, 11;
+    bra END_PATHS;
+PATH_25:
+    // Workload for Path 25 (16 unrolled ALU math ops)
+    add.u32 %r10, %r10, 26;
+    mul.lo.u32 %r10, %r10, 3;
+    add.u32 %r10, %r10, 27;
+    mul.lo.u32 %r10, %r10, 5;
+    add.u32 %r10, %r10, 28;
+    mul.lo.u32 %r10, %r10, 7;
+    add.u32 %r10, %r10, 29;
+    mul.lo.u32 %r10, %r10, 11;
+    bra END_PATHS;
+PATH_26:
+    // Workload for Path 26 (16 unrolled ALU math ops)
+    add.u32 %r10, %r10, 27;
+    mul.lo.u32 %r10, %r10, 3;
+    add.u32 %r10, %r10, 28;
+    mul.lo.u32 %r10, %r10, 5;
+    add.u32 %r10, %r10, 29;
+    mul.lo.u32 %r10, %r10, 7;
+    add.u32 %r10, %r10, 30;
+    mul.lo.u32 %r10, %r10, 11;
+    bra END_PATHS;
+PATH_27:
+    // Workload for Path 27 (16 unrolled ALU math ops)
+    add.u32 %r10, %r10, 28;
+    mul.lo.u32 %r10, %r10, 3;
+    add.u32 %r10, %r10, 29;
+    mul.lo.u32 %r10, %r10, 5;
+    add.u32 %r10, %r10, 30;
+    mul.lo.u32 %r10, %r10, 7;
+    add.u32 %r10, %r10, 31;
+    mul.lo.u32 %r10, %r10, 11;
+    bra END_PATHS;
+PATH_28:
+    // Workload for Path 28 (16 unrolled ALU math ops)
+    add.u32 %r10, %r10, 29;
+    mul.lo.u32 %r10, %r10, 3;
+    add.u32 %r10, %r10, 30;
+    mul.lo.u32 %r10, %r10, 5;
+    add.u32 %r10, %r10, 31;
+    mul.lo.u32 %r10, %r10, 7;
+    add.u32 %r10, %r10, 32;
+    mul.lo.u32 %r10, %r10, 11;
+    bra END_PATHS;
+PATH_29:
+    // Workload for Path 29 (16 unrolled ALU math ops)
+    add.u32 %r10, %r10, 30;
+    mul.lo.u32 %r10, %r10, 3;
+    add.u32 %r10, %r10, 31;
+    mul.lo.u32 %r10, %r10, 5;
+    add.u32 %r10, %r10, 32;
+    mul.lo.u32 %r10, %r10, 7;
+    add.u32 %r10, %r10, 33;
+    mul.lo.u32 %r10, %r10, 11;
+    bra END_PATHS;
+PATH_30:
+    // Workload for Path 30 (16 unrolled ALU math ops)
+    add.u32 %r10, %r10, 31;
+    mul.lo.u32 %r10, %r10, 3;
+    add.u32 %r10, %r10, 32;
+    mul.lo.u32 %r10, %r10, 5;
+    add.u32 %r10, %r10, 33;
+    mul.lo.u32 %r10, %r10, 7;
+    add.u32 %r10, %r10, 34;
+    mul.lo.u32 %r10, %r10, 11;
+    bra END_PATHS;
+PATH_31:
+    // Workload for Path 31 (16 unrolled ALU math ops)
+    add.u32 %r10, %r10, 32;
+    mul.lo.u32 %r10, %r10, 3;
+    add.u32 %r10, %r10, 33;
+    mul.lo.u32 %r10, %r10, 5;
+    add.u32 %r10, %r10, 34;
+    mul.lo.u32 %r10, %r10, 7;
+    add.u32 %r10, %r10, 35;
+    mul.lo.u32 %r10, %r10, 11;
+    bra END_PATHS;
+END_PATHS:
+    add.u32 %r20, %r20, 1;
+    setp.lt.u32 %p34, %r20, %r1;
+    @%p34 bra LOOP;
+
+    mul.wide.u32 %rd2, %r2, 4;
+    add.u64 %rd3, %rd1, %rd2;
+    st.global.u32 [%rd3], %r10;
+    ret;
+}

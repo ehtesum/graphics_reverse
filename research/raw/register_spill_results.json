@@ -1,0 +1,62 @@
+[
+  {
+    "maxrregcount": 64,
+    "used_registers": 64,
+    "spill_stores_bytes": 0,
+    "spill_loads_bytes": 0,
+    "sass_ldl_count": 0,
+    "sass_stl_count": 0,
+    "kernel_time_ms": 32.081,
+    "slowdown": 1.0
+  },
+  {
+    "maxrregcount": 32,
+    "used_registers": 32,
+    "spill_stores_bytes": 0,
+    "spill_loads_bytes": 0,
+    "sass_ldl_count": 16,
+    "sass_stl_count": 0,
+    "kernel_time_ms": 135.522,
+    "slowdown": 4.224
+  },
+  {
+    "maxrregcount": 24,
+    "used_registers": 24,
+    "spill_stores_bytes": 0,
+    "spill_loads_bytes": 0,
+    "sass_ldl_count": 48,
+    "sass_stl_count": 0,
+    "kernel_time_ms": 1250.825,
+    "slowdown": 38.99
+  },
+  {
+    "maxrregcount": 20,
+    "used_registers": 20,
+    "spill_stores_bytes": 0,
+    "spill_loads_bytes": 0,
+    "sass_ldl_count": 48,
+    "sass_stl_count": 0,
+    "kernel_time_ms": 1250.773,
+    "slowdown": 38.989
+  },
+  {
+    "maxrregcount": 16,
+    "used_registers": 16,
+    "spill_stores_bytes": 0,
+    "spill_loads_bytes": 0,
+    "sass_ldl_count": 48,
+    "sass_stl_count": 0,
+    "kernel_time_ms": 1250.856,
+    "slowdown": 38.991
+  },
+  {
+    "maxrregcount": 12,
+    "used_registers": 12,
+    "spill_stores_bytes": 0,
+    "spill_loads_bytes": 0,
+    "sass_ldl_count": 48,
+    "sass_stl_count": 0,
+    "kernel_time_ms": 1250.974,
+    "slowdown": 38.995
+  }
+]

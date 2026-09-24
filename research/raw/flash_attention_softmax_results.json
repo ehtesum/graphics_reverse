@@ -1,0 +1,47 @@
+{
+  "gpu": "NVIDIA GeForce GTX 1650 (TU117 Turing SM 7.5)",
+  "benchmark": "FlashAttention Online Softmax Rescaling & SFU Overhead",
+  "warp_size": 32,
+  "results": [
+    {
+      "sequence_length": 128,
+      "num_tiles_32": 4,
+      "total_cycles_per_query": 945.428,
+      "cycles_per_tile": 236.357,
+      "fma_baseline_cycles": 407.306,
+      "sfu_reduction_overhead_ratio": 2.3211737612507553
+    },
+    {
+      "sequence_length": 512,
+      "num_tiles_32": 16,
+      "total_cycles_per_query": 3645.207,
+      "cycles_per_tile": 227.8254375,
+      "fma_baseline_cycles": 1208.206,
+      "sfu_reduction_overhead_ratio": 3.0170409681792676
+    },
+    {
+      "sequence_length": 1024,
+      "num_tiles_32": 32,
+      "total_cycles_per_query": 7245.206,
+      "cycles_per_tile": 226.4126875,
+      "fma_baseline_cycles": 2276.203,
+      "sfu_reduction_overhead_ratio": 3.183022779602698
+    },
+    {
+      "sequence_length": 2048,
+      "num_tiles_32": 64,
+      "total_cycles_per_query": 14445.205,
+      "cycles_per_tile": 225.706328125,
+      "fma_baseline_cycles": 4412.204,
+      "sfu_reduction_overhead_ratio": 3.2739204714922523
+    },
+    {
+      "sequence_length": 4096,
+      "num_tiles_32": 128,
+      "total_cycles_per_query": 28845.207,
+      "cycles_per_tile": 225.3531796875,
+      "fma_baseline_cycles": 8684.205,
+      "sfu_reduction_overhead_ratio": 3.3215714046363485
+    }
+  ]
+}

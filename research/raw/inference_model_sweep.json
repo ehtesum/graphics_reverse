@@ -1,0 +1,1180 @@
+{
+  "Gemma-2-2B": {
+    "model_name": "Gemma-2-2B",
+    "quantization": "Q4_K_M",
+    "context_length": 2048,
+    "total_weights_mb": 1394.7,
+    "kv_cache_mb": 208.0,
+    "best_feasible_gpu_layers": 26,
+    "max_feasible_tok_s": 95.45,
+    "sweep_curve": [
+      {
+        "gpu_layers": 0,
+        "cpu_layers": 26,
+        "gpu_vram_mb": 0.0,
+        "cpu_ram_mb": 1394.7,
+        "tok_per_sec": 22.94,
+        "pcie_mb_per_sec": 0.0,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 1,
+        "cpu_layers": 25,
+        "gpu_vram_mb": 261.6,
+        "cpu_ram_mb": 1341.1,
+        "tok_per_sec": 23.63,
+        "pcie_mb_per_sec": 0.18,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 2,
+        "cpu_layers": 24,
+        "gpu_vram_mb": 315.3,
+        "cpu_ram_mb": 1287.5,
+        "tok_per_sec": 24.37,
+        "pcie_mb_per_sec": 0.19,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 3,
+        "cpu_layers": 23,
+        "gpu_vram_mb": 368.9,
+        "cpu_ram_mb": 1233.8,
+        "tok_per_sec": 25.15,
+        "pcie_mb_per_sec": 0.2,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 4,
+        "cpu_layers": 22,
+        "gpu_vram_mb": 422.6,
+        "cpu_ram_mb": 1180.2,
+        "tok_per_sec": 25.98,
+        "pcie_mb_per_sec": 0.2,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 5,
+        "cpu_layers": 21,
+        "gpu_vram_mb": 476.2,
+        "cpu_ram_mb": 1126.5,
+        "tok_per_sec": 26.87,
+        "pcie_mb_per_sec": 0.21,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 6,
+        "cpu_layers": 20,
+        "gpu_vram_mb": 529.9,
+        "cpu_ram_mb": 1072.9,
+        "tok_per_sec": 27.82,
+        "pcie_mb_per_sec": 0.22,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 7,
+        "cpu_layers": 19,
+        "gpu_vram_mb": 583.5,
+        "cpu_ram_mb": 1019.2,
+        "tok_per_sec": 28.84,
+        "pcie_mb_per_sec": 0.23,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 8,
+        "cpu_layers": 18,
+        "gpu_vram_mb": 637.2,
+        "cpu_ram_mb": 965.6,
+        "tok_per_sec": 29.94,
+        "pcie_mb_per_sec": 0.23,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 9,
+        "cpu_layers": 17,
+        "gpu_vram_mb": 690.8,
+        "cpu_ram_mb": 912.0,
+        "tok_per_sec": 31.13,
+        "pcie_mb_per_sec": 0.24,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 10,
+        "cpu_layers": 16,
+        "gpu_vram_mb": 744.4,
+        "cpu_ram_mb": 858.3,
+        "tok_per_sec": 32.41,
+        "pcie_mb_per_sec": 0.25,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 11,
+        "cpu_layers": 15,
+        "gpu_vram_mb": 798.1,
+        "cpu_ram_mb": 804.7,
+        "tok_per_sec": 33.81,
+        "pcie_mb_per_sec": 0.26,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 12,
+        "cpu_layers": 14,
+        "gpu_vram_mb": 851.7,
+        "cpu_ram_mb": 751.0,
+        "tok_per_sec": 35.33,
+        "pcie_mb_per_sec": 0.28,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 13,
+        "cpu_layers": 13,
+        "gpu_vram_mb": 905.4,
+        "cpu_ram_mb": 697.4,
+        "tok_per_sec": 36.99,
+        "pcie_mb_per_sec": 0.29,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 14,
+        "cpu_layers": 12,
+        "gpu_vram_mb": 959.0,
+        "cpu_ram_mb": 643.7,
+        "tok_per_sec": 38.82,
+        "pcie_mb_per_sec": 0.3,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 15,
+        "cpu_layers": 11,
+        "gpu_vram_mb": 1012.7,
+        "cpu_ram_mb": 590.1,
+        "tok_per_sec": 40.84,
+        "pcie_mb_per_sec": 0.32,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 16,
+        "cpu_layers": 10,
+        "gpu_vram_mb": 1066.3,
+        "cpu_ram_mb": 536.4,
+        "tok_per_sec": 43.08,
+        "pcie_mb_per_sec": 0.34,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 17,
+        "cpu_layers": 9,
+        "gpu_vram_mb": 1120.0,
+        "cpu_ram_mb": 482.8,
+        "tok_per_sec": 45.58,
+        "pcie_mb_per_sec": 0.36,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 18,
+        "cpu_layers": 8,
+        "gpu_vram_mb": 1173.6,
+        "cpu_ram_mb": 429.2,
+        "tok_per_sec": 48.39,
+        "pcie_mb_per_sec": 0.38,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 19,
+        "cpu_layers": 7,
+        "gpu_vram_mb": 1227.2,
+        "cpu_ram_mb": 375.5,
+        "tok_per_sec": 51.57,
+        "pcie_mb_per_sec": 0.4,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 20,
+        "cpu_layers": 6,
+        "gpu_vram_mb": 1280.9,
+        "cpu_ram_mb": 321.9,
+        "tok_per_sec": 55.19,
+        "pcie_mb_per_sec": 0.43,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 21,
+        "cpu_layers": 5,
+        "gpu_vram_mb": 1334.5,
+        "cpu_ram_mb": 268.2,
+        "tok_per_sec": 59.37,
+        "pcie_mb_per_sec": 0.46,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 22,
+        "cpu_layers": 4,
+        "gpu_vram_mb": 1388.2,
+        "cpu_ram_mb": 214.6,
+        "tok_per_sec": 64.22,
+        "pcie_mb_per_sec": 0.5,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 23,
+        "cpu_layers": 3,
+        "gpu_vram_mb": 1441.8,
+        "cpu_ram_mb": 160.9,
+        "tok_per_sec": 69.94,
+        "pcie_mb_per_sec": 0.55,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 24,
+        "cpu_layers": 2,
+        "gpu_vram_mb": 1495.5,
+        "cpu_ram_mb": 107.3,
+        "tok_per_sec": 76.78,
+        "pcie_mb_per_sec": 0.6,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 25,
+        "cpu_layers": 1,
+        "gpu_vram_mb": 1549.1,
+        "cpu_ram_mb": 53.6,
+        "tok_per_sec": 85.1,
+        "pcie_mb_per_sec": 0.66,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 26,
+        "cpu_layers": 0,
+        "gpu_vram_mb": 1602.7,
+        "cpu_ram_mb": 0.0,
+        "tok_per_sec": 95.45,
+        "pcie_mb_per_sec": 0.0,
+        "is_vram_feasible": true
+      }
+    ]
+  },
+  "Phi-3-Mini-3.8B": {
+    "model_name": "Phi-3-Mini-3.8B",
+    "quantization": "Q4_K_M",
+    "context_length": 2048,
+    "total_weights_mb": 2038.5,
+    "kv_cache_mb": 768.0,
+    "best_feasible_gpu_layers": 32,
+    "max_feasible_tok_s": 65.53,
+    "sweep_curve": [
+      {
+        "gpu_layers": 0,
+        "cpu_layers": 32,
+        "gpu_vram_mb": 0.0,
+        "cpu_ram_mb": 2038.5,
+        "tok_per_sec": 15.7,
+        "pcie_mb_per_sec": 0.0,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 1,
+        "cpu_layers": 31,
+        "gpu_vram_mb": 831.7,
+        "cpu_ram_mb": 1974.8,
+        "tok_per_sec": 16.08,
+        "pcie_mb_per_sec": 0.19,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 2,
+        "cpu_layers": 30,
+        "gpu_vram_mb": 895.4,
+        "cpu_ram_mb": 1911.1,
+        "tok_per_sec": 16.48,
+        "pcie_mb_per_sec": 0.19,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 3,
+        "cpu_layers": 29,
+        "gpu_vram_mb": 959.1,
+        "cpu_ram_mb": 1847.4,
+        "tok_per_sec": 16.9,
+        "pcie_mb_per_sec": 0.2,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 4,
+        "cpu_layers": 28,
+        "gpu_vram_mb": 1022.8,
+        "cpu_ram_mb": 1783.7,
+        "tok_per_sec": 17.35,
+        "pcie_mb_per_sec": 0.2,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 5,
+        "cpu_layers": 27,
+        "gpu_vram_mb": 1086.5,
+        "cpu_ram_mb": 1720.0,
+        "tok_per_sec": 17.81,
+        "pcie_mb_per_sec": 0.21,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 6,
+        "cpu_layers": 26,
+        "gpu_vram_mb": 1150.2,
+        "cpu_ram_mb": 1656.3,
+        "tok_per_sec": 18.31,
+        "pcie_mb_per_sec": 0.21,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 7,
+        "cpu_layers": 25,
+        "gpu_vram_mb": 1213.9,
+        "cpu_ram_mb": 1592.6,
+        "tok_per_sec": 18.83,
+        "pcie_mb_per_sec": 0.22,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 8,
+        "cpu_layers": 24,
+        "gpu_vram_mb": 1277.6,
+        "cpu_ram_mb": 1528.9,
+        "tok_per_sec": 19.38,
+        "pcie_mb_per_sec": 0.23,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 9,
+        "cpu_layers": 23,
+        "gpu_vram_mb": 1341.3,
+        "cpu_ram_mb": 1465.2,
+        "tok_per_sec": 19.97,
+        "pcie_mb_per_sec": 0.23,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 10,
+        "cpu_layers": 22,
+        "gpu_vram_mb": 1405.0,
+        "cpu_ram_mb": 1401.5,
+        "tok_per_sec": 20.59,
+        "pcie_mb_per_sec": 0.24,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 11,
+        "cpu_layers": 21,
+        "gpu_vram_mb": 1468.7,
+        "cpu_ram_mb": 1337.8,
+        "tok_per_sec": 21.25,
+        "pcie_mb_per_sec": 0.25,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 12,
+        "cpu_layers": 20,
+        "gpu_vram_mb": 1532.4,
+        "cpu_ram_mb": 1274.0,
+        "tok_per_sec": 21.96,
+        "pcie_mb_per_sec": 0.26,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 13,
+        "cpu_layers": 19,
+        "gpu_vram_mb": 1596.1,
+        "cpu_ram_mb": 1210.3,
+        "tok_per_sec": 22.71,
+        "pcie_mb_per_sec": 0.27,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 14,
+        "cpu_layers": 18,
+        "gpu_vram_mb": 1659.8,
+        "cpu_ram_mb": 1146.6,
+        "tok_per_sec": 23.52,
+        "pcie_mb_per_sec": 0.28,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 15,
+        "cpu_layers": 17,
+        "gpu_vram_mb": 1723.5,
+        "cpu_ram_mb": 1082.9,
+        "tok_per_sec": 24.39,
+        "pcie_mb_per_sec": 0.29,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 16,
+        "cpu_layers": 16,
+        "gpu_vram_mb": 1787.2,
+        "cpu_ram_mb": 1019.2,
+        "tok_per_sec": 25.33,
+        "pcie_mb_per_sec": 0.3,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 17,
+        "cpu_layers": 15,
+        "gpu_vram_mb": 1850.9,
+        "cpu_ram_mb": 955.5,
+        "tok_per_sec": 26.34,
+        "pcie_mb_per_sec": 0.31,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 18,
+        "cpu_layers": 14,
+        "gpu_vram_mb": 1914.6,
+        "cpu_ram_mb": 891.8,
+        "tok_per_sec": 27.43,
+        "pcie_mb_per_sec": 0.32,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 19,
+        "cpu_layers": 13,
+        "gpu_vram_mb": 1978.3,
+        "cpu_ram_mb": 828.1,
+        "tok_per_sec": 28.62,
+        "pcie_mb_per_sec": 0.34,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 20,
+        "cpu_layers": 12,
+        "gpu_vram_mb": 2042.0,
+        "cpu_ram_mb": 764.4,
+        "tok_per_sec": 29.91,
+        "pcie_mb_per_sec": 0.35,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 21,
+        "cpu_layers": 11,
+        "gpu_vram_mb": 2105.8,
+        "cpu_ram_mb": 700.7,
+        "tok_per_sec": 31.33,
+        "pcie_mb_per_sec": 0.37,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 22,
+        "cpu_layers": 10,
+        "gpu_vram_mb": 2169.5,
+        "cpu_ram_mb": 637.0,
+        "tok_per_sec": 32.89,
+        "pcie_mb_per_sec": 0.39,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 23,
+        "cpu_layers": 9,
+        "gpu_vram_mb": 2233.2,
+        "cpu_ram_mb": 573.3,
+        "tok_per_sec": 34.62,
+        "pcie_mb_per_sec": 0.41,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 24,
+        "cpu_layers": 8,
+        "gpu_vram_mb": 2296.9,
+        "cpu_ram_mb": 509.6,
+        "tok_per_sec": 36.53,
+        "pcie_mb_per_sec": 0.43,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 25,
+        "cpu_layers": 7,
+        "gpu_vram_mb": 2360.6,
+        "cpu_ram_mb": 445.9,
+        "tok_per_sec": 38.67,
+        "pcie_mb_per_sec": 0.45,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 26,
+        "cpu_layers": 6,
+        "gpu_vram_mb": 2424.3,
+        "cpu_ram_mb": 382.2,
+        "tok_per_sec": 41.08,
+        "pcie_mb_per_sec": 0.48,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 27,
+        "cpu_layers": 5,
+        "gpu_vram_mb": 2488.0,
+        "cpu_ram_mb": 318.5,
+        "tok_per_sec": 43.8,
+        "pcie_mb_per_sec": 0.51,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 28,
+        "cpu_layers": 4,
+        "gpu_vram_mb": 2551.7,
+        "cpu_ram_mb": 254.8,
+        "tok_per_sec": 46.91,
+        "pcie_mb_per_sec": 0.55,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 29,
+        "cpu_layers": 3,
+        "gpu_vram_mb": 2615.4,
+        "cpu_ram_mb": 191.1,
+        "tok_per_sec": 50.49,
+        "pcie_mb_per_sec": 0.59,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 30,
+        "cpu_layers": 2,
+        "gpu_vram_mb": 2679.1,
+        "cpu_ram_mb": 127.4,
+        "tok_per_sec": 54.67,
+        "pcie_mb_per_sec": 0.64,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 31,
+        "cpu_layers": 1,
+        "gpu_vram_mb": 2742.8,
+        "cpu_ram_mb": 63.7,
+        "tok_per_sec": 59.61,
+        "pcie_mb_per_sec": 0.7,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 32,
+        "cpu_layers": 0,
+        "gpu_vram_mb": 2806.5,
+        "cpu_ram_mb": 0.0,
+        "tok_per_sec": 65.53,
+        "pcie_mb_per_sec": 0.0,
+        "is_vram_feasible": true
+      }
+    ]
+  },
+  "Mistral-7B-v0.3": {
+    "model_name": "Mistral-7B-v0.3",
+    "quantization": "Q4_K_M",
+    "context_length": 2048,
+    "total_weights_mb": 3862.4,
+    "kv_cache_mb": 256.0,
+    "best_feasible_gpu_layers": 26,
+    "max_feasible_tok_s": 21.77,
+    "sweep_curve": [
+      {
+        "gpu_layers": 0,
+        "cpu_layers": 32,
+        "gpu_vram_mb": 0.0,
+        "cpu_ram_mb": 3862.4,
+        "tok_per_sec": 8.29,
+        "pcie_mb_per_sec": 0.0,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 1,
+        "cpu_layers": 31,
+        "gpu_vram_mb": 376.7,
+        "cpu_ram_mb": 3741.7,
+        "tok_per_sec": 8.49,
+        "pcie_mb_per_sec": 0.13,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 2,
+        "cpu_layers": 30,
+        "gpu_vram_mb": 497.4,
+        "cpu_ram_mb": 3621.0,
+        "tok_per_sec": 8.7,
+        "pcie_mb_per_sec": 0.14,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 3,
+        "cpu_layers": 29,
+        "gpu_vram_mb": 618.1,
+        "cpu_ram_mb": 3500.3,
+        "tok_per_sec": 8.92,
+        "pcie_mb_per_sec": 0.14,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 4,
+        "cpu_layers": 28,
+        "gpu_vram_mb": 738.8,
+        "cpu_ram_mb": 3379.6,
+        "tok_per_sec": 9.16,
+        "pcie_mb_per_sec": 0.14,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 5,
+        "cpu_layers": 27,
+        "gpu_vram_mb": 859.5,
+        "cpu_ram_mb": 3258.9,
+        "tok_per_sec": 9.41,
+        "pcie_mb_per_sec": 0.15,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 6,
+        "cpu_layers": 26,
+        "gpu_vram_mb": 980.2,
+        "cpu_ram_mb": 3138.2,
+        "tok_per_sec": 9.67,
+        "pcie_mb_per_sec": 0.15,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 7,
+        "cpu_layers": 25,
+        "gpu_vram_mb": 1100.9,
+        "cpu_ram_mb": 3017.5,
+        "tok_per_sec": 9.94,
+        "pcie_mb_per_sec": 0.16,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 8,
+        "cpu_layers": 24,
+        "gpu_vram_mb": 1221.6,
+        "cpu_ram_mb": 2896.8,
+        "tok_per_sec": 10.24,
+        "pcie_mb_per_sec": 0.16,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 9,
+        "cpu_layers": 23,
+        "gpu_vram_mb": 1342.3,
+        "cpu_ram_mb": 2776.1,
+        "tok_per_sec": 10.55,
+        "pcie_mb_per_sec": 0.16,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 10,
+        "cpu_layers": 22,
+        "gpu_vram_mb": 1463.0,
+        "cpu_ram_mb": 2655.4,
+        "tok_per_sec": 10.88,
+        "pcie_mb_per_sec": 0.17,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 11,
+        "cpu_layers": 21,
+        "gpu_vram_mb": 1583.7,
+        "cpu_ram_mb": 2534.7,
+        "tok_per_sec": 11.23,
+        "pcie_mb_per_sec": 0.18,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 12,
+        "cpu_layers": 20,
+        "gpu_vram_mb": 1704.4,
+        "cpu_ram_mb": 2414.0,
+        "tok_per_sec": 11.6,
+        "pcie_mb_per_sec": 0.18,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 13,
+        "cpu_layers": 19,
+        "gpu_vram_mb": 1825.1,
+        "cpu_ram_mb": 2293.3,
+        "tok_per_sec": 12.0,
+        "pcie_mb_per_sec": 0.19,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 14,
+        "cpu_layers": 18,
+        "gpu_vram_mb": 1945.8,
+        "cpu_ram_mb": 2172.6,
+        "tok_per_sec": 12.43,
+        "pcie_mb_per_sec": 0.19,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 15,
+        "cpu_layers": 17,
+        "gpu_vram_mb": 2066.5,
+        "cpu_ram_mb": 2051.9,
+        "tok_per_sec": 12.89,
+        "pcie_mb_per_sec": 0.2,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 16,
+        "cpu_layers": 16,
+        "gpu_vram_mb": 2187.2,
+        "cpu_ram_mb": 1931.2,
+        "tok_per_sec": 13.39,
+        "pcie_mb_per_sec": 0.21,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 17,
+        "cpu_layers": 15,
+        "gpu_vram_mb": 2307.9,
+        "cpu_ram_mb": 1810.5,
+        "tok_per_sec": 13.93,
+        "pcie_mb_per_sec": 0.22,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 18,
+        "cpu_layers": 14,
+        "gpu_vram_mb": 2428.6,
+        "cpu_ram_mb": 1689.8,
+        "tok_per_sec": 14.51,
+        "pcie_mb_per_sec": 0.23,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 19,
+        "cpu_layers": 13,
+        "gpu_vram_mb": 2549.3,
+        "cpu_ram_mb": 1569.1,
+        "tok_per_sec": 15.14,
+        "pcie_mb_per_sec": 0.24,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 20,
+        "cpu_layers": 12,
+        "gpu_vram_mb": 2670.0,
+        "cpu_ram_mb": 1448.4,
+        "tok_per_sec": 15.83,
+        "pcie_mb_per_sec": 0.25,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 21,
+        "cpu_layers": 11,
+        "gpu_vram_mb": 2790.7,
+        "cpu_ram_mb": 1327.7,
+        "tok_per_sec": 16.58,
+        "pcie_mb_per_sec": 0.26,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 22,
+        "cpu_layers": 10,
+        "gpu_vram_mb": 2911.4,
+        "cpu_ram_mb": 1207.0,
+        "tok_per_sec": 17.41,
+        "pcie_mb_per_sec": 0.27,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 23,
+        "cpu_layers": 9,
+        "gpu_vram_mb": 3032.1,
+        "cpu_ram_mb": 1086.3,
+        "tok_per_sec": 18.33,
+        "pcie_mb_per_sec": 0.29,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 24,
+        "cpu_layers": 8,
+        "gpu_vram_mb": 3152.8,
+        "cpu_ram_mb": 965.6,
+        "tok_per_sec": 19.35,
+        "pcie_mb_per_sec": 0.3,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 25,
+        "cpu_layers": 7,
+        "gpu_vram_mb": 3273.5,
+        "cpu_ram_mb": 844.9,
+        "tok_per_sec": 20.49,
+        "pcie_mb_per_sec": 0.32,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 26,
+        "cpu_layers": 6,
+        "gpu_vram_mb": 3394.2,
+        "cpu_ram_mb": 724.2,
+        "tok_per_sec": 21.77,
+        "pcie_mb_per_sec": 0.34,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 27,
+        "cpu_layers": 5,
+        "gpu_vram_mb": 3514.9,
+        "cpu_ram_mb": 603.5,
+        "tok_per_sec": 23.23,
+        "pcie_mb_per_sec": 0.36,
+        "is_vram_feasible": false
+      },
+      {
+        "gpu_layers": 28,
+        "cpu_layers": 4,
+        "gpu_vram_mb": 3635.6,
+        "cpu_ram_mb": 482.8,
+        "tok_per_sec": 24.89,
+        "pcie_mb_per_sec": 0.39,
+        "is_vram_feasible": false
+      },
+      {
+        "gpu_layers": 29,
+        "cpu_layers": 3,
+        "gpu_vram_mb": 3756.3,
+        "cpu_ram_mb": 362.1,
+        "tok_per_sec": 26.81,
+        "pcie_mb_per_sec": 0.42,
+        "is_vram_feasible": false
+      },
+      {
+        "gpu_layers": 30,
+        "cpu_layers": 2,
+        "gpu_vram_mb": 3877.0,
+        "cpu_ram_mb": 241.4,
+        "tok_per_sec": 29.05,
+        "pcie_mb_per_sec": 0.45,
+        "is_vram_feasible": false
+      },
+      {
+        "gpu_layers": 31,
+        "cpu_layers": 1,
+        "gpu_vram_mb": 3997.7,
+        "cpu_ram_mb": 120.7,
+        "tok_per_sec": 31.7,
+        "pcie_mb_per_sec": 0.5,
+        "is_vram_feasible": false
+      },
+      {
+        "gpu_layers": 32,
+        "cpu_layers": 0,
+        "gpu_vram_mb": 4118.4,
+        "cpu_ram_mb": 0.0,
+        "tok_per_sec": 34.88,
+        "pcie_mb_per_sec": 0.0,
+        "is_vram_feasible": false
+      }
+    ]
+  },
+  "Llama-3-8B": {
+    "model_name": "Llama-3-8B",
+    "quantization": "Q4_K_M",
+    "context_length": 2048,
+    "total_weights_mb": 4291.5,
+    "kv_cache_mb": 256.0,
+    "best_feasible_gpu_layers": 23,
+    "max_feasible_tok_s": 16.5,
+    "sweep_curve": [
+      {
+        "gpu_layers": 0,
+        "cpu_layers": 32,
+        "gpu_vram_mb": 0.0,
+        "cpu_ram_mb": 4291.5,
+        "tok_per_sec": 7.46,
+        "pcie_mb_per_sec": 0.0,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 1,
+        "cpu_layers": 31,
+        "gpu_vram_mb": 390.1,
+        "cpu_ram_mb": 4157.4,
+        "tok_per_sec": 7.64,
+        "pcie_mb_per_sec": 0.12,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 2,
+        "cpu_layers": 30,
+        "gpu_vram_mb": 524.2,
+        "cpu_ram_mb": 4023.3,
+        "tok_per_sec": 7.83,
+        "pcie_mb_per_sec": 0.12,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 3,
+        "cpu_layers": 29,
+        "gpu_vram_mb": 658.3,
+        "cpu_ram_mb": 3889.2,
+        "tok_per_sec": 8.03,
+        "pcie_mb_per_sec": 0.13,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 4,
+        "cpu_layers": 28,
+        "gpu_vram_mb": 792.4,
+        "cpu_ram_mb": 3755.1,
+        "tok_per_sec": 8.24,
+        "pcie_mb_per_sec": 0.13,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 5,
+        "cpu_layers": 27,
+        "gpu_vram_mb": 926.6,
+        "cpu_ram_mb": 3621.0,
+        "tok_per_sec": 8.47,
+        "pcie_mb_per_sec": 0.13,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 6,
+        "cpu_layers": 26,
+        "gpu_vram_mb": 1060.7,
+        "cpu_ram_mb": 3486.9,
+        "tok_per_sec": 8.7,
+        "pcie_mb_per_sec": 0.14,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 7,
+        "cpu_layers": 25,
+        "gpu_vram_mb": 1194.8,
+        "cpu_ram_mb": 3352.8,
+        "tok_per_sec": 8.95,
+        "pcie_mb_per_sec": 0.14,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 8,
+        "cpu_layers": 24,
+        "gpu_vram_mb": 1328.9,
+        "cpu_ram_mb": 3218.7,
+        "tok_per_sec": 9.21,
+        "pcie_mb_per_sec": 0.14,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 9,
+        "cpu_layers": 23,
+        "gpu_vram_mb": 1463.0,
+        "cpu_ram_mb": 3084.5,
+        "tok_per_sec": 9.49,
+        "pcie_mb_per_sec": 0.15,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 10,
+        "cpu_layers": 22,
+        "gpu_vram_mb": 1597.1,
+        "cpu_ram_mb": 2950.4,
+        "tok_per_sec": 9.79,
+        "pcie_mb_per_sec": 0.15,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 11,
+        "cpu_layers": 21,
+        "gpu_vram_mb": 1731.2,
+        "cpu_ram_mb": 2816.3,
+        "tok_per_sec": 10.11,
+        "pcie_mb_per_sec": 0.16,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 12,
+        "cpu_layers": 20,
+        "gpu_vram_mb": 1865.3,
+        "cpu_ram_mb": 2682.2,
+        "tok_per_sec": 10.44,
+        "pcie_mb_per_sec": 0.16,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 13,
+        "cpu_layers": 19,
+        "gpu_vram_mb": 1999.4,
+        "cpu_ram_mb": 2548.1,
+        "tok_per_sec": 10.8,
+        "pcie_mb_per_sec": 0.17,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 14,
+        "cpu_layers": 18,
+        "gpu_vram_mb": 2133.5,
+        "cpu_ram_mb": 2414.0,
+        "tok_per_sec": 11.19,
+        "pcie_mb_per_sec": 0.17,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 15,
+        "cpu_layers": 17,
+        "gpu_vram_mb": 2267.7,
+        "cpu_ram_mb": 2279.9,
+        "tok_per_sec": 11.61,
+        "pcie_mb_per_sec": 0.18,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 16,
+        "cpu_layers": 16,
+        "gpu_vram_mb": 2401.8,
+        "cpu_ram_mb": 2145.8,
+        "tok_per_sec": 12.05,
+        "pcie_mb_per_sec": 0.19,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 17,
+        "cpu_layers": 15,
+        "gpu_vram_mb": 2535.9,
+        "cpu_ram_mb": 2011.7,
+        "tok_per_sec": 12.54,
+        "pcie_mb_per_sec": 0.2,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 18,
+        "cpu_layers": 14,
+        "gpu_vram_mb": 2670.0,
+        "cpu_ram_mb": 1877.5,
+        "tok_per_sec": 13.06,
+        "pcie_mb_per_sec": 0.2,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 19,
+        "cpu_layers": 13,
+        "gpu_vram_mb": 2804.1,
+        "cpu_ram_mb": 1743.4,
+        "tok_per_sec": 13.63,
+        "pcie_mb_per_sec": 0.21,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 20,
+        "cpu_layers": 12,
+        "gpu_vram_mb": 2938.2,
+        "cpu_ram_mb": 1609.3,
+        "tok_per_sec": 14.25,
+        "pcie_mb_per_sec": 0.22,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 21,
+        "cpu_layers": 11,
+        "gpu_vram_mb": 3072.3,
+        "cpu_ram_mb": 1475.2,
+        "tok_per_sec": 14.93,
+        "pcie_mb_per_sec": 0.23,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 22,
+        "cpu_layers": 10,
+        "gpu_vram_mb": 3206.4,
+        "cpu_ram_mb": 1341.1,
+        "tok_per_sec": 15.68,
+        "pcie_mb_per_sec": 0.24,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 23,
+        "cpu_layers": 9,
+        "gpu_vram_mb": 3340.5,
+        "cpu_ram_mb": 1207.0,
+        "tok_per_sec": 16.5,
+        "pcie_mb_per_sec": 0.26,
+        "is_vram_feasible": true
+      },
+      {
+        "gpu_layers": 24,
+        "cpu_layers": 8,
+        "gpu_vram_mb": 3474.7,
+        "cpu_ram_mb": 1072.9,
+        "tok_per_sec": 17.42,
+        "pcie_mb_per_sec": 0.27,
+        "is_vram_feasible": false
+      },
+      {
+        "gpu_layers": 25,
+        "cpu_layers": 7,
+        "gpu_vram_mb": 3608.8,
+        "cpu_ram_mb": 938.8,
+        "tok_per_sec": 18.45,
+        "pcie_mb_per_sec": 0.29,
+        "is_vram_feasible": false
+      },
+      {
+        "gpu_layers": 26,
+        "cpu_layers": 6,
+        "gpu_vram_mb": 3742.9,
+        "cpu_ram_mb": 804.7,
+        "tok_per_sec": 19.6,
+        "pcie_mb_per_sec": 0.31,
+        "is_vram_feasible": false
+      },
+      {
+        "gpu_layers": 27,
+        "cpu_layers": 5,
+        "gpu_vram_mb": 3877.0,
+        "cpu_ram_mb": 670.6,
+        "tok_per_sec": 20.92,
+        "pcie_mb_per_sec": 0.33,
+        "is_vram_feasible": false
+      },
+      {
+        "gpu_layers": 28,
+        "cpu_layers": 4,
+        "gpu_vram_mb": 4011.1,
+        "cpu_ram_mb": 536.4,
+        "tok_per_sec": 22.41,
+        "pcie_mb_per_sec": 0.35,
+        "is_vram_feasible": false
+      },
+      {
+        "gpu_layers": 29,
+        "cpu_layers": 3,
+        "gpu_vram_mb": 4145.2,
+        "cpu_ram_mb": 402.3,
+        "tok_per_sec": 24.14,
+        "pcie_mb_per_sec": 0.38,
+        "is_vram_feasible": false
+      },
+      {
+        "gpu_layers": 30,
+        "cpu_layers": 2,
+        "gpu_vram_mb": 4279.3,
+        "cpu_ram_mb": 268.2,
+        "tok_per_sec": 26.16,
+        "pcie_mb_per_sec": 0.41,
+        "is_vram_feasible": false
+      },
+      {
+        "gpu_layers": 31,
+        "cpu_layers": 1,
+        "gpu_vram_mb": 4413.4,
+        "cpu_ram_mb": 134.1,
+        "tok_per_sec": 28.55,
+        "pcie_mb_per_sec": 0.45,
+        "is_vram_feasible": false
+      },
+      {
+        "gpu_layers": 32,
+        "cpu_layers": 0,
+        "gpu_vram_mb": 4547.5,
+        "cpu_ram_mb": 0.0,
+        "tok_per_sec": 31.42,
+        "pcie_mb_per_sec": 0.0,
+        "is_vram_feasible": false
+      }
+    ]
+  }
+}

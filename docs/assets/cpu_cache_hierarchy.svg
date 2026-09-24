@@ -1,0 +1,44 @@
+<svg width="720" height="340" xmlns="http://www.w3.org/2000/svg" style="background:#1e1e2e; font-family:sans-serif; border-radius:8px;">
+<text x="360" y="28" fill="#cdd6f4" font-size="16" font-weight="bold" text-anchor="middle">AMD Ryzen 7 4800HS (Zen 2) Cache Latency Hierarchy</text>
+<line x1="80" y1="50" x2="80" y2="280" stroke="#45475a" stroke-width="2"/>
+<line x1="80" y1="280" x2="680" y2="280" stroke="#45475a" stroke-width="2"/>
+<line x1="80" y1="278.5625" x2="680" y2="278.5625" stroke="#313244" stroke-dasharray="4"/>
+<text x="70" y="282.5625" fill="#a6adc8" font-size="11" text-anchor="end">1ns</text>
+<line x1="80" y1="265.625" x2="680" y2="265.625" stroke="#313244" stroke-dasharray="4"/>
+<text x="70" y="269.625" fill="#a6adc8" font-size="11" text-anchor="end">10ns</text>
+<line x1="80" y1="208.125" x2="680" y2="208.125" stroke="#313244" stroke-dasharray="4"/>
+<text x="70" y="212.125" fill="#a6adc8" font-size="11" text-anchor="end">50ns</text>
+<line x1="80" y1="136.25" x2="680" y2="136.25" stroke="#313244" stroke-dasharray="4"/>
+<text x="70" y="140.25" fill="#a6adc8" font-size="11" text-anchor="end">100ns</text>
+<line x1="80" y1="64.375" x2="680" y2="64.375" stroke="#313244" stroke-dasharray="4"/>
+<text x="70" y="68.375" fill="#a6adc8" font-size="11" text-anchor="end">150ns</text>
+<polyline points="80.0,278.5 113.3,278.5 146.7,278.6 180.0,278.3 213.3,277.4 246.7,275.3 280.0,275.8 313.3,274.4 346.7,275.5 380.0,273.8 413.3,267.1 446.7,262.8 480.0,251.7 513.3,148.1 546.7,141.4 580.0,134.0 613.3,97.4 646.7,66.7 680.0,93.2" fill="none" stroke="#89b4fa" stroke-width="3"/>
+<circle cx="80.0" cy="278.5" r="4" fill="#a6e3a1"/>
+<text x="80.0" y="300" fill="#a6adc8" font-size="11" text-anchor="middle">4K</text>
+<circle cx="113.3" cy="278.5" r="4" fill="#a6e3a1"/>
+<circle cx="146.7" cy="278.6" r="4" fill="#a6e3a1"/>
+<circle cx="180.0" cy="278.3" r="4" fill="#a6e3a1"/>
+<circle cx="213.3" cy="277.4" r="4" fill="#a6e3a1"/>
+<text x="213.3" y="300" fill="#a6adc8" font-size="11" text-anchor="middle">32K</text>
+<circle cx="246.7" cy="275.3" r="4" fill="#f9e2af"/>
+<circle cx="280.0" cy="275.8" r="4" fill="#f9e2af"/>
+<circle cx="313.3" cy="274.4" r="4" fill="#f9e2af"/>
+<circle cx="346.7" cy="275.5" r="4" fill="#f9e2af"/>
+<circle cx="380.0" cy="273.8" r="4" fill="#f9e2af"/>
+<text x="380.0" y="300" fill="#a6adc8" font-size="11" text-anchor="middle">512K</text>
+<circle cx="413.3" cy="267.1" r="4" fill="#fab387"/>
+<circle cx="446.7" cy="262.8" r="4" fill="#fab387"/>
+<circle cx="480.0" cy="251.7" r="4" fill="#fab387"/>
+<circle cx="513.3" cy="148.1" r="4" fill="#fab387"/>
+<circle cx="546.7" cy="141.4" r="4" fill="#fab387"/>
+<text x="546.7" y="300" fill="#a6adc8" font-size="11" text-anchor="middle">8M</text>
+<circle cx="580.0" cy="134.0" r="4" fill="#f38ba8"/>
+<circle cx="613.3" cy="97.4" r="4" fill="#f38ba8"/>
+<circle cx="646.7" cy="66.7" r="4" fill="#f38ba8"/>
+<circle cx="680.0" cy="93.2" r="4" fill="#f38ba8"/>
+<text x="680.0" y="300" fill="#a6adc8" font-size="11" text-anchor="middle">64M</text>
+<text x="670" y="70" fill="#a6e3a1" font-size="11" text-anchor="end">● L1 (~1ns)</text>
+<text x="670" y="85" fill="#f9e2af" font-size="11" text-anchor="end">● L2 (~3ns)</text>
+<text x="670" y="100" fill="#fab387" font-size="11" text-anchor="end">● L3 (~12ns)</text>
+<text x="670" y="115" fill="#f38ba8" font-size="11" text-anchor="end">● RAM (~130ns)</text>
+</svg>

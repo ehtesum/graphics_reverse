@@ -1,0 +1,14 @@
+{
+  "hardware": "NVIDIA GeForce GTX 1650 (TU117)",
+  "total_cuda_cores": 896,
+  "active_threads": 28672,
+  "fp32": {
+    "time_ms": 87.82,
+    "sustained_tflops": 3.134
+  },
+  "fp16x2": {
+    "time_ms": 87.136,
+    "sustained_tflops": 6.318
+  },
+  "fp16_speedup_ratio": 2.02
+}

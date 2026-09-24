@@ -1,0 +1,106 @@
+[
+  {
+    "label": "256 uops",
+    "uops": 256,
+    "code_bytes": 768,
+    "cpi": 0.219739,
+    "ipc": 4.55086,
+    "subsystem": "Op-Cache Hit (4K Entry Max)"
+  },
+  {
+    "label": "512 uops",
+    "uops": 512,
+    "code_bytes": 1536,
+    "cpi": 0.196131,
+    "ipc": 5.09864,
+    "subsystem": "Op-Cache Hit (4K Entry Max)"
+  },
+  {
+    "label": "1024 uops",
+    "uops": 1024,
+    "code_bytes": 3072,
+    "cpi": 0.1951,
+    "ipc": 5.12558,
+    "subsystem": "Op-Cache Hit (4K Entry Max)"
+  },
+  {
+    "label": "2048 uops",
+    "uops": 2048,
+    "code_bytes": 6144,
+    "cpi": 0.186071,
+    "ipc": 5.37428,
+    "subsystem": "Op-Cache Hit (4K Entry Max)"
+  },
+  {
+    "label": "3072 uops",
+    "uops": 3072,
+    "code_bytes": 9216,
+    "cpi": 0.183042,
+    "ipc": 5.46322,
+    "subsystem": "Op-Cache Hit (4K Entry Max)"
+  },
+  {
+    "label": "4096 uops",
+    "uops": 4096,
+    "code_bytes": 12288,
+    "cpi": 0.18385,
+    "ipc": 5.43922,
+    "subsystem": "Op-Cache Hit (4K Entry Max)"
+  },
+  {
+    "label": "5120 uops",
+    "uops": 5120,
+    "code_bytes": 15360,
+    "cpi": 0.185957,
+    "ipc": 5.37759,
+    "subsystem": "Op-Cache Overflow -> L1I Hit (32 KB L1I)"
+  },
+  {
+    "label": "8192 uops",
+    "uops": 8192,
+    "code_bytes": 24576,
+    "cpi": 0.179477,
+    "ipc": 5.57175,
+    "subsystem": "Op-Cache Overflow -> L1I Hit (32 KB L1I)"
+  },
+  {
+    "label": "12288 uops",
+    "uops": 12288,
+    "code_bytes": 36864,
+    "cpi": 0.242202,
+    "ipc": 4.12879,
+    "subsystem": "L1I Overflow -> L2 Fetch (512 KB L2)"
+  },
+  {
+    "label": "16384 uops",
+    "uops": 16384,
+    "code_bytes": 49152,
+    "cpi": 0.177898,
+    "ipc": 5.62119,
+    "subsystem": "L1I Overflow -> L2 Fetch (512 KB L2)"
+  },
+  {
+    "label": "24576 uops",
+    "uops": 24576,
+    "code_bytes": 73728,
+    "cpi": 0.177001,
+    "ipc": 5.6497,
+    "subsystem": "L1I Overflow -> L2 Fetch (512 KB L2)"
+  },
+  {
+    "label": "32768 uops",
+    "uops": 32768,
+    "code_bytes": 98304,
+    "cpi": 0.177078,
+    "ipc": 5.64723,
+    "subsystem": "L1I Overflow -> L2 Fetch (512 KB L2)"
+  },
+  {
+    "label": "65536 uops",
+    "uops": 65536,
+    "code_bytes": 196608,
+    "cpi": 0.176276,
+    "ipc": 5.67293,
+    "subsystem": "L1I Overflow -> L2 Fetch (512 KB L2)"
+  }
+]

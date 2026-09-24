@@ -1,0 +1,40 @@
+
+.version 7.5
+.target sm_75
+.address_size 64
+
+.visible .entry carveout_chase_kernel(
+    .param .u64 d_ptr,
+    .param .u32 iters,
+    .param .u64 d_out_cycles
+)
+{
+    .reg .u64 %ptr, %out_ptr, %t0, %t1, %diff;
+    .reg .u32 %n_iters, %i;
+    .reg .pred %p_loop;
+
+    ld.param.u64 %ptr, [d_ptr];
+    ld.param.u32 %n_iters, [iters];
+    ld.param.u64 %out_ptr, [d_out_cycles];
+
+    bar.sync 0;
+    mov.u64 %t0, %clock64;
+    mov.u32 %i, 0;
+
+LOOP_CHASE:
+    setp.ge.u32 %p_loop, %i, %n_iters;
+    @%p_loop bra DONE_CHASE;
+
+    ld.global.ca.u64 %ptr, [%ptr];
+    add.u32 %i, %i, 1;
+    bra LOOP_CHASE;
+
+DONE_CHASE:
+    mov.u64 %t1, %clock64;
+    sub.u64 %diff, %t1, %t0;
+
+    st.global.u64 [%out_ptr], %diff;
+    add.u64 %out_ptr, %out_ptr, 8;
+    st.global.u64 [%out_ptr], %ptr;
+    ret;
+}

@@ -1,0 +1,70 @@
+
+.version 7.5
+.target sm_75
+.address_size 64
+
+.visible .entry PointerChaseKernel_ca(
+    .param .u64 param_arr,
+    .param .u32 param_iters,
+    .param .u64 param_cycles
+)
+{
+    .reg .u32 %r1, %r2;
+    .reg .u64 %rd1, %rd2, %rd4, %rd5, %rd6, %rd10;
+    .reg .pred %p1;
+
+    ld.param.u64 %rd1, [param_arr];
+    ld.param.u32 %r1, [param_iters];
+    ld.param.u64 %rd10, [param_cycles];
+
+    mov.u64 %rd2, %rd1;
+    mov.u32 %r2, 0;
+
+    bar.sync 0;
+    mov.u64 %rd4, %clock64;
+
+LOOP_CA:
+    ld.global.ca.u64 %rd2, [%rd2];
+    add.u32 %r2, %r2, 1;
+    setp.lt.u32 %p1, %r2, %r1;
+    @%p1 bra LOOP_CA;
+
+    mov.u64 %rd5, %clock64;
+    sub.u64 %rd6, %rd5, %rd4;
+    st.global.u64 [%rd10], %rd6;
+    st.global.u64 [%rd1], %rd2;
+    ret;
+}
+
+.visible .entry PointerChaseKernel_cg(
+    .param .u64 param_arr,
+    .param .u32 param_iters,
+    .param .u64 param_cycles
+)
+{
+    .reg .u32 %r1, %r2;
+    .reg .u64 %rd1, %rd2, %rd4, %rd5, %rd6, %rd10;
+    .reg .pred %p1;
+
+    ld.param.u64 %rd1, [param_arr];
+    ld.param.u32 %r1, [param_iters];
+    ld.param.u64 %rd10, [param_cycles];
+
+    mov.u64 %rd2, %rd1;
+    mov.u32 %r2, 0;
+
+    bar.sync 0;
+    mov.u64 %rd4, %clock64;
+
+LOOP_CG:
+    ld.global.cg.u64 %rd2, [%rd2];
+    add.u32 %r2, %r2, 1;
+    setp.lt.u32 %p1, %r2, %r1;
+    @%p1 bra LOOP_CG;
+
+    mov.u64 %rd5, %clock64;
+    sub.u64 %rd6, %rd5, %rd4;
+    st.global.u64 [%rd10], %rd6;
+    st.global.u64 [%rd1], %rd2;
+    ret;
+}

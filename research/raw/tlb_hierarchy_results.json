@@ -1,0 +1,80 @@
+[
+  {
+    "pages": 8,
+    "address_space_kb": 32,
+    "cycles_per_access": 2.77861,
+    "subsystem": "D-TLB1 Hit (64 entries, <1c penalty)"
+  },
+  {
+    "pages": 16,
+    "address_space_kb": 64,
+    "cycles_per_access": 8.88432,
+    "subsystem": "D-TLB1 Hit (64 entries, <1c penalty)"
+  },
+  {
+    "pages": 32,
+    "address_space_kb": 128,
+    "cycles_per_access": 8.93902,
+    "subsystem": "D-TLB1 Hit (64 entries, <1c penalty)"
+  },
+  {
+    "pages": 64,
+    "address_space_kb": 256,
+    "cycles_per_access": 8.88775,
+    "subsystem": "D-TLB1 Hit (64 entries, <1c penalty)"
+  },
+  {
+    "pages": 128,
+    "address_space_kb": 512,
+    "cycles_per_access": 11.6553,
+    "subsystem": "D-TLB1 Miss -> D-TLB2 Hit (2K entries, ~7-8c)"
+  },
+  {
+    "pages": 256,
+    "address_space_kb": 1024,
+    "cycles_per_access": 25.7276,
+    "subsystem": "D-TLB1 Miss -> D-TLB2 Hit (2K entries, ~7-8c)"
+  },
+  {
+    "pages": 512,
+    "address_space_kb": 2048,
+    "cycles_per_access": 26.8332,
+    "subsystem": "D-TLB1 Miss -> D-TLB2 Hit (2K entries, ~7-8c)"
+  },
+  {
+    "pages": 1024,
+    "address_space_kb": 4096,
+    "cycles_per_access": 85.2617,
+    "subsystem": "D-TLB1 Miss -> D-TLB2 Hit (2K entries, ~7-8c)"
+  },
+  {
+    "pages": 2048,
+    "address_space_kb": 8192,
+    "cycles_per_access": 222.392,
+    "subsystem": "D-TLB1 Miss -> D-TLB2 Hit (2K entries, ~7-8c)"
+  },
+  {
+    "pages": 3072,
+    "address_space_kb": 12288,
+    "cycles_per_access": 220.001,
+    "subsystem": "D-TLB2 Miss -> Hardware Page Table Walk in DRAM"
+  },
+  {
+    "pages": 4096,
+    "address_space_kb": 16384,
+    "cycles_per_access": 232.597,
+    "subsystem": "D-TLB2 Miss -> Hardware Page Table Walk in DRAM"
+  },
+  {
+    "pages": 8192,
+    "address_space_kb": 32768,
+    "cycles_per_access": 236.207,
+    "subsystem": "D-TLB2 Miss -> Hardware Page Table Walk in DRAM"
+  },
+  {
+    "pages": 16384,
+    "address_space_kb": 65536,
+    "cycles_per_access": 259.832,
+    "subsystem": "D-TLB2 Miss -> Hardware Page Table Walk in DRAM"
+  }
+]

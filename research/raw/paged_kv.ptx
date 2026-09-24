@@ -1,0 +1,111 @@
+
+.version 7.5
+.target sm_75
+.address_size 64
+
+// 1. Contiguous KV Cache Traversal Kernel
+.visible .entry ContiguousKVRead(
+    .param .u64 d_kv,
+    .param .u64 d_out,
+    .param .u32 total_vectors_128b
+) {
+    .reg .u64 %kv, %out, %kv_addr;
+    .reg .u32 %n, %tidx, %ntidx, %bidx, %nbidx, %gidx, %stride, %r_offset;
+    .reg .u64 %offset64;
+    .reg .b32 %v0, %v1, %v2, %v3, %accum;
+    .reg .pred %p0;
+
+    ld.param.u64 %kv, [d_kv];
+    ld.param.u64 %out, [d_out];
+    ld.param.u32 %n, [total_vectors_128b];
+
+    mov.u32 %tidx, %tid.x;
+    mov.u32 %ntidx, %ntid.x;
+    mov.u32 %bidx, %ctaid.x;
+    mov.u32 %nbidx, %nctaid.x;
+
+    mad.lo.u32 %gidx, %bidx, %ntidx, %tidx;
+    mul.lo.u32 %stride, %nbidx, %ntidx;
+    mov.b32 %accum, 0;
+
+    $loop_c:
+    setp.ge.u32 %p0, %gidx, %n;
+    @%p0 bra $exit_c;
+
+    shl.b32 %r_offset, %gidx, 4; // 16 bytes per vector (128-bit)
+    cvt.u64.u32 %offset64, %r_offset;
+    add.u64 %kv_addr, %kv, %offset64;
+
+    ld.global.v4.b32 {%v0, %v1, %v2, %v3}, [%kv_addr];
+    add.u32 %accum, %accum, %v0;
+
+    add.u32 %gidx, %gidx, %stride;
+    bra $loop_c;
+
+    $exit_c:
+    setp.eq.u32 %p0, %tidx, 0;
+    @%p0 st.global.b32 [%out], %accum;
+    ret;
+}
+
+// 2. Paged KV Cache Traversal Kernel (Block table indirection)
+.visible .entry PagedKVRead(
+    .param .u64 d_pool,
+    .param .u64 d_block_table,
+    .param .u64 d_out,
+    .param .u32 total_vectors_128b,
+    .param .u32 vecs_per_block
+) {
+    .reg .u64 %pool, %table, %out, %tbl_addr, %phys_addr, %offset64;
+    .reg .u32 %n, %v_per_blk, %tidx, %ntidx, %bidx, %nbidx, %gidx, %stride;
+    .reg .u32 %blk_idx, %blk_offset, %phys_blk_id, %r_offset;
+    .reg .b32 %v0, %v1, %v2, %v3, %accum;
+    .reg .pred %p0;
+
+    ld.param.u64 %pool, [d_pool];
+    ld.param.u64 %table, [d_block_table];
+    ld.param.u64 %out, [d_out];
+    ld.param.u32 %n, [total_vectors_128b];
+    ld.param.u32 %v_per_blk, [vecs_per_block];
+
+    mov.u32 %tidx, %tid.x;
+    mov.u32 %ntidx, %ntid.x;
+    mov.u32 %bidx, %ctaid.x;
+    mov.u32 %nbidx, %nctaid.x;
+
+    mad.lo.u32 %gidx, %bidx, %ntidx, %tidx;
+    mul.lo.u32 %stride, %nbidx, %ntidx;
+    mov.b32 %accum, 0;
+
+    $loop_p:
+    setp.ge.u32 %p0, %gidx, %n;
+    @%p0 bra $exit_p;
+
+    // Logical token vector -> block index & offset
+    div.u32 %blk_idx, %gidx, %v_per_blk;
+    rem.u32 %blk_offset, %gidx, %v_per_blk;
+
+    // Indirection: read physical block ID from block table
+    shl.b32 %r_offset, %blk_idx, 2; // 4 bytes per table entry
+    cvt.u64.u32 %offset64, %r_offset;
+    add.u64 %tbl_addr, %table, %offset64;
+    ld.global.u32 %phys_blk_id, [%tbl_addr];
+
+    // Compute physical address in pool:
+    // byte_offset = (phys_blk_id * vecs_per_block + blk_offset) * 16 bytes
+    mad.lo.u32 %r_offset, %phys_blk_id, %v_per_blk, %blk_offset;
+    shl.b32 %r_offset, %r_offset, 4;
+    cvt.u64.u32 %offset64, %r_offset;
+    add.u64 %phys_addr, %pool, %offset64;
+
+    ld.global.v4.b32 {%v0, %v1, %v2, %v3}, [%phys_addr];
+    add.u32 %accum, %accum, %v0;
+
+    add.u32 %gidx, %gidx, %stride;
+    bra $loop_p;
+
+    $exit_p:
+    setp.eq.u32 %p0, %tidx, 0;
+    @%p0 st.global.b32 [%out], %accum;
+    ret;
+}

@@ -1,0 +1,57 @@
+{
+  "gpu": "NVIDIA GeForce GTX 1650 (TU117 Turing SM 7.5)",
+  "memory": "128-bit GDDR6 @ 192 GB/s peak",
+  "stride_coalescing_sweep": [
+    {
+      "stride": 1,
+      "latency_ms": 0.8575648307800293,
+      "effective_throughput_gb_s": 145.76157453460598
+    },
+    {
+      "stride": 2,
+      "latency_ms": 1.1315296173095704,
+      "effective_throughput_gb_s": 110.46993210589714
+    },
+    {
+      "stride": 4,
+      "latency_ms": 2.1201343536376953,
+      "effective_throughput_gb_s": 58.95852769213746
+    },
+    {
+      "stride": 8,
+      "latency_ms": 3.852492904663086,
+      "effective_throughput_gb_s": 32.44652309383856
+    },
+    {
+      "stride": 16,
+      "latency_ms": 7.261955261230469,
+      "effective_throughput_gb_s": 17.212995054835954
+    },
+    {
+      "stride": 32,
+      "latency_ms": 7.172281646728516,
+      "effective_throughput_gb_s": 17.42820571707695
+    },
+    {
+      "stride": 64,
+      "latency_ms": 7.208140563964844,
+      "effective_throughput_gb_s": 17.341504218841656
+    },
+    {
+      "stride": 128,
+      "latency_ms": 7.198016357421875,
+      "effective_throughput_gb_s": 17.36589551802178
+    },
+    {
+      "stride": 256,
+      "latency_ms": 15.008761596679687,
+      "effective_throughput_gb_s": 8.328468621132147
+    }
+  ],
+  "tiled_2d_transpose": {
+    "matrix_dim": "4096x4096",
+    "latency_ms": 0.9456128120422364,
+    "throughput_gb_s": 132.18941030424278,
+    "speedup_vs_stride32": 7.584797451335888
+  }
+}

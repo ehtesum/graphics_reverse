@@ -1,0 +1,50 @@
+{
+  "host_cpu": "AMD Ryzen 7 4800HS",
+  "gpu": "NVIDIA GeForce GTX 1650",
+  "interconnect": "PCIe 3.0 x8",
+  "os": "Windows 11 Build 22631 (WDDM 2.7)",
+  "results": [
+    {
+      "size_kb": 64,
+      "alloc_host_latency_ms": 0.8013998158276081,
+      "register_host_latency_ms": 0.794299878180027,
+      "pinned_h2d_bandwidth_gb_s": 0.3770250425052235,
+      "registered_h2d_bandwidth_gb_s": 0.8737201661846655
+    },
+    {
+      "size_kb": 1024,
+      "alloc_host_latency_ms": 0.6571998819708824,
+      "register_host_latency_ms": 0.2856999635696411,
+      "pinned_h2d_bandwidth_gb_s": 5.890346705253075,
+      "registered_h2d_bandwidth_gb_s": 5.890346705253075
+    },
+    {
+      "size_kb": 4096,
+      "alloc_host_latency_ms": 0.9274999611079693,
+      "register_host_latency_ms": 2.8636001516133547,
+      "pinned_h2d_bandwidth_gb_s": 6.496431116075211,
+      "registered_h2d_bandwidth_gb_s": 6.49610966626405
+    },
+    {
+      "size_kb": 16384,
+      "alloc_host_latency_ms": 3.9729001000523567,
+      "register_host_latency_ms": 0.6480000447481871,
+      "pinned_h2d_bandwidth_gb_s": 6.165990531672088,
+      "registered_h2d_bandwidth_gb_s": 6.522211894908673
+    },
+    {
+      "size_kb": 65536,
+      "alloc_host_latency_ms": 13.785699848085642,
+      "register_host_latency_ms": 0.6623999215662479,
+      "pinned_h2d_bandwidth_gb_s": 6.552473631122581,
+      "registered_h2d_bandwidth_gb_s": 6.234639643240058
+    },
+    {
+      "size_kb": 131072,
+      "alloc_host_latency_ms": 26.62439993582666,
+      "register_host_latency_ms": 0.9095999412238598,
+      "pinned_h2d_bandwidth_gb_s": 6.6166440742991774,
+      "registered_h2d_bandwidth_gb_s": 6.430072348300675
+    }
+  ]
+}

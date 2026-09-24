@@ -1,0 +1,62 @@
+.version 7.5
+.target sm_75
+.address_size 64
+
+.visible .entry _Z4testPf(
+    .param .u64 _Z4testPf_param_0
+)
+{
+    .reg .b32   %r<5>;
+    .reg .f32   %f<35>;
+    .reg .b64   %rd<5>;
+
+    ld.param.u64    %rd1, [_Z4testPf_param_0];
+    mov.u32         %r1, %ctaid.x;
+    mov.u32         %r2, %ntid.x;
+    mov.u32         %r3, %tid.x;
+    mad.lo.s32      %r4, %r1, %r2, %r3;
+    mul.wide.s32    %rd2, %r4, 4;
+    add.s64         %rd3, %rd1, %rd2;
+
+    // Load baseline value
+    ld.global.f32   %f0, [%rd3];
+
+    // Compute 16 live values simultaneously
+    add.f32         %f1,  %f0, 0f3F800000; // + 1.0f
+    add.f32         %f2,  %f0, 0f40000000; // + 2.0f
+    add.f32         %f3,  %f0, 0f40400000; // + 3.0f
+    add.f32         %f4,  %f0, 0f40800000; // + 4.0f
+    add.f32         %f5,  %f0, 0f40A00000; // + 5.0f
+    add.f32         %f6,  %f0, 0f40C00000; // + 6.0f
+    add.f32         %f7,  %f0, 0f40E00000; // + 7.0f
+    add.f32         %f8,  %f0, 0f41000000; // + 8.0f
+    add.f32         %f9,  %f0, 0f41100000; // + 9.0f
+    add.f32         %f10, %f0, 0f41200000; // + 10.0f
+    add.f32         %f11, %f0, 0f41300000; // + 11.0f
+    add.f32         %f12, %f0, 0f41400000; // + 12.0f
+    add.f32         %f13, %f0, 0f41500000; // + 13.0f
+    add.f32         %f14, %f0, 0f41600000; // + 14.0f
+    add.f32         %f15, %f0, 0f41700000; // + 15.0f
+    add.f32         %f16, %f0, 0f41800000; // + 16.0f
+
+    // Accumulate all 16 values so they remain simultaneously live
+    add.f32         %f17, %f1,  %f2;
+    add.f32         %f18, %f17, %f3;
+    add.f32         %f19, %f18, %f4;
+    add.f32         %f20, %f19, %f5;
+    add.f32         %f21, %f20, %f6;
+    add.f32         %f22, %f21, %f7;
+    add.f32         %f23, %f22, %f8;
+    add.f32         %f24, %f23, %f9;
+    add.f32         %f25, %f24, %f10;
+    add.f32         %f26, %f25, %f11;
+    add.f32         %f27, %f26, %f12;
+    add.f32         %f28, %f27, %f13;
+    add.f32         %f29, %f28, %f14;
+    add.f32         %f30, %f29, %f15;
+    add.f32         %f31, %f30, %f16;
+
+    // Store final accumulated result
+    st.global.f32   [%rd3], %f31;
+    ret;
+}

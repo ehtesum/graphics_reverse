@@ -1,0 +1,10 @@
+{
+  "device": "NVIDIA GeForce GTX 1650",
+  "async_engine_count": 131072,
+  "compute_only_ms": 3.45,
+  "copy_only_ms": 10.65,
+  "theoretical_sequential_ms": 14.1,
+  "concurrent_ms": 10.69,
+  "savings_ms": 3.41,
+  "concurrency_efficiency_pct": 98.9
+}

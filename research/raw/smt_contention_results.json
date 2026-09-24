@@ -1,0 +1,14 @@
+{
+  "cpu": "AMD Ryzen 7 4800HS (Zen 2 Renoir)",
+  "benchmark": "Zen 2 SMT Core Execution Unit Contention & Port Sharing",
+  "results": {
+    "single_thread_peak_fma_gflops": 203.493,
+    "independent_cores_fma_aggregate_gflops": 413.062,
+    "smt_siblings_fma_per_thread_gflops": 129.433,
+    "smt_siblings_fma_aggregate_gflops": 261.463,
+    "smt_fma_per_thread_slowdown_ratio": 1.57219,
+    "single_thread_int_alu_ms": 497.334,
+    "smt_siblings_int_alu_ms": 562.546,
+    "smt_int_alu_per_thread_slowdown_ratio": 1.13112
+  }
+}

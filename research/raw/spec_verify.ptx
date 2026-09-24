@@ -1,0 +1,69 @@
+
+.version 7.5
+.target sm_75
+.address_size 64
+
+.visible .entry spec_verify_kernel(
+    .param .u64 d_target_logits,
+    .param .u64 d_draft_tokens,
+    .param .u64 d_draft_probs,
+    .param .u64 d_accept_mask,
+    .param .u32 vocab_size,
+    .param .u32 K_draft
+)
+{
+    .reg .u64 %logits_ptr, %tokens_ptr, %probs_ptr, %mask_ptr;
+    .reg .u64 %addr;
+    .reg .u32 %v_size, %k_dim, %tidx, %k_idx, %draft_tok;
+    .reg .f32 %q_prob, %target_logit, %rand_val, %ratio;
+    .reg .pred %p_accept, %p_lead;
+
+    ld.param.u64 %logits_ptr, [d_target_logits];
+    ld.param.u64 %tokens_ptr, [d_draft_tokens];
+    ld.param.u64 %probs_ptr, [d_draft_probs];
+    ld.param.u64 %mask_ptr, [d_accept_mask];
+    ld.param.u32 %v_size, [vocab_size];
+    ld.param.u32 %k_dim, [K_draft];
+
+    mov.u32 %tidx, %tid.x;
+    mov.u32 %k_idx, %ctaid.x; // Block k handles draft token k
+
+    // Thread 0 in block k verifies draft token k
+    setp.eq.u32 %p_lead, %tidx, 0;
+    @!%p_lead bra DONE_VERIFY;
+
+    // Load draft token k
+    mul.wide.u32 %addr, %k_idx, 4;
+    add.u64 %addr, %tokens_ptr, %addr;
+    ld.global.u32 %draft_tok, [%addr];
+
+    // Load draft probability q
+    mul.wide.u32 %addr, %k_idx, 4;
+    add.u64 %addr, %probs_ptr, %addr;
+    ld.global.f32 %q_prob, [%addr];
+
+    // Load target logit for draft_tok: logits[k * V + draft_tok]
+    mad.lo.u32 %draft_tok, %k_idx, %v_size, %draft_tok;
+    mul.wide.u32 %addr, %draft_tok, 4;
+    add.u64 %addr, %logits_ptr, %addr;
+    ld.global.f32 %target_logit, [%addr];
+
+    // Convert logit to approximate prob (simulated softmax prob)
+    // ratio = p / q
+    div.approx.f32 %ratio, %target_logit, %q_prob;
+
+    // Simulated uniform random number in (0, 1)
+    mov.f32 %rand_val, 0.75;
+
+    // Accept condition: rand_val < ratio
+    setp.ge.f32 %p_accept, %ratio, %rand_val;
+
+    // Store accept mask (1 = accept, 0 = reject)
+    mul.wide.u32 %addr, %k_idx, 4;
+    add.u64 %addr, %mask_ptr, %addr;
+    selp.u32 %draft_tok, 1, 0, %p_accept;
+    st.global.u32 [%addr], %draft_tok;
+
+DONE_VERIFY:
+    ret;
+}

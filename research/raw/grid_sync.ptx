@@ -1,0 +1,99 @@
+
+.version 7.5
+.target sm_75
+.address_size 64
+
+.visible .entry grid_sync_kernel(
+    .param .u64 d_barrier_count,
+    .param .u64 d_barrier_phase,
+    .param .u64 d_out_cycles,
+    .param .u32 num_blocks,
+    .param .u32 iters
+)
+{
+    .reg .u64 %bc_ptr, %bp_ptr, %out_ptr;
+    .reg .u32 %n_blocks, %n_iters;
+    .reg .u32 %tidx, %bidx;
+    .reg .u64 %clk_start, %clk_end, %clk_diff;
+    .reg .u32 %i, %ticket, %expected, %phase, %cur_phase;
+    .reg .pred %p_leader, %p_last, %p_loop, %p_spin;
+
+    ld.param.u64 %bc_ptr, [d_barrier_count];
+    ld.param.u64 %bp_ptr, [d_barrier_phase];
+    ld.param.u64 %out_ptr, [d_out_cycles];
+    ld.param.u32 %n_blocks, [num_blocks];
+    ld.param.u32 %n_iters, [iters];
+
+    mov.u32 %tidx, %tid.x;
+    mov.u32 %bidx, %ctaid.x;
+
+    setp.eq.u32 %p_leader, %tidx, 0;
+
+    // Block-level barrier before starting measurement
+    bar.sync 0;
+
+    // Record start clock
+    mov.u64 %clk_start, %clock64;
+
+    mov.u32 %i, 0;
+    mov.u32 %phase, 0;
+
+LOOP_BARRIER:
+    setp.ge.u32 %p_loop, %i, %n_iters;
+    @%p_loop bra DONE_BARRIER;
+
+    // Invert expected phase for this round
+    xor.b32 %expected, %phase, 1;
+
+    // Thread 0 in each block coordinates grid arrival
+    @!%p_leader bra WAIT_PHASE;
+
+    membar.gl;
+    atom.global.add.u32 %ticket, [%bc_ptr], 1;
+
+    // Check if we are the last block
+    sub.u32 %ticket, %ticket, 0;
+    sub.u32 %n_blocks, %n_blocks, 1;
+    setp.eq.u32 %p_last, %ticket, %n_blocks;
+    add.u32 %n_blocks, %n_blocks, 1;
+
+    @!%p_last bra SPIN_LEADER;
+
+    // Last arriving block: reset counter to 0 and advance phase
+    st.global.u32 [%bc_ptr], 0;
+    membar.gl;
+    st.global.u32 [%bp_ptr], %expected;
+    bra ADVANCE_PHASE;
+
+SPIN_LEADER:
+    // Leader spins until phase matches expected
+    ld.global.volatile.u32 %cur_phase, [%bp_ptr];
+    setp.ne.u32 %p_spin, %cur_phase, %expected;
+    @%p_spin bra SPIN_LEADER;
+
+ADVANCE_PHASE:
+    mov.u32 %phase, %expected;
+
+WAIT_PHASE:
+    // Synchronize all threads within the block after grid barrier
+    bar.sync 0;
+
+    add.u32 %i, %i, 1;
+    bra LOOP_BARRIER;
+
+DONE_BARRIER:
+    mov.u64 %clk_end, %clock64;
+    sub.u64 %clk_diff, %clk_end, %clk_start;
+
+    // Store total cycles to out_ptr[bidx]
+    @%p_leader bra STORE_RES;
+    bra EXIT_KERNEL;
+
+STORE_RES:
+    mul.wide.u32 %clk_start, %bidx, 8;
+    add.u64 %out_ptr, %out_ptr, %clk_start;
+    st.global.u64 [%out_ptr], %clk_diff;
+
+EXIT_KERNEL:
+    ret;
+}

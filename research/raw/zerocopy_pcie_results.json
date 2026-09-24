@@ -1,0 +1,59 @@
+{
+  "hardware": {
+    "gpu": "NVIDIA GeForce GTX 1650 (TU117)",
+    "bus": "PCIe 3.0 x8",
+    "host_cpu": "AMD Ryzen 7 4800HS",
+    "os": "Windows 11 WDDM 2.7"
+  },
+  "zerocopy_results": [
+    {
+      "size_mb": 1,
+      "read_time_ms": 0.1823,
+      "read_bw_gbps": 5.7528,
+      "write_time_ms": 0.169,
+      "write_bw_gbps": 6.2049
+    },
+    {
+      "size_mb": 2,
+      "read_time_ms": 0.3253,
+      "read_bw_gbps": 6.4466,
+      "write_time_ms": 0.3279,
+      "write_bw_gbps": 6.395
+    },
+    {
+      "size_mb": 4,
+      "read_time_ms": 0.6377,
+      "read_bw_gbps": 6.5769,
+      "write_time_ms": 0.6465,
+      "write_bw_gbps": 6.4881
+    },
+    {
+      "size_mb": 8,
+      "read_time_ms": 1.2684,
+      "read_bw_gbps": 6.6138,
+      "write_time_ms": 1.2813,
+      "write_bw_gbps": 6.5467
+    },
+    {
+      "size_mb": 16,
+      "read_time_ms": 2.5209,
+      "read_bw_gbps": 6.6553,
+      "write_time_ms": 2.5518,
+      "write_bw_gbps": 6.5746
+    },
+    {
+      "size_mb": 32,
+      "read_time_ms": 5.0506,
+      "read_bw_gbps": 6.6436,
+      "write_time_ms": 5.0975,
+      "write_bw_gbps": 6.5826
+    },
+    {
+      "size_mb": 64,
+      "read_time_ms": 10.0554,
+      "read_bw_gbps": 6.6739,
+      "write_time_ms": 10.1866,
+      "write_bw_gbps": 6.588
+    }
+  ]
+}

@@ -1,0 +1,127 @@
+.version 7.5
+.target sm_75
+.address_size 64
+.visible .entry RegisterStressKernel(
+    .param .u64 param_out,
+    .param .u32 param_iters
+)
+{
+    .reg .b32 %r<50>;
+    .reg .b64 %rd<5>;
+    .reg .pred %p<2>;
+
+    ld.param.u64 %rd1, [param_out];
+    ld.param.u32 %r1, [param_iters];
+    mov.u32 %r2, %tid.x;
+
+    // Initialize 32 distinct live values
+    mov.u32 %r10, %r2;
+    mov.u32 %r11, %r2;
+    mov.u32 %r12, %r2;
+    mov.u32 %r13, %r2;
+    mov.u32 %r14, %r2;
+    mov.u32 %r15, %r2;
+    mov.u32 %r16, %r2;
+    mov.u32 %r17, %r2;
+    mov.u32 %r18, %r2;
+    mov.u32 %r19, %r2;
+    mov.u32 %r20, %r2;
+    mov.u32 %r21, %r2;
+    mov.u32 %r22, %r2;
+    mov.u32 %r23, %r2;
+    mov.u32 %r24, %r2;
+    mov.u32 %r25, %r2;
+    mov.u32 %r26, %r2;
+    mov.u32 %r27, %r2;
+    mov.u32 %r28, %r2;
+    mov.u32 %r29, %r2;
+    mov.u32 %r30, %r2;
+    mov.u32 %r31, %r2;
+    mov.u32 %r32, %r2;
+    mov.u32 %r33, %r2;
+    mov.u32 %r34, %r2;
+    mov.u32 %r35, %r2;
+    mov.u32 %r36, %r2;
+    mov.u32 %r37, %r2;
+    mov.u32 %r38, %r2;
+    mov.u32 %r39, %r2;
+    mov.u32 %r40, %r2;
+    mov.u32 %r41, %r2;
+    mov.u32 %r45, 0;
+LOOP:
+    // Perform dependent updates across all 32 accumulators to prevent coalescing
+    mad.lo.u32 %r10, %r10, 3, %r11;
+    mad.lo.u32 %r11, %r11, 3, %r12;
+    mad.lo.u32 %r12, %r12, 3, %r13;
+    mad.lo.u32 %r13, %r13, 3, %r14;
+    mad.lo.u32 %r14, %r14, 3, %r15;
+    mad.lo.u32 %r15, %r15, 3, %r16;
+    mad.lo.u32 %r16, %r16, 3, %r17;
+    mad.lo.u32 %r17, %r17, 3, %r18;
+    mad.lo.u32 %r18, %r18, 3, %r19;
+    mad.lo.u32 %r19, %r19, 3, %r20;
+    mad.lo.u32 %r20, %r20, 3, %r21;
+    mad.lo.u32 %r21, %r21, 3, %r22;
+    mad.lo.u32 %r22, %r22, 3, %r23;
+    mad.lo.u32 %r23, %r23, 3, %r24;
+    mad.lo.u32 %r24, %r24, 3, %r25;
+    mad.lo.u32 %r25, %r25, 3, %r26;
+    mad.lo.u32 %r26, %r26, 3, %r27;
+    mad.lo.u32 %r27, %r27, 3, %r28;
+    mad.lo.u32 %r28, %r28, 3, %r29;
+    mad.lo.u32 %r29, %r29, 3, %r30;
+    mad.lo.u32 %r30, %r30, 3, %r31;
+    mad.lo.u32 %r31, %r31, 3, %r32;
+    mad.lo.u32 %r32, %r32, 3, %r33;
+    mad.lo.u32 %r33, %r33, 3, %r34;
+    mad.lo.u32 %r34, %r34, 3, %r35;
+    mad.lo.u32 %r35, %r35, 3, %r36;
+    mad.lo.u32 %r36, %r36, 3, %r37;
+    mad.lo.u32 %r37, %r37, 3, %r38;
+    mad.lo.u32 %r38, %r38, 3, %r39;
+    mad.lo.u32 %r39, %r39, 3, %r40;
+    mad.lo.u32 %r40, %r40, 3, %r41;
+    mad.lo.u32 %r41, %r41, 3, %r10;
+    add.u32 %r45, %r45, 1;
+    setp.lt.u32 %p1, %r45, %r1;
+    @%p1 bra LOOP;
+
+    // Reduce 32 accumulators to a single sum and write out
+    mov.u32 %r46, 0;
+    add.u32 %r46, %r46, %r10;
+    add.u32 %r46, %r46, %r11;
+    add.u32 %r46, %r46, %r12;
+    add.u32 %r46, %r46, %r13;
+    add.u32 %r46, %r46, %r14;
+    add.u32 %r46, %r46, %r15;
+    add.u32 %r46, %r46, %r16;
+    add.u32 %r46, %r46, %r17;
+    add.u32 %r46, %r46, %r18;
+    add.u32 %r46, %r46, %r19;
+    add.u32 %r46, %r46, %r20;
+    add.u32 %r46, %r46, %r21;
+    add.u32 %r46, %r46, %r22;
+    add.u32 %r46, %r46, %r23;
+    add.u32 %r46, %r46, %r24;
+    add.u32 %r46, %r46, %r25;
+    add.u32 %r46, %r46, %r26;
+    add.u32 %r46, %r46, %r27;
+    add.u32 %r46, %r46, %r28;
+    add.u32 %r46, %r46, %r29;
+    add.u32 %r46, %r46, %r30;
+    add.u32 %r46, %r46, %r31;
+    add.u32 %r46, %r46, %r32;
+    add.u32 %r46, %r46, %r33;
+    add.u32 %r46, %r46, %r34;
+    add.u32 %r46, %r46, %r35;
+    add.u32 %r46, %r46, %r36;
+    add.u32 %r46, %r46, %r37;
+    add.u32 %r46, %r46, %r38;
+    add.u32 %r46, %r46, %r39;
+    add.u32 %r46, %r46, %r40;
+    add.u32 %r46, %r46, %r41;
+    mul.wide.u32 %rd2, %r2, 4;
+    add.u64 %rd3, %rd1, %rd2;
+    st.global.u32 [%rd3], %r46;
+    ret;
+}

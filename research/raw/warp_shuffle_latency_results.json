@@ -1,0 +1,97 @@
+{
+  "hardware": "NVIDIA GeForce GTX 1650 (TU117)",
+  "shuffle_results": [
+    {
+      "mode": "XOR (Butterfly)",
+      "delta": 1,
+      "total_cycles_100": 2682,
+      "cycles_per_shuffle": 26.82
+    },
+    {
+      "mode": "XOR (Butterfly)",
+      "delta": 2,
+      "total_cycles_100": 2681,
+      "cycles_per_shuffle": 26.81
+    },
+    {
+      "mode": "XOR (Butterfly)",
+      "delta": 4,
+      "total_cycles_100": 2683,
+      "cycles_per_shuffle": 26.83
+    },
+    {
+      "mode": "XOR (Butterfly)",
+      "delta": 8,
+      "total_cycles_100": 2682,
+      "cycles_per_shuffle": 26.82
+    },
+    {
+      "mode": "XOR (Butterfly)",
+      "delta": 16,
+      "total_cycles_100": 2682,
+      "cycles_per_shuffle": 26.82
+    },
+    {
+      "mode": "UP",
+      "delta": 1,
+      "total_cycles_100": 2681,
+      "cycles_per_shuffle": 26.81
+    },
+    {
+      "mode": "UP",
+      "delta": 2,
+      "total_cycles_100": 2683,
+      "cycles_per_shuffle": 26.83
+    },
+    {
+      "mode": "UP",
+      "delta": 4,
+      "total_cycles_100": 2682,
+      "cycles_per_shuffle": 26.82
+    },
+    {
+      "mode": "UP",
+      "delta": 8,
+      "total_cycles_100": 2683,
+      "cycles_per_shuffle": 26.83
+    },
+    {
+      "mode": "UP",
+      "delta": 16,
+      "total_cycles_100": 2682,
+      "cycles_per_shuffle": 26.82
+    },
+    {
+      "mode": "DOWN",
+      "delta": 1,
+      "total_cycles_100": 2682,
+      "cycles_per_shuffle": 26.82
+    },
+    {
+      "mode": "DOWN",
+      "delta": 2,
+      "total_cycles_100": 2683,
+      "cycles_per_shuffle": 26.83
+    },
+    {
+      "mode": "DOWN",
+      "delta": 4,
+      "total_cycles_100": 2683,
+      "cycles_per_shuffle": 26.83
+    },
+    {
+      "mode": "DOWN",
+      "delta": 8,
+      "total_cycles_100": 2682,
+      "cycles_per_shuffle": 26.82
+    },
+    {
+      "mode": "DOWN",
+      "delta": 16,
+      "total_cycles_100": 2683,
+      "cycles_per_shuffle": 26.83
+    }
+  ],
+  "smem_pingpong_cycles_per_op": 2.4,
+  "smem_total_cycles": 240
+}

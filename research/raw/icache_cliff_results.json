@@ -1,0 +1,48 @@
+{
+  "hardware": "NVIDIA GeForce GTX 1650 (TU117)",
+  "architecture": "Turing SM 7.5",
+  "icache_sweep": [
+    {
+      "unroll_instructions": 128,
+      "approx_sass_kb": 2.0,
+      "cycles_per_instruction": 1.367,
+      "total_cycles": 2734377,
+      "slowdown": 1.0
+    },
+    {
+      "unroll_instructions": 512,
+      "approx_sass_kb": 8.0,
+      "cycles_per_instruction": 1.311,
+      "total_cycles": 2620925,
+      "slowdown": 0.96
+    },
+    {
+      "unroll_instructions": 1024,
+      "approx_sass_kb": 16.0,
+      "cycles_per_instruction": 1.299,
+      "total_cycles": 2597489,
+      "slowdown": 0.95
+    },
+    {
+      "unroll_instructions": 2048,
+      "approx_sass_kb": 32.0,
+      "cycles_per_instruction": 1.332,
+      "total_cycles": 2663456,
+      "slowdown": 0.97
+    },
+    {
+      "unroll_instructions": 4096,
+      "approx_sass_kb": 64.0,
+      "cycles_per_instruction": 1.308,
+      "total_cycles": 2614657,
+      "slowdown": 0.96
+    },
+    {
+      "unroll_instructions": 8192,
+      "approx_sass_kb": 128.0,
+      "cycles_per_instruction": 2.333,
+      "total_cycles": 4664175,
+      "slowdown": 1.71
+    }
+  ]
+}

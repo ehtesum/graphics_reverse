@@ -1,0 +1,13 @@
+{
+  "gpu": "NVIDIA GeForce GTX 1650 (TU117 Turing SM 7.5, 896 CUDA Cores)",
+  "benchmark": "Quantized INT8 DP4A Vector Dot Product Peak TOPS",
+  "total_threads": 28672,
+  "instructions_per_thread": 512000,
+  "ops_per_instruction": 8,
+  "results": {
+    "execution_time_ms": 11.43636474609375,
+    "sustained_tops": 10.269042183191424,
+    "speedup_vs_fp32": 3.276656727246785,
+    "speedup_vs_fp16": 1.6253628020246003
+  }
+}

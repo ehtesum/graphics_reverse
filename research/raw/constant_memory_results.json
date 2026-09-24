@@ -1,0 +1,74 @@
+[
+  {
+    "label": "1 Address (Uniform Broadcast)",
+    "mask": 0,
+    "stride": 1,
+    "description": "Single-cycle broadcast to 32 threads",
+    "time_ms": 18.637,
+    "throughput_gloads_sec": 281.3,
+    "relative_latency": 1.0
+  },
+  {
+    "label": "2 Distinct Addresses",
+    "mask": 1,
+    "stride": 1,
+    "description": "2-way warp serialization",
+    "time_ms": 14.623,
+    "throughput_gloads_sec": 358.5,
+    "relative_latency": 0.785
+  },
+  {
+    "label": "4 Distinct Addresses",
+    "mask": 3,
+    "stride": 1,
+    "description": "4-way warp serialization",
+    "time_ms": 14.423,
+    "throughput_gloads_sec": 363.5,
+    "relative_latency": 0.774
+  },
+  {
+    "label": "8 Distinct Addresses",
+    "mask": 7,
+    "stride": 1,
+    "description": "8-way warp serialization",
+    "time_ms": 14.415,
+    "throughput_gloads_sec": 363.7,
+    "relative_latency": 0.773
+  },
+  {
+    "label": "16 Distinct Addresses",
+    "mask": 15,
+    "stride": 1,
+    "description": "16-way warp serialization",
+    "time_ms": 14.418,
+    "throughput_gloads_sec": 363.6,
+    "relative_latency": 0.774
+  },
+  {
+    "label": "32 Distinct Addresses (Full Divergence)",
+    "mask": 31,
+    "stride": 1,
+    "description": "32-way serialized cache reads",
+    "time_ms": 14.438,
+    "throughput_gloads_sec": 363.1,
+    "relative_latency": 0.775
+  },
+  {
+    "label": "32 Addresses (L1 Cache Stride 64B)",
+    "mask": 31,
+    "stride": 16,
+    "description": "Accessing across multiple 64B cache lines",
+    "time_ms": 14.42,
+    "throughput_gloads_sec": 363.6,
+    "relative_latency": 0.774
+  },
+  {
+    "label": "32 Addresses (L1 Cache Stride 256B)",
+    "mask": 31,
+    "stride": 64,
+    "description": "Exceeding L1 constant cache lines",
+    "time_ms": 14.423,
+    "throughput_gloads_sec": 363.5,
+    "relative_latency": 0.774
+  }
+]

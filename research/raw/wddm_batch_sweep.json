@@ -1,0 +1,50 @@
+[
+  {
+    "batch_count": 1,
+    "async_pushbuffer_us_per_kernel": 20.8,
+    "async_total_ms": 0.021,
+    "sync_roundtrip_us_per_kernel": 15.5
+  },
+  {
+    "batch_count": 10,
+    "async_pushbuffer_us_per_kernel": 16.45,
+    "async_total_ms": 0.164,
+    "sync_roundtrip_us_per_kernel": 17.31
+  },
+  {
+    "batch_count": 50,
+    "async_pushbuffer_us_per_kernel": 9.318,
+    "async_total_ms": 0.466,
+    "sync_roundtrip_us_per_kernel": 13.72
+  },
+  {
+    "batch_count": 100,
+    "async_pushbuffer_us_per_kernel": 8.709,
+    "async_total_ms": 0.871,
+    "sync_roundtrip_us_per_kernel": 13.399
+  },
+  {
+    "batch_count": 500,
+    "async_pushbuffer_us_per_kernel": 9.213,
+    "async_total_ms": 4.607,
+    "sync_roundtrip_us_per_kernel": 13.556
+  },
+  {
+    "batch_count": 1000,
+    "async_pushbuffer_us_per_kernel": 8.7,
+    "async_total_ms": 8.7,
+    "sync_roundtrip_us_per_kernel": 13.526
+  },
+  {
+    "batch_count": 5000,
+    "async_pushbuffer_us_per_kernel": 8.423,
+    "async_total_ms": 42.115,
+    "sync_roundtrip_us_per_kernel": 13.508
+  },
+  {
+    "batch_count": 10000,
+    "async_pushbuffer_us_per_kernel": 8.549,
+    "async_total_ms": 85.488,
+    "sync_roundtrip_us_per_kernel": 13.559
+  }
+]

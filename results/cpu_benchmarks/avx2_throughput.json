@@ -1,0 +1,32 @@
+{
+  "cpu": "AMD Ryzen 7 4800HS (Zen 2)",
+  "fma_latency_cycles": 3.55994,
+  "single_core_peak_gflops": 130.392,
+  "single_core_fma_ipc": 2.81542,
+  "scaling": [
+    {
+      "threads": 1,
+      "gflops": 103.628,
+      "speedup": 1,
+      "efficiency_pct": 100
+    },
+    {
+      "threads": 2,
+      "gflops": 203.587,
+      "speedup": 1.9646,
+      "efficiency_pct": 98.2302
+    },
+    {
+      "threads": 4,
+      "gflops": 410.142,
+      "speedup": 3.95785,
+      "efficiency_pct": 98.9461
+    },
+    {
+      "threads": 8,
+      "gflops": 598.677,
+      "speedup": 5.7772,
+      "efficiency_pct": 72.215
+    }
+  ]
+}

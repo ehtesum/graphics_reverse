@@ -1,0 +1,44 @@
+# Large external toolkits
+cuda_toolkit/
+
+# Binaries and executables
+*.exe
+*.dll
+*.so
+*.dylib
+*.lib
+*.obj
+*.o
+*.cubin
+*.fatbin
+*.d
+*.optix
+*.nvvp
+
+# Visual Studio / Build artifacts
+.vs/
+bin/
+build/
+out/
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+*.sln
+*.vcxproj*
+
+# Python caches
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Experiment runtime temp files
+results/**/temp/
+results/**/*.tmp
+*.log
+
+# Editor and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

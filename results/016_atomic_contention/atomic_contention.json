@@ -1,0 +1,134 @@
+{
+  "add": [
+    {
+      "concurrency_tier": "1 Thread (Zero Contention)",
+      "total_threads": 1,
+      "kernel_time_ms": 0.026,
+      "per_op_latency_ns": 259.584,
+      "slowdown_factor": 1.0
+    },
+    {
+      "concurrency_tier": "32 Threads (1 Warp Lockstep)",
+      "total_threads": 32,
+      "kernel_time_ms": 0.0152,
+      "per_op_latency_ns": 4.746,
+      "slowdown_factor": 0.02
+    },
+    {
+      "concurrency_tier": "256 Threads (1 SM Intra-Block)",
+      "total_threads": 256,
+      "kernel_time_ms": 0.0153,
+      "per_op_latency_ns": 0.599,
+      "slowdown_factor": 0.0
+    },
+    {
+      "concurrency_tier": "4,096 Threads (Multi-SM Inter-Block)",
+      "total_threads": 4096,
+      "kernel_time_ms": 0.0189,
+      "per_op_latency_ns": 0.046,
+      "slowdown_factor": 0.0
+    },
+    {
+      "concurrency_tier": "65,536 Threads (L2 Cache Bound)",
+      "total_threads": 65536,
+      "kernel_time_ms": 0.1642,
+      "per_op_latency_ns": 0.025,
+      "slowdown_factor": 0.0
+    },
+    {
+      "concurrency_tier": "262,144 Threads (Silicon-Wide Contention)",
+      "total_threads": 262144,
+      "kernel_time_ms": 0.6359,
+      "per_op_latency_ns": 0.024,
+      "slowdown_factor": 0.0
+    }
+  ],
+  "exch": [
+    {
+      "concurrency_tier": "1 Thread (Zero Contention)",
+      "total_threads": 1,
+      "kernel_time_ms": 0.0151,
+      "per_op_latency_ns": 151.232,
+      "slowdown_factor": 1.0
+    },
+    {
+      "concurrency_tier": "32 Threads (1 Warp Lockstep)",
+      "total_threads": 32,
+      "kernel_time_ms": 0.016,
+      "per_op_latency_ns": 4.992,
+      "slowdown_factor": 0.03
+    },
+    {
+      "concurrency_tier": "256 Threads (1 SM Intra-Block)",
+      "total_threads": 256,
+      "kernel_time_ms": 0.0459,
+      "per_op_latency_ns": 1.791,
+      "slowdown_factor": 0.01
+    },
+    {
+      "concurrency_tier": "4,096 Threads (Multi-SM Inter-Block)",
+      "total_threads": 4096,
+      "kernel_time_ms": 0.3376,
+      "per_op_latency_ns": 0.824,
+      "slowdown_factor": 0.01
+    },
+    {
+      "concurrency_tier": "65,536 Threads (L2 Cache Bound)",
+      "total_threads": 65536,
+      "kernel_time_ms": 5.0129,
+      "per_op_latency_ns": 0.765,
+      "slowdown_factor": 0.01
+    },
+    {
+      "concurrency_tier": "262,144 Threads (Silicon-Wide Contention)",
+      "total_threads": 262144,
+      "kernel_time_ms": 19.9034,
+      "per_op_latency_ns": 0.759,
+      "slowdown_factor": 0.01
+    }
+  ],
+  "cas": [
+    {
+      "concurrency_tier": "1 Thread (Zero Contention)",
+      "total_threads": 1,
+      "kernel_time_ms": 0.0298,
+      "per_op_latency_ns": 297.6,
+      "slowdown_factor": 1.0
+    },
+    {
+      "concurrency_tier": "32 Threads (1 Warp Lockstep)",
+      "total_threads": 32,
+      "kernel_time_ms": 0.0324,
+      "per_op_latency_ns": 10.12,
+      "slowdown_factor": 0.03
+    },
+    {
+      "concurrency_tier": "256 Threads (1 SM Intra-Block)",
+      "total_threads": 256,
+      "kernel_time_ms": 0.0507,
+      "per_op_latency_ns": 1.98,
+      "slowdown_factor": 0.01
+    },
+    {
+      "concurrency_tier": "4,096 Threads (Multi-SM Inter-Block)",
+      "total_threads": 4096,
+      "kernel_time_ms": 0.3372,
+      "per_op_latency_ns": 0.823,
+      "slowdown_factor": 0.0
+    },
+    {
+      "concurrency_tier": "65,536 Threads (L2 Cache Bound)",
+      "total_threads": 65536,
+      "kernel_time_ms": 4.9844,
+      "per_op_latency_ns": 0.761,
+      "slowdown_factor": 0.0
+    },
+    {
+      "concurrency_tier": "262,144 Threads (Silicon-Wide Contention)",
+      "total_threads": 262144,
+      "kernel_time_ms": 15.3984,
+      "per_op_latency_ns": 0.587,
+      "slowdown_factor": 0.0
+    }
+  ]
+}

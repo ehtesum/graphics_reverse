@@ -1,0 +1,26 @@
+[
+  {
+    "engine": "fp32",
+    "description": "IEEE FP32 FMA",
+    "ops_per_instruction": 2,
+    "kernel_time_ms": 11.565,
+    "tera_ops_sec": 2.267,
+    "speedup_factor": 1.0
+  },
+  {
+    "engine": "fp16",
+    "description": "Rapid Packed Math FP16 (HFMA2)",
+    "ops_per_instruction": 4,
+    "kernel_time_ms": 9.452,
+    "tera_ops_sec": 5.547,
+    "speedup_factor": 1.22
+  },
+  {
+    "engine": "idp4a",
+    "description": "INT8 Dot Product (IDP4A.S32)",
+    "ops_per_instruction": 8,
+    "kernel_time_ms": 9.0,
+    "tera_ops_sec": 11.651,
+    "speedup_factor": 1.28
+  }
+]

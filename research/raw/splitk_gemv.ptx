@@ -1,0 +1,84 @@
+
+.version 7.5
+.target sm_75
+.address_size 64
+
+.visible .entry splitk_gemv_kernel(
+    .param .u64 d_W,
+    .param .u64 d_x,
+    .param .u64 d_y,
+    .param .u32 M,
+    .param .u32 K,
+    .param .u32 num_splits
+)
+{
+    .reg .u64 %w_ptr, %x_ptr, %y_ptr, %w_addr, %x_addr, %y_addr;
+    .reg .u32 %m_dim, %k_dim, %n_splits;
+    .reg .u32 %tidx, %row, %split_id, %chunk_k, %k_start, %k_end, %k, %w_idx;
+    .reg .f32 %w_val, %x_val, %partial_sum, %shfl_val;
+    .reg .pred %p_loop, %p_lead;
+
+    ld.param.u64 %w_ptr, [d_W];
+    ld.param.u64 %x_ptr, [d_x];
+    ld.param.u64 %y_ptr, [d_y];
+    ld.param.u32 %m_dim, [M];
+    ld.param.u32 %k_dim, [K];
+    ld.param.u32 %n_splits, [num_splits];
+
+    mov.u32 %tidx, %tid.x;
+    mov.u32 %row, %ctaid.x;
+    mov.u32 %split_id, %ctaid.y;
+
+    // chunk_k = K / num_splits
+    div.u32 %chunk_k, %k_dim, %n_splits;
+    mul.lo.u32 %k_start, %split_id, %chunk_k;
+    add.u32 %k_end, %k_start, %chunk_k;
+
+    // Strided accumulation by 32 (warp size)
+    add.u32 %k, %k_start, %tidx;
+    mov.f32 %partial_sum, 0.0;
+
+LOOP_K:
+    setp.ge.u32 %p_loop, %k, %k_end;
+    @%p_loop bra DONE_K;
+
+    // Address of W[row, k]: (row * K + k) * 4
+    mad.lo.u32 %w_idx, %row, %k_dim, %k;
+    mul.wide.u32 %w_addr, %w_idx, 4;
+    add.u64 %w_addr, %w_ptr, %w_addr;
+    ld.global.f32 %w_val, [%w_addr];
+
+    // Address of x[k]: k * 4
+    mul.wide.u32 %x_addr, %k, 4;
+    add.u64 %x_addr, %x_ptr, %x_addr;
+    ld.global.f32 %x_val, [%x_addr];
+
+    fma.rn.f32 %partial_sum, %w_val, %x_val, %partial_sum;
+
+    add.u32 %k, %k, 32;
+    bra LOOP_K;
+
+DONE_K:
+    // Intra-warp butterfly reduction of partial_sum
+    shfl.sync.bfly.b32 %shfl_val, %partial_sum, 16, 0x1f, 0xffffffff;
+    add.f32 %partial_sum, %partial_sum, %shfl_val;
+    shfl.sync.bfly.b32 %shfl_val, %partial_sum, 8, 0x1f, 0xffffffff;
+    add.f32 %partial_sum, %partial_sum, %shfl_val;
+    shfl.sync.bfly.b32 %shfl_val, %partial_sum, 4, 0x1f, 0xffffffff;
+    add.f32 %partial_sum, %partial_sum, %shfl_val;
+    shfl.sync.bfly.b32 %shfl_val, %partial_sum, 2, 0x1f, 0xffffffff;
+    add.f32 %partial_sum, %partial_sum, %shfl_val;
+    shfl.sync.bfly.b32 %shfl_val, %partial_sum, 1, 0x1f, 0xffffffff;
+    add.f32 %partial_sum, %partial_sum, %shfl_val;
+
+    // Thread 0 atomically adds to y[row]
+    setp.eq.u32 %p_lead, %tidx, 0;
+    @!%p_lead bra EXIT_SPLITK;
+
+    mul.wide.u32 %y_addr, %row, 4;
+    add.u64 %y_addr, %y_ptr, %y_addr;
+    atom.global.add.f32 %shfl_val, [%y_addr], %partial_sum;
+
+EXIT_SPLITK:
+    ret;
+}

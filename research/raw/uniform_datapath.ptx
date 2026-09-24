@@ -1,0 +1,84 @@
+
+.version 7.5
+.target sm_75
+.address_size 64
+
+.visible .entry uniform_loop_kernel(
+    .param .u64 d_out_cycles,
+    .param .u32 iters
+)
+{
+    .reg .u64 %out_ptr, %t0, %t1, %diff;
+    .reg .u32 %n_iters, %u_count, %tidx, %accum;
+    .reg .pred %p_loop, %p_lead;
+
+    ld.param.u64 %out_ptr, [d_out_cycles];
+    ld.param.u32 %n_iters, [iters];
+    mov.u32 %tidx, %tid.x;
+
+    mov.u32 %accum, 0;
+    bar.sync 0;
+    mov.u64 %t0, %clock64;
+
+    mov.u32 %u_count, 0;
+
+LOOP_UNIFORM:
+    setp.ge.u32 %p_loop, %u_count, %n_iters;
+    @%p_loop bra DONE_UNIFORM;
+
+    // Uniform scalar addition (promoted to UADD3 in SASS)
+    add.u32 %u_count, %u_count, 1;
+    add.u32 %accum, %accum, %u_count;
+    bra LOOP_UNIFORM;
+
+DONE_UNIFORM:
+    mov.u64 %t1, %clock64;
+    sub.u64 %diff, %t1, %t0;
+
+    setp.eq.u32 %p_lead, %tidx, 0;
+    @%p_lead st.global.u64 [%out_ptr], %diff;
+    add.u64 %out_ptr, %out_ptr, 8;
+    @%p_lead st.global.u32 [%out_ptr], %accum;
+    ret;
+}
+
+.visible .entry vector_loop_kernel(
+    .param .u64 d_out_cycles,
+    .param .u32 iters
+)
+{
+    .reg .u64 %out_ptr, %t0, %t1, %diff;
+    .reg .u32 %n_iters, %v_count, %tidx, %accum;
+    .reg .pred %p_loop, %p_lead;
+
+    ld.param.u64 %out_ptr, [d_out_cycles];
+    ld.param.u32 %n_iters, [iters];
+    mov.u32 %tidx, %tid.x;
+
+    mov.u32 %accum, 0;
+    bar.sync 0;
+    mov.u64 %t0, %clock64;
+
+    // Force vector register file usage by making count dependent on %tid.x
+    mov.u32 %v_count, %tidx;
+    and.b32 %v_count, %v_count, 0; // v_count is 0, but compiler cannot prove it uniform
+
+LOOP_VECTOR:
+    setp.ge.u32 %p_loop, %v_count, %n_iters;
+    @%p_loop bra DONE_VECTOR;
+
+    // Vector register addition
+    add.u32 %v_count, %v_count, 1;
+    add.u32 %accum, %accum, %v_count;
+    bra LOOP_VECTOR;
+
+DONE_VECTOR:
+    mov.u64 %t1, %clock64;
+    sub.u64 %diff, %t1, %t0;
+
+    setp.eq.u32 %p_lead, %tidx, 0;
+    @%p_lead st.global.u64 [%out_ptr], %diff;
+    add.u64 %out_ptr, %out_ptr, 8;
+    @%p_lead st.global.u32 [%out_ptr], %accum;
+    ret;
+}

@@ -1,0 +1,96 @@
+{
+  "cpu": "AMD Ryzen 7 4800HS",
+  "architecture": "Zen 2 (Renoir)",
+  "results": [
+    {
+      "pages": 8,
+      "code_kb": 32,
+      "cycles_per_jump": 1.99,
+      "level": "L1 I-TLB Hit (<64)"
+    },
+    {
+      "pages": 16,
+      "code_kb": 64,
+      "cycles_per_jump": 8.97,
+      "level": "L1 I-TLB Hit (<64)"
+    },
+    {
+      "pages": 32,
+      "code_kb": 128,
+      "cycles_per_jump": 15.28,
+      "level": "L1 I-TLB Hit (<64)"
+    },
+    {
+      "pages": 48,
+      "code_kb": 192,
+      "cycles_per_jump": 15.13,
+      "level": "L1 I-TLB Hit (<64)"
+    },
+    {
+      "pages": 64,
+      "code_kb": 256,
+      "cycles_per_jump": 14.84,
+      "level": "L1 I-TLB Hit (<64)"
+    },
+    {
+      "pages": 96,
+      "code_kb": 384,
+      "cycles_per_jump": 15.84,
+      "level": "L2 I-TLB Hit (64-512)"
+    },
+    {
+      "pages": 128,
+      "code_kb": 512,
+      "cycles_per_jump": 14.67,
+      "level": "L2 I-TLB Hit (64-512)"
+    },
+    {
+      "pages": 192,
+      "code_kb": 768,
+      "cycles_per_jump": 28.82,
+      "level": "L2 I-TLB Hit (64-512)"
+    },
+    {
+      "pages": 256,
+      "code_kb": 1024,
+      "cycles_per_jump": 27.19,
+      "level": "L2 I-TLB Hit (64-512)"
+    },
+    {
+      "pages": 384,
+      "code_kb": 1536,
+      "cycles_per_jump": 58.36,
+      "level": "L2 I-TLB Hit (64-512)"
+    },
+    {
+      "pages": 512,
+      "code_kb": 2048,
+      "cycles_per_jump": 65.98,
+      "level": "L2 I-TLB Hit (64-512)"
+    },
+    {
+      "pages": 768,
+      "code_kb": 3072,
+      "cycles_per_jump": 59.21,
+      "level": "I-TLB Miss (Page Walk)"
+    },
+    {
+      "pages": 1024,
+      "code_kb": 4096,
+      "cycles_per_jump": 75.62,
+      "level": "I-TLB Miss (Page Walk)"
+    },
+    {
+      "pages": 1536,
+      "code_kb": 6144,
+      "cycles_per_jump": 274.70,
+      "level": "I-TLB Miss (Page Walk)"
+    },
+    {
+      "pages": 2048,
+      "code_kb": 8192,
+      "cycles_per_jump": 289.62,
+      "level": "I-TLB Miss (Page Walk)"
+    }
+  ]
+}

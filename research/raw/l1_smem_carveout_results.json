@@ -1,0 +1,31 @@
+{
+  "gpu": "NVIDIA GeForce GTX 1650 (TU117 Turing SM 7.5)",
+  "sram_per_sm": "96 KB Unified Shared Memory + L1D",
+  "working_set_kb": 48,
+  "results": [
+    {
+      "configuration": "0% SMEM (Max 64 KB L1)",
+      "carveout_percent": 0,
+      "latency_cycles": 42.85085,
+      "state": "L1 Hit (48 KB fits in 64 KB L1)"
+    },
+    {
+      "configuration": "33% SMEM (64 KB L1)",
+      "carveout_percent": 33,
+      "latency_cycles": 42.85195,
+      "state": "L1 Hit (48 KB fits in 64 KB L1)"
+    },
+    {
+      "configuration": "66% SMEM (32 KB L1)",
+      "carveout_percent": 66,
+      "latency_cycles": 167.8637,
+      "state": "L1 Miss -> L2 Spill (48 KB > 32 KB L1)"
+    },
+    {
+      "configuration": "100% SMEM (Min 16 KB L1)",
+      "carveout_percent": 100,
+      "latency_cycles": 168.02935,
+      "state": "L1 Miss -> L2 Spill (48 KB > 32 KB L1)"
+    }
+  ]
+}

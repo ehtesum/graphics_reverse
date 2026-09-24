@@ -1,0 +1,46 @@
+{
+  "gpu": "NVIDIA GeForce GTX 1650 (TU117 Turing SM 7.5, 14 SMs)",
+  "matrix": "4096 x 4096 (FP32, 64 MB)",
+  "results": [
+    {
+      "split_k_factor": 1,
+      "grid_m": 4096,
+      "grid_s": 1,
+      "latency_ms": 0.3774463891983032,
+      "bandwidth_gb_s": 177.7970750827405,
+      "gflops": 88.89853754137025
+    },
+    {
+      "split_k_factor": 2,
+      "grid_m": 4096,
+      "grid_s": 2,
+      "latency_ms": 0.3743743896484375,
+      "bandwidth_gb_s": 179.2560224619523,
+      "gflops": 89.62801123097616
+    },
+    {
+      "split_k_factor": 4,
+      "grid_m": 4096,
+      "grid_s": 4,
+      "latency_ms": 0.3758080005645752,
+      "bandwidth_gb_s": 178.5722068162002,
+      "gflops": 89.2861034081001
+    },
+    {
+      "split_k_factor": 8,
+      "grid_m": 4096,
+      "grid_s": 8,
+      "latency_ms": 0.3809151887893677,
+      "bandwidth_gb_s": 176.1779681542412,
+      "gflops": 88.0889840771206
+    },
+    {
+      "split_k_factor": 16,
+      "grid_m": 4096,
+      "grid_s": 16,
+      "latency_ms": 0.4273824214935303,
+      "bandwidth_gb_s": 157.0229860308279,
+      "gflops": 78.51149301541395
+    }
+  ]
+}

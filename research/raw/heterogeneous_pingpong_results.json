@@ -1,0 +1,74 @@
+[
+  {
+    "label": "512 B",
+    "size_bytes": 512,
+    "pinned_mean_us": 62.8,
+    "pinned_min_us": 27.7,
+    "pageable_mean_us": 47.79,
+    "pinned_speedup": 0.76
+  },
+  {
+    "label": "1 KB",
+    "size_bytes": 1024,
+    "pinned_mean_us": 62.57,
+    "pinned_min_us": 28.1,
+    "pageable_mean_us": 47.47,
+    "pinned_speedup": 0.76
+  },
+  {
+    "label": "2 KB",
+    "size_bytes": 2048,
+    "pinned_mean_us": 62.62,
+    "pinned_min_us": 27.9,
+    "pageable_mean_us": 48.15,
+    "pinned_speedup": 0.77
+  },
+  {
+    "label": "4 KB",
+    "size_bytes": 4096,
+    "pinned_mean_us": 67.36,
+    "pinned_min_us": 31.8,
+    "pageable_mean_us": 47.47,
+    "pinned_speedup": 0.7
+  },
+  {
+    "label": "8 KB (1x Hidden-4096 FP16)",
+    "size_bytes": 8192,
+    "pinned_mean_us": 74.94,
+    "pinned_min_us": 35.9,
+    "pageable_mean_us": 45.47,
+    "pinned_speedup": 0.61
+  },
+  {
+    "label": "16 KB",
+    "size_bytes": 16384,
+    "pinned_mean_us": 79.64,
+    "pinned_min_us": 38.7,
+    "pageable_mean_us": 45.29,
+    "pinned_speedup": 0.57
+  },
+  {
+    "label": "32 KB (4x Hidden-4096 FP16)",
+    "size_bytes": 32768,
+    "pinned_mean_us": 84.08,
+    "pinned_min_us": 46.1,
+    "pageable_mean_us": 54.09,
+    "pinned_speedup": 0.64
+  },
+  {
+    "label": "64 KB",
+    "size_bytes": 65536,
+    "pinned_mean_us": 93.23,
+    "pinned_min_us": 66.1,
+    "pageable_mean_us": 70.4,
+    "pinned_speedup": 0.76
+  },
+  {
+    "label": "128 KB",
+    "size_bytes": 131072,
+    "pinned_mean_us": 115.49,
+    "pinned_min_us": 97.3,
+    "pageable_mean_us": 139.04,
+    "pinned_speedup": 1.2
+  }
+]

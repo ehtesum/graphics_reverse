@@ -1,0 +1,82 @@
+.version 7.5
+.target sm_75
+.address_size 64
+
+// Allocate 16 KB constant memory buffer (4,096 uint32 words)
+.const .u32 const_table[4096];
+
+.visible .entry ConstMemBench(
+    .param .u64 param_out,
+    .param .u32 param_mask,
+    .param .u32 param_stride,
+    .param .u32 param_iters
+)
+{
+    .reg .b32 %r<20>;
+    .reg .b64 %rd<10>;
+    .reg .pred %p<2>;
+
+    ld.param.u64 %rd1, [param_out];
+    ld.param.u32 %r1, [param_mask];
+    ld.param.u32 %r2, [param_stride];
+    ld.param.u32 %r3, [param_iters];
+
+    mov.u32 %r4, %tid.x;
+    and.b32 %r5, %r4, %r1; // Apply divergence mask (0 to 31)
+    mul.lo.u32 %r6, %r5, %r2; // Stride offset
+    and.b32 %r6, %r6, 4095; // Wrap within 16 KB table
+
+    mov.u32 %r10, 0;
+    mov.u32 %r11, 0;
+
+LOOP:
+    ld.const.u32 %r12, const_table[%r6];
+    add.u32 %r10, %r10, %r12;
+    xor.b32 %r6, %r6, %r12;
+    and.b32 %r6, %r6, 4095;
+
+    ld.const.u32 %r12, const_table[%r6];
+    add.u32 %r10, %r10, %r12;
+    xor.b32 %r6, %r6, %r12;
+    and.b32 %r6, %r6, 4095;
+
+    ld.const.u32 %r12, const_table[%r6];
+    add.u32 %r10, %r10, %r12;
+    xor.b32 %r6, %r6, %r12;
+    and.b32 %r6, %r6, 4095;
+
+    ld.const.u32 %r12, const_table[%r6];
+    add.u32 %r10, %r10, %r12;
+    xor.b32 %r6, %r6, %r12;
+    and.b32 %r6, %r6, 4095;
+
+    ld.const.u32 %r12, const_table[%r6];
+    add.u32 %r10, %r10, %r12;
+    xor.b32 %r6, %r6, %r12;
+    and.b32 %r6, %r6, 4095;
+
+    ld.const.u32 %r12, const_table[%r6];
+    add.u32 %r10, %r10, %r12;
+    xor.b32 %r6, %r6, %r12;
+    and.b32 %r6, %r6, 4095;
+
+    ld.const.u32 %r12, const_table[%r6];
+    add.u32 %r10, %r10, %r12;
+    xor.b32 %r6, %r6, %r12;
+    and.b32 %r6, %r6, 4095;
+
+    ld.const.u32 %r12, const_table[%r6];
+    add.u32 %r10, %r10, %r12;
+    xor.b32 %r6, %r6, %r12;
+    and.b32 %r6, %r6, 4095;
+
+    add.u32 %r11, %r11, 1;
+    setp.lt.u32 %p1, %r11, %r3;
+    @%p1 bra LOOP;
+
+    // Write output to prevent DCE
+    mul.wide.u32 %rd2, %r4, 4;
+    add.u64 %rd3, %rd1, %rd2;
+    st.global.u32 [%rd3], %r10;
+    ret;
+}

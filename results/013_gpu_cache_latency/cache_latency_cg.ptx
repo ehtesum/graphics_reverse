@@ -1,0 +1,69 @@
+
+.version 7.5
+.target sm_75
+.address_size 64
+
+.visible .entry GpuCacheLatency(
+    .param .u64 param_arr,
+    .param .u32 param_hops,
+    .param .u64 param_out_cycles
+)
+{
+    .reg .b32 %r<10>;
+    .reg .b64 %rd<15>;
+    .reg .pred %p<4>;
+
+    ld.param.u64 %rd1, [param_arr];
+    ld.param.u32 %r1, [param_hops];
+    ld.param.u64 %rd2, [param_out_cycles];
+
+    // Only Thread 0 of Block 0 executes the pointer chase
+    mov.u32 %r2, %ctaid.x;
+    mov.u32 %r3, %tid.x;
+    or.b32 %r4, %r2, %r3;
+    setp.ne.u32 %p1, %r4, 0;
+    @%p1 bra EXIT_L;
+
+    // Warmup traversal (1,000 hops to populate cache)
+    mov.u64 %rd3, 0;
+    mov.u32 %r5, 0;
+WARMUP_L:
+    setp.ge.u32 %p2, %r5, 1000;
+    @%p2 bra BENCH_L;
+    shl.b64 %rd4, %rd3, 3; // 64-bit indices (8 bytes)
+    add.s64 %rd5, %rd1, %rd4;
+    ld.global.cg.u64 %rd3, [%rd5];
+    add.u32 %r5, %r5, 1;
+    bra WARMUP_L;
+
+BENCH_L:
+    // Memory fence and read clock64
+    membar.gl;
+    mov.u64 %rd6, %clock64;
+
+    mov.u32 %r6, 0;
+LOOP_L:
+    setp.ge.u32 %p3, %r6, %r1;
+    @%p3 bra DONE_L;
+    shl.b64 %rd7, %rd3, 3;
+    add.s64 %rd8, %rd1, %rd7;
+    ld.global.cg.u64 %rd3, [%rd8];
+    add.u32 %r6, %r6, 1;
+    bra LOOP_L;
+
+DONE_L:
+    membar.gl;
+    mov.u64 %rd9, %clock64;
+    sub.u64 %rd10, %rd9, %rd6;
+
+    // Store elapsed clock cycles and final pointer value
+    st.global.u64 [%rd2], %rd10;
+
+    // Prevent dead code elimination of rd3
+    shl.b64 %rd11, %rd3, 3;
+    add.s64 %rd12, %rd1, %rd11;
+    st.global.u64 [%rd12], %rd3;
+
+EXIT_L:
+    ret;
+}

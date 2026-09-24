@@ -1,0 +1,54 @@
+{
+  "hardware": "NVIDIA GeForce GTX 1650 (TU117)",
+  "total_sms": 14,
+  "results": [
+    {
+      "streams_K": 1,
+      "wall_time_ms": 2.22,
+      "expected_serial_ms": 2.22,
+      "speedup_vs_serial": 1.0
+    },
+    {
+      "streams_K": 2,
+      "wall_time_ms": 2.211,
+      "expected_serial_ms": 4.439,
+      "speedup_vs_serial": 2.01
+    },
+    {
+      "streams_K": 4,
+      "wall_time_ms": 2.232,
+      "expected_serial_ms": 8.878,
+      "speedup_vs_serial": 3.98
+    },
+    {
+      "streams_K": 7,
+      "wall_time_ms": 2.241,
+      "expected_serial_ms": 15.537,
+      "speedup_vs_serial": 6.93
+    },
+    {
+      "streams_K": 14,
+      "wall_time_ms": 4.439,
+      "expected_serial_ms": 31.074,
+      "speedup_vs_serial": 7.0
+    },
+    {
+      "streams_K": 16,
+      "wall_time_ms": 4.468,
+      "expected_serial_ms": 35.514,
+      "speedup_vs_serial": 7.95
+    },
+    {
+      "streams_K": 24,
+      "wall_time_ms": 6.606,
+      "expected_serial_ms": 53.27,
+      "speedup_vs_serial": 8.06
+    },
+    {
+      "streams_K": 32,
+      "wall_time_ms": 8.847,
+      "expected_serial_ms": 71.027,
+      "speedup_vs_serial": 8.03
+    }
+  ]
+}

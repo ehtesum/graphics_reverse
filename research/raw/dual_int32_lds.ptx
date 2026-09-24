@@ -1,0 +1,75 @@
+.version 7.5
+.target sm_75
+.address_size 64
+.visible .entry DualIssue_int32_lds(
+    .param .u64 param_out,
+    .param .u32 param_iters
+)
+{
+    .reg .b32 %r<30>;
+    .reg .b64 %rd<10>;
+    .reg .f32 %f<30>;
+    .reg .pred %p<2>;
+    .shared .f32 smem[1024];
+
+    ld.param.u64 %rd1, [param_out];
+    ld.param.u32 %r1, [param_iters];
+    mov.u32 %r2, %tid.x;
+
+    // Init registers
+    mov.f32 %f0, 1.0001;
+    mov.f32 %f1, 1.0002;
+    mov.f32 %f2, 1.0003;
+    mov.f32 %f3, 1.0004;
+    mov.u32 %r10, 1;
+    mov.u32 %r11, 2;
+
+    // Init smem
+    and.b32 %r3, %r2, 1023;
+    mul.wide.u32 %rd4, %r3, 4;
+    mov.u64 %rd5, smem;
+    add.u64 %rd6, %rd5, %rd4;
+    st.shared.f32 [%rd6], %f0;
+    bar.sync 0;
+
+    mov.u32 %r20, 0;
+LOOP:
+    add.u32 %r10, %r10, %r11;
+    ld.shared.u32 %r15, [smem+0];
+    add.u32 %r11, %r11, %r15;
+    add.u32 %r10, %r10, %r11;
+    ld.shared.u32 %r15, [smem+4];
+    add.u32 %r11, %r11, %r15;
+    add.u32 %r10, %r10, %r11;
+    ld.shared.u32 %r15, [smem+8];
+    add.u32 %r11, %r11, %r15;
+    add.u32 %r10, %r10, %r11;
+    ld.shared.u32 %r15, [smem+12];
+    add.u32 %r11, %r11, %r15;
+    add.u32 %r10, %r10, %r11;
+    ld.shared.u32 %r15, [smem+16];
+    add.u32 %r11, %r11, %r15;
+    add.u32 %r10, %r10, %r11;
+    ld.shared.u32 %r15, [smem+20];
+    add.u32 %r11, %r11, %r15;
+    add.u32 %r10, %r10, %r11;
+    ld.shared.u32 %r15, [smem+24];
+    add.u32 %r11, %r11, %r15;
+    add.u32 %r10, %r10, %r11;
+    ld.shared.u32 %r15, [smem+28];
+    add.u32 %r11, %r11, %r15;
+    add.u32 %r10, %r10, %r11;
+    ld.shared.u32 %r15, [smem+32];
+    add.u32 %r11, %r11, %r15;
+    add.u32 %r10, %r10, %r11;
+    ld.shared.u32 %r15, [smem+36];
+    add.u32 %r11, %r11, %r15;
+    add.u32 %r20, %r20, 1;
+    setp.lt.u32 %p1, %r20, %r1;
+    @%p1 bra LOOP;
+
+    mul.wide.u32 %rd2, %r2, 4;
+    add.u64 %rd3, %rd1, %rd2;
+    st.global.f32 [%rd3], %f0;
+    ret;
+}

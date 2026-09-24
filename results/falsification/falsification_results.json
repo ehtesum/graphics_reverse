@@ -1,0 +1,81 @@
+{
+  "smem_coprime_test": [
+    {
+      "stride": 1,
+      "theory_conflict_degree": 1,
+      "avg_ms": 0.287,
+      "slowdown": 1.0
+    },
+    {
+      "stride": 2,
+      "theory_conflict_degree": 2,
+      "avg_ms": 0.48,
+      "slowdown": 1.67
+    },
+    {
+      "stride": 3,
+      "theory_conflict_degree": 1,
+      "avg_ms": 0.286,
+      "slowdown": 1.0
+    },
+    {
+      "stride": 4,
+      "theory_conflict_degree": 4,
+      "avg_ms": 0.942,
+      "slowdown": 3.28
+    },
+    {
+      "stride": 5,
+      "theory_conflict_degree": 1,
+      "avg_ms": 0.29,
+      "slowdown": 1.01
+    },
+    {
+      "stride": 7,
+      "theory_conflict_degree": 1,
+      "avg_ms": 0.286,
+      "slowdown": 1.0
+    },
+    {
+      "stride": 8,
+      "theory_conflict_degree": 8,
+      "avg_ms": 1.852,
+      "slowdown": 6.44
+    },
+    {
+      "stride": 15,
+      "theory_conflict_degree": 1,
+      "avg_ms": 0.289,
+      "slowdown": 1.0
+    },
+    {
+      "stride": 16,
+      "theory_conflict_degree": 16,
+      "avg_ms": 3.735,
+      "slowdown": 13.0
+    },
+    {
+      "stride": 31,
+      "theory_conflict_degree": 1,
+      "avg_ms": 0.289,
+      "slowdown": 1.01
+    },
+    {
+      "stride": 32,
+      "theory_conflict_degree": 32,
+      "avg_ms": 7.374,
+      "slowdown": 25.66
+    },
+    {
+      "stride": 33,
+      "theory_conflict_degree": 1,
+      "avg_ms": 0.283,
+      "slowdown": 0.99
+    }
+  ],
+  "wddm_deconstruction": {
+    "event_record_us": 8.979,
+    "launch_kernel_us": 9.233,
+    "full_roundtrip_os_us": 14.349
+  }
+}

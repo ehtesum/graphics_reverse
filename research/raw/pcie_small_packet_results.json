@@ -1,0 +1,78 @@
+{
+  "interconnect": "PCIe 3.0 x8",
+  "cpu": "AMD Ryzen 7 4800HS",
+  "gpu": "NVIDIA GeForce GTX 1650",
+  "os": "Windows 11 Build 22631 (WDDM 2.7)",
+  "results": [
+    {
+      "packet_label": "4 B",
+      "bytes": 4,
+      "round_trip_latency_us": 25.2402,
+      "one_way_latency_us": 12.6201,
+      "effective_bandwidth_mb_s": 0.31695469924960973
+    },
+    {
+      "packet_label": "16 B",
+      "bytes": 16,
+      "round_trip_latency_us": 25.1935,
+      "one_way_latency_us": 12.59675,
+      "effective_bandwidth_mb_s": 1.2701688927699606
+    },
+    {
+      "packet_label": "64 B",
+      "bytes": 64,
+      "round_trip_latency_us": 24.849400000000003,
+      "one_way_latency_us": 12.424700000000001,
+      "effective_bandwidth_mb_s": 5.151029803536503
+    },
+    {
+      "packet_label": "256 B",
+      "bytes": 256,
+      "round_trip_latency_us": 25.1471,
+      "one_way_latency_us": 12.57355,
+      "effective_bandwidth_mb_s": 20.360200579788525
+    },
+    {
+      "packet_label": "1 KB",
+      "bytes": 1024,
+      "round_trip_latency_us": 25.1282,
+      "one_way_latency_us": 12.5641,
+      "effective_bandwidth_mb_s": 81.50205744939947
+    },
+    {
+      "packet_label": "4 KB",
+      "bytes": 4096,
+      "round_trip_latency_us": 26.313599999999997,
+      "one_way_latency_us": 13.156799999999999,
+      "effective_bandwidth_mb_s": 311.3219019822449
+    },
+    {
+      "packet_label": "16 KB",
+      "bytes": 16384,
+      "round_trip_latency_us": 29.886200000000002,
+      "one_way_latency_us": 14.943100000000001,
+      "effective_bandwidth_mb_s": 1096.4257751069053
+    },
+    {
+      "packet_label": "64 KB",
+      "bytes": 65536,
+      "round_trip_latency_us": 49.241699999999994,
+      "one_way_latency_us": 24.620849999999997,
+      "effective_bandwidth_mb_s": 2661.80899522153
+    },
+    {
+      "packet_label": "256 KB",
+      "bytes": 262144,
+      "round_trip_latency_us": 99.6694,
+      "one_way_latency_us": 49.8347,
+      "effective_bandwidth_mb_s": 5260.270454121325
+    },
+    {
+      "packet_label": "1 MB",
+      "bytes": 1048576,
+      "round_trip_latency_us": 338.2144,
+      "one_way_latency_us": 169.1072,
+      "effective_bandwidth_mb_s": 6200.658517200923
+    }
+  ]
+}

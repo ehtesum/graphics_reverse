@@ -1,0 +1,163 @@
+{
+  "memory_hierarchy": [
+    {
+      "size_kb": 4,
+      "tier": "L1 Cache",
+      "cycles_ca": 33.83,
+      "cycles_cg": 199.29
+    },
+    {
+      "size_kb": 8,
+      "tier": "L1 Cache",
+      "cycles_ca": 34.48,
+      "cycles_cg": 198.6
+    },
+    {
+      "size_kb": 16,
+      "tier": "L1 Cache",
+      "cycles_ca": 36.52,
+      "cycles_cg": 198.98
+    },
+    {
+      "size_kb": 32,
+      "tier": "L1 Cache",
+      "cycles_ca": 49.03,
+      "cycles_cg": 199.03
+    },
+    {
+      "size_kb": 64,
+      "tier": "L2 Unified Cache",
+      "cycles_ca": 107.83,
+      "cycles_cg": 199.11
+    },
+    {
+      "size_kb": 128,
+      "tier": "L2 Unified Cache",
+      "cycles_ca": 173.49,
+      "cycles_cg": 198.9
+    },
+    {
+      "size_kb": 256,
+      "tier": "L2 Unified Cache",
+      "cycles_ca": 187.71,
+      "cycles_cg": 198.94
+    },
+    {
+      "size_kb": 512,
+      "tier": "L2 Unified Cache",
+      "cycles_ca": 182.58,
+      "cycles_cg": 200.07
+    },
+    {
+      "size_kb": 1024,
+      "tier": "L2 Unified Cache",
+      "cycles_ca": 201.87,
+      "cycles_cg": 202.61
+    },
+    {
+      "size_kb": 2048,
+      "tier": "GDDR6 VRAM",
+      "cycles_ca": 320.92,
+      "cycles_cg": 342.9
+    },
+    {
+      "size_kb": 8192,
+      "tier": "GDDR6 VRAM",
+      "cycles_ca": 388.78,
+      "cycles_cg": 395.18
+    }
+  ],
+  "l2_set_aliasing": [
+    {
+      "label": "128 B",
+      "stride": 128,
+      "nodes": 64,
+      "lat_cg": 200.06,
+      "diagnosis": "Clean L2 Hit (Hash Defeated Aliasing)"
+    },
+    {
+      "label": "256 B",
+      "stride": 256,
+      "nodes": 64,
+      "lat_cg": 199.83,
+      "diagnosis": "Clean L2 Hit (Hash Defeated Aliasing)"
+    },
+    {
+      "label": "512 B",
+      "stride": 512,
+      "nodes": 64,
+      "lat_cg": 199.9,
+      "diagnosis": "Clean L2 Hit (Hash Defeated Aliasing)"
+    },
+    {
+      "label": "1 KB",
+      "stride": 1024,
+      "nodes": 64,
+      "lat_cg": 199.85,
+      "diagnosis": "Clean L2 Hit (Hash Defeated Aliasing)"
+    },
+    {
+      "label": "4 KB",
+      "stride": 4096,
+      "nodes": 64,
+      "lat_cg": 199.83,
+      "diagnosis": "Clean L2 Hit (Hash Defeated Aliasing)"
+    },
+    {
+      "label": "16 KB",
+      "stride": 16384,
+      "nodes": 64,
+      "lat_cg": 199.83,
+      "diagnosis": "Clean L2 Hit (Hash Defeated Aliasing)"
+    },
+    {
+      "label": "32 KB",
+      "stride": 32768,
+      "nodes": 64,
+      "lat_cg": 200.51,
+      "diagnosis": "Clean L2 Hit (Hash Defeated Aliasing)"
+    },
+    {
+      "label": "64 KB",
+      "stride": 65536,
+      "nodes": 64,
+      "lat_cg": 200.84,
+      "diagnosis": "Clean L2 Hit (Hash Defeated Aliasing)"
+    },
+    {
+      "label": "65664 B",
+      "stride": 65664,
+      "nodes": 64,
+      "lat_cg": 200.86,
+      "diagnosis": "Clean L2 Hit (Hash Defeated Aliasing)"
+    },
+    {
+      "label": "128 KB",
+      "stride": 131072,
+      "nodes": 64,
+      "lat_cg": 201.03,
+      "diagnosis": "Clean L2 Hit (Hash Defeated Aliasing)"
+    },
+    {
+      "label": "131200 B",
+      "stride": 131200,
+      "nodes": 64,
+      "lat_cg": 201.01,
+      "diagnosis": "Clean L2 Hit (Hash Defeated Aliasing)"
+    },
+    {
+      "label": "256 KB",
+      "stride": 262144,
+      "nodes": 64,
+      "lat_cg": 201.09,
+      "diagnosis": "Clean L2 Hit (Hash Defeated Aliasing)"
+    },
+    {
+      "label": "512 KB",
+      "stride": 524288,
+      "nodes": 64,
+      "lat_cg": 201.17,
+      "diagnosis": "Clean L2 Hit (Hash Defeated Aliasing)"
+    }
+  ]
+}

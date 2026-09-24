@@ -1,0 +1,64 @@
+.version 7.5
+.target sm_75
+.address_size 64
+.visible .entry BatchedMatMul(
+    .param .u64 param_out,
+    .param .u64 param_act,
+    .param .u64 param_weight,
+    .param .u32 param_B,
+    .param .u32 param_D
+)
+{
+    .reg .b32 %r<15>;
+    .reg .b64 %rd<15>;
+    .reg .f32 %f<10>;
+    .reg .pred %p<2>;
+
+    ld.param.u64 %rd1, [param_out];
+    ld.param.u64 %rd2, [param_act];
+    ld.param.u64 %rd3, [param_weight];
+    ld.param.u32 %r1, [param_B];
+    ld.param.u32 %r2, [param_D];
+
+    // Grid mapping: 2D block (row in B, col in D)
+    mov.u32 %r3, %ctaid.x;
+    mov.u32 %r4, %ntid.x;
+    mov.u32 %r5, %tid.x;
+    mad.lo.u32 %r6, %r3, %r4, %r5; // col = output feature (0..D-1)
+    mov.u32 %r7, %ctaid.y;          // row = batch token (0..B-1)
+
+    setp.ge.u32 %p1, %r6, %r2;
+    @%p1 bra EXIT;
+
+    // Compute dot product of act[row, :] and weight[:, col]
+    mov.f32 %f0, 0.0;
+    mov.u32 %r8, 0;
+
+LOOP:
+    // Load activation act[row * D + k]
+    mad.lo.u32 %r9, %r7, %r2, %r8;
+    mul.wide.u32 %rd4, %r9, 4;
+    add.u64 %rd5, %rd2, %rd4;
+    ld.global.f32 %f1, [%rd5];
+
+    // Load weight weight[k * D + col]
+    mad.lo.u32 %r10, %r8, %r2, %r6;
+    mul.wide.u32 %rd6, %r10, 4;
+    add.u64 %rd7, %rd3, %rd6;
+    ld.global.f32 %f2, [%rd7];
+
+    fma.rn.f32 %f0, %f1, %f2, %f0;
+
+    add.u32 %r8, %r8, 1;
+    setp.lt.u32 %p1, %r8, %r2;
+    @%p1 bra LOOP;
+
+    // Write out out[row * D + col]
+    mad.lo.u32 %r11, %r7, %r2, %r6;
+    mul.wide.u32 %rd8, %r11, 4;
+    add.u64 %rd9, %rd1, %rd8;
+    st.global.f32 [%rd9], %f0;
+
+EXIT:
+    ret;
+}

@@ -1,0 +1,14 @@
+{
+  "cpu": "AMD Ryzen 7 4800HS (Zen 2 Renoir)",
+  "benchmark": "Store-to-Load Forwarding (STLF) & Aliasing Penalties",
+  "iterations": 10000000,
+  "results": {
+    "independent_store_load_cycles": 0.784871,
+    "exact_stlf_cycles": 0.72246,
+    "subregister_stlf_cycles": 0.722816,
+    "stlf_failure_overlap_cycles": 10.5774,
+    "stlf_failure_penalty_cycles": 9.85491,
+    "alias_4k_cycles": 1.08524,
+    "alias_4k_penalty_cycles": 0.30037
+  }
+}

@@ -1,0 +1,282 @@
+{
+  "stride_sweep": [
+    {
+      "stride": 1,
+      "gcd": 1,
+      "time_ms": 0.33,
+      "slowdown": 1.0
+    },
+    {
+      "stride": 2,
+      "gcd": 2,
+      "time_ms": 0.476,
+      "slowdown": 1.44
+    },
+    {
+      "stride": 3,
+      "gcd": 1,
+      "time_ms": 0.328,
+      "slowdown": 0.99
+    },
+    {
+      "stride": 4,
+      "gcd": 4,
+      "time_ms": 0.944,
+      "slowdown": 2.86
+    },
+    {
+      "stride": 5,
+      "gcd": 1,
+      "time_ms": 0.33,
+      "slowdown": 1.0
+    },
+    {
+      "stride": 6,
+      "gcd": 2,
+      "time_ms": 0.476,
+      "slowdown": 1.44
+    },
+    {
+      "stride": 7,
+      "gcd": 1,
+      "time_ms": 0.323,
+      "slowdown": 0.98
+    },
+    {
+      "stride": 8,
+      "gcd": 8,
+      "time_ms": 1.85,
+      "slowdown": 5.61
+    },
+    {
+      "stride": 15,
+      "gcd": 1,
+      "time_ms": 0.358,
+      "slowdown": 1.08
+    },
+    {
+      "stride": 16,
+      "gcd": 16,
+      "time_ms": 3.693,
+      "slowdown": 11.2
+    },
+    {
+      "stride": 31,
+      "gcd": 1,
+      "time_ms": 0.325,
+      "slowdown": 0.98
+    },
+    {
+      "stride": 32,
+      "gcd": 32,
+      "time_ms": 7.359,
+      "slowdown": 22.32
+    },
+    {
+      "stride": 33,
+      "gcd": 1,
+      "time_ms": 0.326,
+      "slowdown": 0.99
+    },
+    {
+      "stride": 48,
+      "gcd": 16,
+      "time_ms": 3.666,
+      "slowdown": 11.12
+    },
+    {
+      "stride": 64,
+      "gcd": 32,
+      "time_ms": 6.782,
+      "slowdown": 20.57
+    },
+    {
+      "stride": 65,
+      "gcd": 1,
+      "time_ms": 0.298,
+      "slowdown": 0.9
+    },
+    {
+      "stride": 96,
+      "gcd": 32,
+      "time_ms": 6.78,
+      "slowdown": 20.56
+    },
+    {
+      "stride": 128,
+      "gcd": 32,
+      "time_ms": 6.136,
+      "slowdown": 18.61
+    }
+  ],
+  "width_sweep": [
+    {
+      "width_bits": 8,
+      "stride": 1,
+      "mode": "read",
+      "time_ms": 0.248,
+      "ratio": 0.75
+    },
+    {
+      "width_bits": 8,
+      "stride": 1,
+      "mode": "write",
+      "time_ms": 0.125,
+      "ratio": 0.38
+    },
+    {
+      "width_bits": 8,
+      "stride": 1,
+      "mode": "rmw",
+      "time_ms": 0.436,
+      "ratio": 1.32
+    },
+    {
+      "width_bits": 8,
+      "stride": 2,
+      "mode": "read",
+      "time_ms": 0.249,
+      "ratio": 0.75
+    },
+    {
+      "width_bits": 8,
+      "stride": 2,
+      "mode": "write",
+      "time_ms": 0.125,
+      "ratio": 0.38
+    },
+    {
+      "width_bits": 8,
+      "stride": 2,
+      "mode": "rmw",
+      "time_ms": 0.473,
+      "ratio": 1.43
+    },
+    {
+      "width_bits": 16,
+      "stride": 1,
+      "mode": "read",
+      "time_ms": 0.25,
+      "ratio": 0.76
+    },
+    {
+      "width_bits": 16,
+      "stride": 1,
+      "mode": "write",
+      "time_ms": 0.129,
+      "ratio": 0.39
+    },
+    {
+      "width_bits": 16,
+      "stride": 1,
+      "mode": "rmw",
+      "time_ms": 0.438,
+      "ratio": 1.33
+    },
+    {
+      "width_bits": 16,
+      "stride": 2,
+      "mode": "read",
+      "time_ms": 0.253,
+      "ratio": 0.77
+    },
+    {
+      "width_bits": 16,
+      "stride": 2,
+      "mode": "write",
+      "time_ms": 0.131,
+      "ratio": 0.4
+    },
+    {
+      "width_bits": 16,
+      "stride": 2,
+      "mode": "rmw",
+      "time_ms": 0.438,
+      "ratio": 1.33
+    },
+    {
+      "width_bits": 32,
+      "stride": 1,
+      "mode": "read",
+      "time_ms": 0.249,
+      "ratio": 0.76
+    },
+    {
+      "width_bits": 32,
+      "stride": 1,
+      "mode": "write",
+      "time_ms": 0.125,
+      "ratio": 0.38
+    },
+    {
+      "width_bits": 32,
+      "stride": 1,
+      "mode": "rmw",
+      "time_ms": 0.269,
+      "ratio": 0.82
+    },
+    {
+      "width_bits": 32,
+      "stride": 2,
+      "mode": "read",
+      "time_ms": 0.249,
+      "ratio": 0.76
+    },
+    {
+      "width_bits": 32,
+      "stride": 2,
+      "mode": "write",
+      "time_ms": 0.203,
+      "ratio": 0.62
+    },
+    {
+      "width_bits": 32,
+      "stride": 2,
+      "mode": "rmw",
+      "time_ms": 0.392,
+      "ratio": 1.19
+    },
+    {
+      "width_bits": 64,
+      "stride": 1,
+      "mode": "read",
+      "time_ms": 0.031,
+      "ratio": 0.1
+    },
+    {
+      "width_bits": 64,
+      "stride": 1,
+      "mode": "write",
+      "time_ms": 0.213,
+      "ratio": 0.65
+    },
+    {
+      "width_bits": 64,
+      "stride": 1,
+      "mode": "rmw",
+      "time_ms": 0.396,
+      "ratio": 1.2
+    },
+    {
+      "width_bits": 64,
+      "stride": 2,
+      "mode": "read",
+      "time_ms": 0.025,
+      "ratio": 0.08
+    },
+    {
+      "width_bits": 64,
+      "stride": 2,
+      "mode": "write",
+      "time_ms": 0.392,
+      "ratio": 1.19
+    },
+    {
+      "width_bits": 64,
+      "stride": 2,
+      "mode": "rmw",
+      "time_ms": 0.772,
+      "ratio": 2.34
+    }
+  ]
+}

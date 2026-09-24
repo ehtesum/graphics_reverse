@@ -1,0 +1,58 @@
+[
+  {
+    "instruction": "ALU (FFMA)",
+    "ptx": "fma.rn.f32",
+    "kernel_time_ms": 21.423,
+    "throughput_ginst_s": 1223.63,
+    "slowdown_vs_fma": 1.0
+  },
+  {
+    "instruction": "ALU (FADD)",
+    "ptx": "add.f32",
+    "kernel_time_ms": 16.636,
+    "throughput_ginst_s": 1575.74,
+    "slowdown_vs_fma": 0.78
+  },
+  {
+    "instruction": "ALU (FMUL)",
+    "ptx": "mul.f32",
+    "kernel_time_ms": 16.627,
+    "throughput_ginst_s": 1576.61,
+    "slowdown_vs_fma": 0.78
+  },
+  {
+    "instruction": "SFU (MUFU.RSQ)",
+    "ptx": "rsqrt.approx.f32",
+    "kernel_time_ms": 67.394,
+    "throughput_ginst_s": 388.98,
+    "slowdown_vs_fma": 3.15
+  },
+  {
+    "instruction": "SFU (MUFU.SIN)",
+    "ptx": "sin.approx.f32",
+    "kernel_time_ms": 66.384,
+    "throughput_ginst_s": 394.89,
+    "slowdown_vs_fma": 3.1
+  },
+  {
+    "instruction": "SFU (MUFU.COS)",
+    "ptx": "cos.approx.f32",
+    "kernel_time_ms": 66.388,
+    "throughput_ginst_s": 394.86,
+    "slowdown_vs_fma": 3.1
+  },
+  {
+    "instruction": "SFU (MUFU.LG2)",
+    "ptx": "lg2.approx.f32",
+    "kernel_time_ms": 67.46,
+    "throughput_ginst_s": 388.59,
+    "slowdown_vs_fma": 3.15
+  },
+  {
+    "instruction": "SFU (MUFU.EX2)",
+    "ptx": "ex2.approx.f32",
+    "kernel_time_ms": 66.417,
+    "throughput_ginst_s": 394.69,
+    "slowdown_vs_fma": 3.1
+  }
+]

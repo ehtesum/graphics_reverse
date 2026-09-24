@@ -1,0 +1,26 @@
+.version 7.5
+.target sm_75
+.address_size 64
+.visible .entry AtomicContention_cas(
+    .param .u64 param_target,
+    .param .u32 param_iters
+)
+{
+    .reg .b32 %r<10>;
+    .reg .b64 %rd<10>;
+    .reg .pred %p<2>;
+
+    ld.param.u64 %rd1, [param_target];
+    ld.param.u32 %r1, [param_iters];
+    mov.u32 %r2, 0;
+
+LOOP:
+    setp.ge.u32 %p1, %r2, %r1;
+    @%p1 bra DONE;
+
+    atom.global.cas.b32 %r3, [%rd1], %r3, %r2;
+    add.u32 %r2, %r2, 1;
+    bra LOOP;
+DONE:
+    ret;
+}

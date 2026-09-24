@@ -1,0 +1,26 @@
+[
+  {
+    "mode": "1. Pure GDDR6 VRAM (Baseline)",
+    "time_ms": 0.982,
+    "effective_bandwidth_gb_s": 136.71,
+    "slowdown_factor": 1.0
+  },
+  {
+    "mode": "2. Zero-Copy Host (Sequential PCIe)",
+    "time_ms": 10.078,
+    "effective_bandwidth_gb_s": 13.32,
+    "slowdown_factor": 10.26
+  },
+  {
+    "mode": "3. Zero-Copy Host (Strided PCIe 32x)",
+    "time_ms": 116.535,
+    "effective_bandwidth_gb_s": 1.15,
+    "slowdown_factor": 118.7
+  },
+  {
+    "mode": "4. Staged PCIe DMA Copy + VRAM Compute",
+    "time_ms": 11.065,
+    "effective_bandwidth_gb_s": 12.13,
+    "slowdown_factor": 11.27
+  }
+]

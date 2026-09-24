@@ -1,0 +1,100 @@
+{
+  "device_info": {
+    "bus_id": 1,
+    "device_id": 0,
+    "domain_id": 0,
+    "async_copy_engines": 2,
+    "unified_addressing": true,
+    "concurrent_kernels": true
+  },
+  "sweep_results": [
+    {
+      "size_bytes": 1024,
+      "label": "1 KB",
+      "pinned_time_ms": 0.0199,
+      "pinned_bw_gbs": 0.05,
+      "pageable_time_ms": 0.0175,
+      "pageable_bw_gbs": 0.06
+    },
+    {
+      "size_bytes": 4096,
+      "label": "4 KB",
+      "pinned_time_ms": 0.0173,
+      "pinned_bw_gbs": 0.24,
+      "pageable_time_ms": 0.0158,
+      "pageable_bw_gbs": 0.26
+    },
+    {
+      "size_bytes": 16384,
+      "label": "16 KB",
+      "pinned_time_ms": 0.0149,
+      "pinned_bw_gbs": 1.1,
+      "pageable_time_ms": 0.0137,
+      "pageable_bw_gbs": 1.19
+    },
+    {
+      "size_bytes": 65536,
+      "label": "64 KB",
+      "pinned_time_ms": 0.0177,
+      "pinned_bw_gbs": 3.71,
+      "pageable_time_ms": 0.0185,
+      "pageable_bw_gbs": 3.54
+    },
+    {
+      "size_bytes": 262144,
+      "label": "256 KB",
+      "pinned_time_ms": 0.0474,
+      "pinned_bw_gbs": 5.53,
+      "pageable_time_ms": 0.0598,
+      "pageable_bw_gbs": 4.39
+    },
+    {
+      "size_bytes": 1048576,
+      "label": "1 MB",
+      "pinned_time_ms": 0.1652,
+      "pinned_bw_gbs": 6.35,
+      "pageable_time_ms": 0.2143,
+      "pageable_bw_gbs": 4.89
+    },
+    {
+      "size_bytes": 4194304,
+      "label": "4 MB",
+      "pinned_time_ms": 0.6359,
+      "pinned_bw_gbs": 6.6,
+      "pageable_time_ms": 0.7687,
+      "pageable_bw_gbs": 5.46
+    },
+    {
+      "size_bytes": 16777216,
+      "label": "16 MB",
+      "pinned_time_ms": 2.521,
+      "pinned_bw_gbs": 6.65,
+      "pageable_time_ms": 2.7133,
+      "pageable_bw_gbs": 6.18
+    },
+    {
+      "size_bytes": 67108864,
+      "label": "64 MB",
+      "pinned_time_ms": 10.055,
+      "pinned_bw_gbs": 6.67,
+      "pageable_time_ms": 10.3541,
+      "pageable_bw_gbs": 6.48
+    },
+    {
+      "size_bytes": 134217728,
+      "label": "128 MB",
+      "pinned_time_ms": 20.098,
+      "pinned_bw_gbs": 6.68,
+      "pageable_time_ms": 20.6749,
+      "pageable_bw_gbs": 6.49
+    },
+    {
+      "size_bytes": 268435456,
+      "label": "256 MB",
+      "pinned_time_ms": 40.1714,
+      "pinned_bw_gbs": 6.68,
+      "pageable_time_ms": 41.5471,
+      "pageable_bw_gbs": 6.46
+    }
+  ]
+}

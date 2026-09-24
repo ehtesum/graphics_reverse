@@ -1,0 +1,132 @@
+.version 7.5
+.target sm_75
+.address_size 64
+
+.visible .entry BenchFP16(
+    .param .u64 d_out,
+    .param .u32 iters
+) {
+    .reg .u64 %out_ptr;
+    .reg .u32 %tidx, %k, %limit;
+    .reg .b32 %h0, %h1, %h2, %h3, %h4, %h5, %h6, %h7;
+    .reg .b32 %mul, %add;
+    .reg .pred %p_loop, %p0;
+
+    ld.param.u64 %out_ptr, [d_out];
+    ld.param.u32 %limit, [iters];
+    mov.u32 %tidx, %tid.x;
+
+    mov.b32 %h0, 0x3c003c00; mov.b32 %h1, 0x3c003c00; mov.b32 %h2, 0x3c003c00; mov.b32 %h3, 0x3c003c00;
+    mov.b32 %h4, 0x3c003c00; mov.b32 %h5, 0x3c003c00; mov.b32 %h6, 0x3c003c00; mov.b32 %h7, 0x3c003c00;
+    mov.b32 %mul, 0x3c003c00; mov.b32 %add, 0x04000400;
+    mov.u32 %k, 0;
+
+    $loop_f16:
+    fma.rn.f16x2 %h0, %h0, %mul, %add;
+    fma.rn.f16x2 %h1, %h1, %mul, %add;
+    fma.rn.f16x2 %h2, %h2, %mul, %add;
+    fma.rn.f16x2 %h3, %h3, %mul, %add;
+    fma.rn.f16x2 %h4, %h4, %mul, %add;
+    fma.rn.f16x2 %h5, %h5, %mul, %add;
+    fma.rn.f16x2 %h6, %h6, %mul, %add;
+    fma.rn.f16x2 %h7, %h7, %mul, %add;
+    fma.rn.f16x2 %h0, %h0, %mul, %add;
+    fma.rn.f16x2 %h1, %h1, %mul, %add;
+    fma.rn.f16x2 %h2, %h2, %mul, %add;
+    fma.rn.f16x2 %h3, %h3, %mul, %add;
+    fma.rn.f16x2 %h4, %h4, %mul, %add;
+    fma.rn.f16x2 %h5, %h5, %mul, %add;
+    fma.rn.f16x2 %h6, %h6, %mul, %add;
+    fma.rn.f16x2 %h7, %h7, %mul, %add;
+    fma.rn.f16x2 %h0, %h0, %mul, %add;
+    fma.rn.f16x2 %h1, %h1, %mul, %add;
+    fma.rn.f16x2 %h2, %h2, %mul, %add;
+    fma.rn.f16x2 %h3, %h3, %mul, %add;
+    fma.rn.f16x2 %h4, %h4, %mul, %add;
+    fma.rn.f16x2 %h5, %h5, %mul, %add;
+    fma.rn.f16x2 %h6, %h6, %mul, %add;
+    fma.rn.f16x2 %h7, %h7, %mul, %add;
+    fma.rn.f16x2 %h0, %h0, %mul, %add;
+    fma.rn.f16x2 %h1, %h1, %mul, %add;
+    fma.rn.f16x2 %h2, %h2, %mul, %add;
+    fma.rn.f16x2 %h3, %h3, %mul, %add;
+    fma.rn.f16x2 %h4, %h4, %mul, %add;
+    fma.rn.f16x2 %h5, %h5, %mul, %add;
+    fma.rn.f16x2 %h6, %h6, %mul, %add;
+    fma.rn.f16x2 %h7, %h7, %mul, %add;
+    fma.rn.f16x2 %h0, %h0, %mul, %add;
+    fma.rn.f16x2 %h1, %h1, %mul, %add;
+    fma.rn.f16x2 %h2, %h2, %mul, %add;
+    fma.rn.f16x2 %h3, %h3, %mul, %add;
+    fma.rn.f16x2 %h4, %h4, %mul, %add;
+    fma.rn.f16x2 %h5, %h5, %mul, %add;
+    fma.rn.f16x2 %h6, %h6, %mul, %add;
+    fma.rn.f16x2 %h7, %h7, %mul, %add;
+    fma.rn.f16x2 %h0, %h0, %mul, %add;
+    fma.rn.f16x2 %h1, %h1, %mul, %add;
+    fma.rn.f16x2 %h2, %h2, %mul, %add;
+    fma.rn.f16x2 %h3, %h3, %mul, %add;
+    fma.rn.f16x2 %h4, %h4, %mul, %add;
+    fma.rn.f16x2 %h5, %h5, %mul, %add;
+    fma.rn.f16x2 %h6, %h6, %mul, %add;
+    fma.rn.f16x2 %h7, %h7, %mul, %add;
+    fma.rn.f16x2 %h0, %h0, %mul, %add;
+    fma.rn.f16x2 %h1, %h1, %mul, %add;
+    fma.rn.f16x2 %h2, %h2, %mul, %add;
+    fma.rn.f16x2 %h3, %h3, %mul, %add;
+    fma.rn.f16x2 %h4, %h4, %mul, %add;
+    fma.rn.f16x2 %h5, %h5, %mul, %add;
+    fma.rn.f16x2 %h6, %h6, %mul, %add;
+    fma.rn.f16x2 %h7, %h7, %mul, %add;
+    fma.rn.f16x2 %h0, %h0, %mul, %add;
+    fma.rn.f16x2 %h1, %h1, %mul, %add;
+    fma.rn.f16x2 %h2, %h2, %mul, %add;
+    fma.rn.f16x2 %h3, %h3, %mul, %add;
+    fma.rn.f16x2 %h4, %h4, %mul, %add;
+    fma.rn.f16x2 %h5, %h5, %mul, %add;
+    fma.rn.f16x2 %h6, %h6, %mul, %add;
+    fma.rn.f16x2 %h7, %h7, %mul, %add;
+    fma.rn.f16x2 %h0, %h0, %mul, %add;
+    fma.rn.f16x2 %h1, %h1, %mul, %add;
+    fma.rn.f16x2 %h2, %h2, %mul, %add;
+    fma.rn.f16x2 %h3, %h3, %mul, %add;
+    fma.rn.f16x2 %h4, %h4, %mul, %add;
+    fma.rn.f16x2 %h5, %h5, %mul, %add;
+    fma.rn.f16x2 %h6, %h6, %mul, %add;
+    fma.rn.f16x2 %h7, %h7, %mul, %add;
+    fma.rn.f16x2 %h0, %h0, %mul, %add;
+    fma.rn.f16x2 %h1, %h1, %mul, %add;
+    fma.rn.f16x2 %h2, %h2, %mul, %add;
+    fma.rn.f16x2 %h3, %h3, %mul, %add;
+    fma.rn.f16x2 %h4, %h4, %mul, %add;
+    fma.rn.f16x2 %h5, %h5, %mul, %add;
+    fma.rn.f16x2 %h6, %h6, %mul, %add;
+    fma.rn.f16x2 %h7, %h7, %mul, %add;
+    fma.rn.f16x2 %h0, %h0, %mul, %add;
+    fma.rn.f16x2 %h1, %h1, %mul, %add;
+    fma.rn.f16x2 %h2, %h2, %mul, %add;
+    fma.rn.f16x2 %h3, %h3, %mul, %add;
+    fma.rn.f16x2 %h4, %h4, %mul, %add;
+    fma.rn.f16x2 %h5, %h5, %mul, %add;
+    fma.rn.f16x2 %h6, %h6, %mul, %add;
+    fma.rn.f16x2 %h7, %h7, %mul, %add;
+    fma.rn.f16x2 %h0, %h0, %mul, %add;
+    fma.rn.f16x2 %h1, %h1, %mul, %add;
+    fma.rn.f16x2 %h2, %h2, %mul, %add;
+    fma.rn.f16x2 %h3, %h3, %mul, %add;
+    fma.rn.f16x2 %h4, %h4, %mul, %add;
+    fma.rn.f16x2 %h5, %h5, %mul, %add;
+    fma.rn.f16x2 %h6, %h6, %mul, %add;
+    fma.rn.f16x2 %h7, %h7, %mul, %add;
+    add.u32 %k, %k, 1;
+    setp.lt.u32 %p_loop, %k, %limit;
+    @%p_loop bra $loop_f16;
+
+    add.f16x2 %h0, %h0, %h1; add.f16x2 %h2, %h2, %h3;
+    add.f16x2 %h4, %h4, %h5; add.f16x2 %h6, %h6, %h7;
+    add.f16x2 %h0, %h0, %h2; add.f16x2 %h4, %h4, %h6;
+    add.f16x2 %h0, %h0, %h4;
+    setp.eq.u32 %p0, %tidx, 0;
+    @%p0 st.global.u32 [%out_ptr], %h0;
+    ret;
+}

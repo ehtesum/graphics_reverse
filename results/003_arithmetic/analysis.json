@@ -1,0 +1,47 @@
+{
+  "kernel_name": {
+    "value": "_Z4testPf",
+    "status": "OBSERVED"
+  },
+  "instruction_count": {
+    "total": 13,
+    "breakdown": {
+      "arithmetic": 4,
+      "loads": 1,
+      "stores": 1,
+      "branches_and_control": 2,
+      "synchronization": 0,
+      "data_movement": 3,
+      "other": 2
+    },
+    "status": "OBSERVED"
+  },
+  "registers": {
+    "unique_referenced": [
+      "R0",
+      "R1",
+      "R2",
+      "R3",
+      "R5"
+    ],
+    "count_referenced": 5,
+    "max_register_index": 5,
+    "status": "OBSERVED"
+  },
+  "predicates": {
+    "unique_referenced": [],
+    "count_referenced": 0,
+    "status": "OBSERVED"
+  },
+  "microarchitecture_inferences": {
+    "target_architecture": "NVIDIA Turing (Compute 7.5)",
+    "warp_execution_model": "32 threads per warp lockstep scheduling",
+    "inferred_memory_coalescing": "Continuous thread index mapping suggests 128-byte transaction coalescing",
+    "status": "INFERRED"
+  },
+  "unknowns": {
+    "pipeline_stall_cycles": "Cannot determine without live hardware profiling counters (Nsight)",
+    "exact_cache_hit_rate": "Cannot determine from static assembly alone",
+    "status": "UNKNOWN"
+  }
+}

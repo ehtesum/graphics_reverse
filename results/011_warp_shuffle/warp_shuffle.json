@@ -1,0 +1,20 @@
+[
+  {
+    "method": "Global Atomics (DRAM)",
+    "kernel_time_ms": 2.3992,
+    "speedup": 1.0,
+    "result_sum": 1048576.0
+  },
+  {
+    "method": "Shared Memory Tree (SRAM)",
+    "kernel_time_ms": 0.0965,
+    "speedup": 24.87,
+    "result_sum": 1048576.0
+  },
+  {
+    "method": "Warp Shuffle (Registers)",
+    "kernel_time_ms": 0.0684,
+    "speedup": 35.06,
+    "result_sum": 1048576.0
+  }
+]

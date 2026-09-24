@@ -1,0 +1,11 @@
+{
+  "device": "NVIDIA GeForce GTX 1650",
+  "kernel": "_Z4testPf",
+  "elements": 1048576,
+  "threads_per_block": 256,
+  "blocks_per_grid": 4096,
+  "kernel_time_ms": 1.1536,
+  "first_element_output": 33.0,
+  "expected_element_output": 2.0,
+  "verified": false
+}

@@ -1,0 +1,60 @@
+{
+  "hardware": "NVIDIA GeForce GTX 1650 (TU117)",
+  "tokens_per_block": 16,
+  "results": [
+    {
+      "seq_length": 256,
+      "kv_bytes": 524288,
+      "contiguous_us": 12.05,
+      "contiguous_bw_gbps": 43.51,
+      "paged_us": 10.57,
+      "paged_bw_gbps": 49.59,
+      "indirection_tax_ratio": 0.88
+    },
+    {
+      "seq_length": 512,
+      "kv_bytes": 1048576,
+      "contiguous_us": 12.38,
+      "contiguous_bw_gbps": 84.7,
+      "paged_us": 13.4,
+      "paged_bw_gbps": 78.24,
+      "indirection_tax_ratio": 1.08
+    },
+    {
+      "seq_length": 1024,
+      "kv_bytes": 2097152,
+      "contiguous_us": 14.91,
+      "contiguous_bw_gbps": 140.66,
+      "paged_us": 17.33,
+      "paged_bw_gbps": 121.04,
+      "indirection_tax_ratio": 1.16
+    },
+    {
+      "seq_length": 2048,
+      "kv_bytes": 4194304,
+      "contiguous_us": 26.15,
+      "contiguous_bw_gbps": 160.37,
+      "paged_us": 26.9,
+      "paged_bw_gbps": 155.95,
+      "indirection_tax_ratio": 1.03
+    },
+    {
+      "seq_length": 4096,
+      "kv_bytes": 8388608,
+      "contiguous_us": 47.83,
+      "contiguous_bw_gbps": 175.39,
+      "paged_us": 50.14,
+      "paged_bw_gbps": 167.32,
+      "indirection_tax_ratio": 1.05
+    },
+    {
+      "seq_length": 8192,
+      "kv_bytes": 16777216,
+      "contiguous_us": 92.41,
+      "contiguous_bw_gbps": 181.56,
+      "paged_us": 96.38,
+      "paged_bw_gbps": 174.08,
+      "indirection_tax_ratio": 1.04
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+experiment_id,name,domain,priority,est_runtime_s,info_gain,risk
+EXP-CPU-001,L1D Latency & Load Width,CPU,0,5,HIGH,LOW
+EXP-CPU-006,L2 Latency & Working Set,CPU,0,10,HIGH,LOW
+EXP-CPU-011,L3 Latency & Slice Behavior,CPU,0,15,HIGH,LOW
+EXP-CPU-024,Inter-CCX Infinity Fabric Latency,CPU,0,25,VERY_HIGH,LOW
+EXP-CPU-030,DRAM Latency & Uncore Controller,CPU,0,15,HIGH,LOW
+EXP-CPU-056,CPU Stream & Stride Prefetcher,CPU,1,30,HIGH,LOW
+EXP-CPU-069,Predictable vs Random Branch Penalty,CPU,0,10,HIGH,LOW
+EXP-CPU-078,In-Register Zero-Memory Branch Flush,CPU,1,10,VERY_HIGH,LOW
+EXP-CPU-104,AVX2 Throughput & Port Saturation,CPU,0,20,HIGH,LOW
+EXP-CPU-106,AVX2 FMA Dependent Latency,CPU,0,10,HIGH,LOW
+EXP-CPU-138,SMT Sibling Resource Interference,CPU,1,25,HIGH,LOW
+EXP-CPU-154,Multi-Core AVX2 45W PPT Throttling,CPU,1,40,HIGH,MEDIUM
+EXP-GPU-184,FP16 Rapid Packed Math 5.39 TF,GPU,0,15,HIGH,LOW
+EXP-GPU-191,SFU Transcendentals 4:1 Ratio,GPU,0,15,HIGH,LOW
+EXP-GPU-219,Shared Memory Strides 1-128 & Widths,GPU,0,30,VERY_HIGH,LOW
+EXP-GPU-237,Warp Divergence Branch Serialization,GPU,0,15,HIGH,LOW
+EXP-GPU-256,Warp Butterfly Shuffle Reduction,GPU,0,10,HIGH,LOW
+EXP-GPU-270,Global Memory Coalescing & Stride,GPU,0,15,HIGH,LOW
+EXP-GPU-282,GPU L1/L2/GDDR6 Latency Profiling,GPU,0,20,HIGH,LOW
+EXP-GPU-305,Atomic Contention & In-Situ L2 RED,GPU,0,25,VERY_HIGH,LOW
+EXP-GPU-339,PCIe Negotiated State & 1KB-1GB Sweep,GPU,0,35,VERY_HIGH,LOW
+EXP-GPU-354,Dual DMA Copy Engine Concurrency,GPU,0,15,HIGH,LOW
+EXP-WDDM-399,User-Mode Queue vs OS Kernel Sync,WDDM,0,20,VERY_HIGH,LOW
+EXP-WDDM-404,CUDA Graph vs Individual Batching,WDDM,1,20,HIGH,LOW
+EXP-AI-465,Local LLM VRAM Fit & Layer Split,AI,3,30,VERY_HIGH,LOW
+EXP-AI-502,KV-Cache Growth & Context Squeeze,AI,3,25,HIGH,LOW
+EXP-AI-601,Hardware-Aware vs Hardware-Blind AI,AI,3,45,VERY_HIGH,LOW
+EXP-AI-613,Energy-Aware Inference (J/token),AI,3,30,HIGH,LOW
+EXP-AI-641,WDDM Overhead -> Transformer Layers,CROSS,1,20,HIGH,LOW
+EXP-AI-642,PCIe Bandwidth -> Layer Offloading,CROSS,1,25,VERY_HIGH,LOW

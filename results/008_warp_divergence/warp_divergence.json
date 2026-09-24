@@ -1,0 +1,38 @@
+[
+  {
+    "ways": 1,
+    "label": "1-way (Uniform)",
+    "kernel_time_ms": 0.0795,
+    "relative_penalty": 1.0
+  },
+  {
+    "ways": 2,
+    "label": "2-way Divergence",
+    "kernel_time_ms": 0.0642,
+    "relative_penalty": 0.81
+  },
+  {
+    "ways": 4,
+    "label": "4-way Divergence",
+    "kernel_time_ms": 0.0825,
+    "relative_penalty": 1.04
+  },
+  {
+    "ways": 8,
+    "label": "8-way Divergence",
+    "kernel_time_ms": 0.1522,
+    "relative_penalty": 1.91
+  },
+  {
+    "ways": 16,
+    "label": "16-way Divergence",
+    "kernel_time_ms": 0.2035,
+    "relative_penalty": 2.56
+  },
+  {
+    "ways": 32,
+    "label": "32-way Divergence",
+    "kernel_time_ms": 0.376,
+    "relative_penalty": 4.73
+  }
+]

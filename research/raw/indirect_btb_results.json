@@ -1,0 +1,52 @@
+[
+  {
+    "targets": 1,
+    "cycles_per_call": 16.3938,
+    "penalty_vs_single_target": 12.8274
+  },
+  {
+    "targets": 2,
+    "cycles_per_call": 15.8081,
+    "penalty_vs_single_target": 12.2418
+  },
+  {
+    "targets": 4,
+    "cycles_per_call": 20.4855,
+    "penalty_vs_single_target": 16.9191
+  },
+  {
+    "targets": 8,
+    "cycles_per_call": 15.196,
+    "penalty_vs_single_target": 11.6296
+  },
+  {
+    "targets": 12,
+    "cycles_per_call": 15.6596,
+    "penalty_vs_single_target": 12.0932
+  },
+  {
+    "targets": 16,
+    "cycles_per_call": 15.0828,
+    "penalty_vs_single_target": 11.5164
+  },
+  {
+    "targets": 24,
+    "cycles_per_call": 14.8748,
+    "penalty_vs_single_target": 11.3084
+  },
+  {
+    "targets": 32,
+    "cycles_per_call": 14.4555,
+    "penalty_vs_single_target": 10.8891
+  },
+  {
+    "targets": 48,
+    "cycles_per_call": 20.4321,
+    "penalty_vs_single_target": 16.8657
+  },
+  {
+    "targets": 64,
+    "cycles_per_call": 18.616,
+    "penalty_vs_single_target": 15.0496
+  }
+]

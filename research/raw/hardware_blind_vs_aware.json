@@ -1,0 +1,77 @@
+[
+  {
+    "scenario": "Summarize Note",
+    "complexity": "low",
+    "context_tokens": 512,
+    "hardware_blind": {
+      "model": "Llama-3-8B",
+      "quantization": "Q4_K_M",
+      "tok_s": 4.2,
+      "latency_s": 67.35,
+      "joules_per_token": 19.05,
+      "status": "VRAM Overallocated -> Windows Shared Memory Paging"
+    },
+    "hardware_aware": {
+      "model": "Gemma-2-2B",
+      "quantization": "Q4_K_M",
+      "gpu_layers": 26,
+      "cpu_layers": 0,
+      "predicted_tok_s": 95.45,
+      "predicted_latency_s": 3.82,
+      "estimated_joules_per_token": 0.524,
+      "execution_strategy": "100% VRAM Resident Execution (Fast Low-Latency Decoding)"
+    },
+    "speedup_factor": 22.73,
+    "energy_reduction_pct": 97.2
+  },
+  {
+    "scenario": "Extract Entities from Paper",
+    "complexity": "medium",
+    "context_tokens": 2048,
+    "hardware_blind": {
+      "model": "Llama-3-8B",
+      "quantization": "Q4_K_M",
+      "tok_s": 4.2,
+      "latency_s": 86.55,
+      "joules_per_token": 19.05,
+      "status": "VRAM Overallocated -> Windows Shared Memory Paging"
+    },
+    "hardware_aware": {
+      "model": "Phi-3-Mini-3.8B",
+      "quantization": "Q4_K_M",
+      "gpu_layers": 32,
+      "cpu_layers": 0,
+      "predicted_tok_s": 65.53,
+      "predicted_latency_s": 8.46,
+      "estimated_joules_per_token": 0.763,
+      "execution_strategy": "100% VRAM Resident Execution (Full GDDR6 Bandwidth)"
+    },
+    "speedup_factor": 15.6,
+    "energy_reduction_pct": 96.0
+  },
+  {
+    "scenario": "Code Architecture Synthesis",
+    "complexity": "high",
+    "context_tokens": 4096,
+    "hardware_blind": {
+      "model": "Llama-3-8B",
+      "quantization": "Q4_K_M",
+      "tok_s": 4.2,
+      "latency_s": 112.15,
+      "joules_per_token": 19.05,
+      "status": "VRAM Overallocated -> Windows Shared Memory Paging"
+    },
+    "hardware_aware": {
+      "model": "Mistral-7B-v0.3",
+      "quantization": "Q4_K_M",
+      "gpu_layers": 26,
+      "cpu_layers": 6,
+      "predicted_tok_s": 21.77,
+      "predicted_latency_s": 20.86,
+      "estimated_joules_per_token": 3.445,
+      "execution_strategy": "Hybrid Offload (26 GPU / 6 CPU layers over 6.68 GB/s PCIe)"
+    },
+    "speedup_factor": 5.18,
+    "energy_reduction_pct": 81.9
+  }
+]

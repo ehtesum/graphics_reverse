@@ -1,0 +1,93 @@
+
+.version 7.5
+.target sm_75
+.address_size 64
+
+// Vectorized 128-bit streaming read over PCIe
+.visible .entry ZeroCopyRead(
+    .param .u64 d_src,
+    .param .u64 d_sink,
+    .param .u32 num_elements_128
+) {
+    .reg .u64 %src, %sink, %src_addr, %offset64;
+    .reg .u32 %n, %tidx, %ntidx, %bidx, %nbidx, %gidx, %stride, %r_offset, %accum;
+    .reg .b32 %v0, %v1, %v2, %v3;
+    .reg .pred %p0, %p_first;
+
+    ld.param.u64 %src, [d_src];
+    ld.param.u64 %sink, [d_sink];
+    ld.param.u32 %n, [num_elements_128];
+
+    mov.u32 %tidx, %tid.x;
+    mov.u32 %ntidx, %ntid.x;
+    mov.u32 %bidx, %ctaid.x;
+    mov.u32 %nbidx, %nctaid.x;
+    mov.u32 %accum, 0;
+
+    mad.lo.u32 %gidx, %bidx, %ntidx, %tidx;
+    mul.lo.u32 %stride, %nbidx, %ntidx;
+
+    $loop:
+    setp.ge.u32 %p0, %gidx, %n;
+    @%p0 bra $exit;
+
+    // 16 bytes (128-bit) per thread
+    shl.b32 %r_offset, %gidx, 4;
+    cvt.u64.u32 %offset64, %r_offset;
+    add.u64 %src_addr, %src, %offset64;
+
+    ld.global.v4.b32 {%v0, %v1, %v2, %v3}, [%src_addr];
+    add.u32 %accum, %accum, %v0;
+
+    add.u32 %gidx, %gidx, %stride;
+    bra $loop;
+
+    $exit:
+    // Dummy sink write to keep loads live
+    setp.eq.u32 %p_first, %tidx, 0;
+    @%p_first st.global.u32 [%sink], %accum;
+    ret;
+}
+
+// Vectorized 128-bit streaming write over PCIe
+.visible .entry ZeroCopyWrite(
+    .param .u64 d_dst,
+    .param .u32 num_elements_128
+) {
+    .reg .u64 %dst, %dst_addr, %offset64;
+    .reg .u32 %n, %tidx, %ntidx, %bidx, %nbidx, %gidx, %stride, %r_offset;
+    .reg .b32 %v0, %v1, %v2, %v3;
+    .reg .pred %p0;
+
+    ld.param.u64 %dst, [d_dst];
+    ld.param.u32 %n, [num_elements_128];
+
+    mov.u32 %tidx, %tid.x;
+    mov.u32 %ntidx, %ntid.x;
+    mov.u32 %bidx, %ctaid.x;
+    mov.u32 %nbidx, %nctaid.x;
+
+    mad.lo.u32 %gidx, %bidx, %ntidx, %tidx;
+    mul.lo.u32 %stride, %nbidx, %ntidx;
+
+    mov.b32 %v0, 0x12345678;
+    mov.b32 %v1, 0x23456789;
+    mov.b32 %v2, 0x3456789a;
+    mov.b32 %v3, 0x456789ab;
+
+    $w_loop:
+    setp.ge.u32 %p0, %gidx, %n;
+    @%p0 bra $w_exit;
+
+    shl.b32 %r_offset, %gidx, 4;
+    cvt.u64.u32 %offset64, %r_offset;
+    add.u64 %dst_addr, %dst, %offset64;
+
+    st.global.v4.b32 [%dst_addr], {%v0, %v1, %v2, %v3};
+
+    add.u32 %gidx, %gidx, %stride;
+    bra $w_loop;
+
+    $w_exit:
+    ret;
+}

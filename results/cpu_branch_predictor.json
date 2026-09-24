@@ -1,0 +1,9 @@
+{
+  "cpu": "AMD Ryzen 7 4800HS with Radeon Graphics (Zen 2)",
+  "elements": 1000000,
+  "trials": 50,
+  "cycles_per_branch_sorted": 1.25846,
+  "cycles_per_branch_random": 11.5929,
+  "pipeline_flush_penalty_cycles": 10.3345,
+  "slowdown_factor": 9.21197
+}

@@ -1,0 +1,32 @@
+{
+  "cpu": "AMD Ryzen 7 4800HS (Zen 2 Renoir)",
+  "benchmark": "Reorder Buffer (ROB) Capacity",
+  "sweep": [
+    {"independent_instructions": 0, "total_cycles": 8368530, "cycles_per_iteration": 278.951},
+    {"independent_instructions": 8, "total_cycles": 8790770, "cycles_per_iteration": 293.026},
+    {"independent_instructions": 16, "total_cycles": 8344315, "cycles_per_iteration": 278.144},
+    {"independent_instructions": 32, "total_cycles": 7511203, "cycles_per_iteration": 250.373},
+    {"independent_instructions": 48, "total_cycles": 8070903, "cycles_per_iteration": 269.03},
+    {"independent_instructions": 64, "total_cycles": 8261955, "cycles_per_iteration": 275.399},
+    {"independent_instructions": 80, "total_cycles": 8905175, "cycles_per_iteration": 296.839},
+    {"independent_instructions": 96, "total_cycles": 8100657, "cycles_per_iteration": 270.022},
+    {"independent_instructions": 112, "total_cycles": 8658327, "cycles_per_iteration": 288.611},
+    {"independent_instructions": 128, "total_cycles": 9507824, "cycles_per_iteration": 316.927},
+    {"independent_instructions": 144, "total_cycles": 8361193, "cycles_per_iteration": 278.706},
+    {"independent_instructions": 160, "total_cycles": 8935161, "cycles_per_iteration": 297.839},
+    {"independent_instructions": 176, "total_cycles": 9751250, "cycles_per_iteration": 325.042},
+    {"independent_instructions": 192, "total_cycles": 9887724, "cycles_per_iteration": 329.591},
+    {"independent_instructions": 208, "total_cycles": 9657319, "cycles_per_iteration": 321.911},
+    {"independent_instructions": 224, "total_cycles": 9030223, "cycles_per_iteration": 301.007},
+    {"independent_instructions": 240, "total_cycles": 9935458, "cycles_per_iteration": 331.182},
+    {"independent_instructions": 256, "total_cycles": 9229627, "cycles_per_iteration": 307.654},
+    {"independent_instructions": 272, "total_cycles": 10137704, "cycles_per_iteration": 337.923},
+    {"independent_instructions": 288, "total_cycles": 9530212, "cycles_per_iteration": 317.674},
+    {"independent_instructions": 304, "total_cycles": 9722250, "cycles_per_iteration": 324.075},
+    {"independent_instructions": 320, "total_cycles": 9520468, "cycles_per_iteration": 317.349},
+    {"independent_instructions": 352, "total_cycles": 10448352, "cycles_per_iteration": 348.278},
+    {"independent_instructions": 384, "total_cycles": 9953525, "cycles_per_iteration": 331.784},
+    {"independent_instructions": 448, "total_cycles": 16253630, "cycles_per_iteration": 541.788},
+    {"independent_instructions": 512, "total_cycles": 12314009, "cycles_per_iteration": 410.467}
+  ]
+}
