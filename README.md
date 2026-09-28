@@ -57,4 +57,4 @@ cmake --build build --config Release
 
 Full detailed notes, methodology, and measurement logs are documented in the [`paper/`](paper/) directory:
 * [`paper/revised_whitepaper.md`](paper/revised_whitepaper.md): Extended measurement notes and telemetry logs.
-* [`paper/methods.md`](paper/methods.md): Epistemological isolation principles and timer calibration notes.
+* [`paper/methods.md`](paper/methods.md): Benchmarking methodology and timer calibration notes.
